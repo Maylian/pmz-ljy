@@ -299,19 +299,20 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "l1"
 							"text": "袖带压"
-							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 12, false )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"x": 5
-							"y": 50
+							"x": 15
+							"y": 60
 							"width": 80
+							"height": 20
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "l2"
 							"text": "000"
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 13, false )
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-							"x": 100
-							"y": 40
+							"x": 90
+							"y": 45
 							"width": 85
 							"height": 54
 						} )

@@ -17,8 +17,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public Thread m_thread;
     public boolean go_thread = false;
 
-    public int pre,sbp,map,dbp,spo2,pr,rr,dl;
-    public double bt1,bt2;
+    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse, pi, ii,spi;
+    public double bt1,bt2;//体温1，体温2
     public short hr;
 
 
@@ -317,15 +317,15 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
                     //---- l1 ----
                     l1.setText("\u8896\u5e26\u538b");
-                    l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 12f));
+                    l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 4f));
                     panel1.add(l1);
-                    l1.setBounds(5, 50, 80, l1.getPreferredSize().height);
+                    l1.setBounds(15, 60, 80, 20);
 
                     //---- l2 ----
                     l2.setText("000");
                     l2.setFont(l2.getFont().deriveFont(l2.getFont().getSize() + 13f));
                     panel1.add(l2);
-                    l2.setBounds(100, 40, 85, 54);
+                    l2.setBounds(90, 45, 85, 54);
 
                     { // compute preferred size
                         Dimension preferredSize = new Dimension();
