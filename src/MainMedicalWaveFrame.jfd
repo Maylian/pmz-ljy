@@ -14,7 +14,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   II", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 10
+					"y": 45
 					"height": 180
 					"width": 760
 				} )
@@ -24,7 +24,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   I", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 190
+					"y": 225
 					"width": 760
 					"height": 185
 				} )
@@ -34,7 +34,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  PLETH", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color cyan )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 375
+					"y": 410
 					"width": 760
 					"height": 185
 				} )
@@ -44,7 +44,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  RESP", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color yellow )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 560
+					"y": 600
 					"width": 760
 					"height": 165
 				} )
@@ -171,8 +171,8 @@ new FormModel {
 						"y": 115
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
-					"y": 10
+					"x": 760
+					"y": 45
 					"width": 340
 					"height": 160
 				} )
@@ -323,7 +323,7 @@ new FormModel {
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 765
-					"y": 170
+					"y": 205
 					"width": 340
 					"height": 180
 				} )
@@ -423,7 +423,7 @@ new FormModel {
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 765
-					"y": 345
+					"y": 385
 					"width": 340
 					"height": 120
 				} )
@@ -467,7 +467,7 @@ new FormModel {
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 765
-					"y": 465
+					"y": 505
 					"width": 340
 					"height": 105
 				} )
@@ -609,27 +609,21 @@ new FormModel {
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 765
-					"y": 570
+					"y": 610
 					"width": 340
 					"height": 145
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel2"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 0
+					"y": 0
+					"width": 1110
+					"height": 45
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
-			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
-				name: "menuBar1"
-				"foreground": new java.awt.Color( 0, 0, 0, 255 )
-				"background": new java.awt.Color( 0, 0, 0, 255 )
-				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-					name: "menu1"
-					"text": "text"
-					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": "text"
-				} )
-			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 1130, 825 )
