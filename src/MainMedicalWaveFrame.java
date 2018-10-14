@@ -17,8 +17,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public Thread m_thread;
     public boolean go_thread = false;
 
-    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse, pi, ii,spi;
-    public double bt1,bt2;//体温1，体温2
+    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi;
+    public double bt1,bt2;
     public short hr;
 
 
@@ -89,6 +89,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t11 = new JLabel();
         t12 = new JLabel();
         panel2 = new JPanel();
+        textField1 = new JTextField();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -168,6 +169,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e5.setText("PACE");
                 e5.setFont(e5.getFont().deriveFont(e5.getFont().getSize() + 5f));
                 e5.setForeground(Color.green);
+                e5.setBackground(Color.blue);
                 ECGdataPanel.add(e5);
                 e5.setBounds(220, 20, 55, e5.getPreferredSize().height);
 
@@ -601,6 +603,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             {
                 panel2.setLayout(null);
 
+                //---- textField1 ----
+                textField1.setBackground(Color.yellow);
+                panel2.add(textField1);
+                textField1.setBounds(740, 10, 85, 30);
+
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
                     for(int i = 0; i < panel2.getComponentCount(); i++) {
@@ -697,6 +704,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel t11;
     private JLabel t12;
     private JPanel panel2;
+    private JTextField textField1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
