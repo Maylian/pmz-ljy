@@ -126,29 +126,29 @@ public class PARA_SPO2 {
             //    System.out.println(" --------0x32_lenth = "+SPR_Length);
 
                 this.DL = (byte)(data[4] & 0x01);
-            //    if(DL == 0) {System.out.println("--------DL---正常");}
-            //    else System.out.println("--------DL---脱落");
+               if(DL == 0) {System.out.println("--------DL---正常");}
+               else System.out.println("--------DL---脱落");
 
-                this.PULSE = (byte)(data[4] & 0x02);
-               // if (PULSE == 0) {System.out.println("--------PULSE---");}
-               // else System.out.println("--------PULSE---搜索脉搏");
+                this.PULSE = (byte)((data[4] & 0x02)>>1);
+                if (PULSE == 0) {System.out.println("--------PULSE---");}
+                else System.out.println("--------PULSE---搜索脉搏");
 
-                this.PI = (byte)(data[4] & 0x04);
-                // if (PI == 0) {System.out.println("--------正常---");}
-                // else System.out.println("--------PI---弱灌注");
+                this.PI = (byte)((data[4] & 0x04)>>2);
+                 if (PI == 0) {System.out.println("--------正常---");}
+                 else System.out.println("--------PI---弱灌注");
 
-                this.II = (byte)(data[4] & 0x08);
-                // if (II == 0) {System.out.println("--------正常---");}
-                // else System.out.println("--------II---有干扰");
+                this.II = (byte)((data[4] & 0x08)>>3);
+                 if (II == 0) {System.out.println("--------正常---");}
+                 else System.out.println("--------II---有干扰");
 
-                this.SPI = (byte)(data[4] & 0x10);
-                // if (SPI == 0) {System.out.println("--------正常---");}
-                // else System.out.println("--------SPI---停博");
+                this.SPI = (byte)((data[4] & 0x10)>>4);
+                if (SPI == 0) {System.out.println("--------正常---");}
+                else System.out.println("--------SPI---停博");
 
-                 this.Patient = (byte)((data[4] & 0x60)>> 5);
-              //  if(Patient == 0) {System.out.println("------成人----");}
-              //  else if(Patient == 1) System.out.println("----小儿----");
-              //  else if(Patient == 2)  System.out.println("----新生儿----");
+                this.Patient = (byte)((data[4] & 0x60)>> 5);
+                if(Patient == 0) {System.out.println("------成人----");}
+                else if(Patient == 1) System.out.println("----小儿----");
+                else if(Patient == 2)  System.out.println("----新生儿----");
 
                 this.Singal_th = data[5];
                 //System.out.println("--------Singal_th "+Singal_th);

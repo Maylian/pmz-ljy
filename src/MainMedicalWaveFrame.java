@@ -601,6 +601,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
             //======== panel2 ========
             {
+                panel2.setBackground(Color.black);
                 panel2.setLayout(null);
 
                 //---- textField1 ----
@@ -623,7 +624,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel2);
-            panel2.setBounds(0, 0, 1110, 45);
+            panel2.setBounds(0, 0, 1130, 45);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
