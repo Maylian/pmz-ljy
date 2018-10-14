@@ -17,8 +17,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public Thread m_thread;
     public boolean go_thread = false;
 
-    public int pre,sbp,map,dbp,spo2,pr,rr,dl;
-    public double bt1,bt2;
+    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse, pi, ii,spi;
+    public double bt1,bt2;//体温1，体温2
     public short hr;
 
 
@@ -31,8 +31,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        menuBar1 = new JMenuBar();
-        menu1 = new JMenu();
         panel1InfoDisplay = new JPanel();
         ECGwavePanel1 = new MedicalWaveDisplayPanel();
         ECGwavePanel2 = new MedicalWaveDisplayPanel();
@@ -94,20 +92,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //======== this ========
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
-
-        //======== menuBar1 ========
-        {
-            menuBar1.setForeground(Color.black);
-            menuBar1.setBackground(Color.black);
-
-            //======== menu1 ========
-            {
-                menu1.setText("text");
-                menu1.setFont(menu1.getFont().deriveFont(menu1.getFont().getSize() + 7f));
-            }
-            menuBar1.add(menu1);
-        }
-        setJMenuBar(menuBar1);
 
         //======== panel1InfoDisplay ========
         {
@@ -332,15 +316,15 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
                     //---- l1 ----
                     l1.setText("\u8896\u5e26\u538b");
-                    l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 12f));
+                    l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 4f));
                     panel1.add(l1);
-                    l1.setBounds(5, 50, 80, l1.getPreferredSize().height);
+                    l1.setBounds(15, 60, 80, 20);
 
                     //---- l2 ----
                     l2.setText("000");
                     l2.setFont(l2.getFont().deriveFont(l2.getFont().getSize() + 13f));
                     panel1.add(l2);
-                    l2.setBounds(100, 40, 85, 54);
+                    l2.setBounds(90, 45, 85, 54);
 
                     { // compute preferred size
                         Dimension preferredSize = new Dimension();
@@ -633,8 +617,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    private JMenuBar menuBar1;
-    private JMenu menu1;
     private JPanel panel1InfoDisplay;
     private MedicalWaveDisplayPanel ECGwavePanel1;
     private MedicalWaveDisplayPanel ECGwavePanel2;

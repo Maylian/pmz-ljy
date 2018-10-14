@@ -89,35 +89,35 @@ public class PARA_NIBP {
                 /*switch (data[4])
                 {
                     case 0x00:
-                        System.out.println("正常");
+                        System.out.println("正常"); break;
                     case 0x01:
-                        System.out.println("预留");
+                        System.out.println("预留"); break;
                     case 0x02:
-                        System.out.println("自检失败");
+                        System.out.println("自检失败"); break;
                     case 0x03:
-                        System.out.println("软件过压");
+                        System.out.println("软件过压"); break;
                     case 0x04:
-                        System.out.println("袖带类型错误");
+                        System.out.println("袖带类型错误"); break;
                     case 0x05:
-                        System.out.println("起始压力过高");
+                        System.out.println("起始压力过高"); break;
                     case 0x06:
-                        System.out.println("袖带松");
+                        System.out.println("袖带松"); break;
                     case 0x07:
-                        System.out.println("漏气");
+                        System.out.println("漏气"); break;
                     case 0x08:
-                        System.out.println("气压错");
+                        System.out.println("气压错"); break;
                     case 0x09:
-                        System.out.println("信号弱");
+                        System.out.println("信号弱"); break;
                     case 0x0A:
-                        System.out.println("超出测量范围");
+                        System.out.println("超出测量范围"); break;
                     case 0x0B:
-                        System.out.println("信号干扰");
+                        System.out.println("信号干扰"); break;
                     case 0x0C:
-                        System.out.println("辅助过压警告");
+                        System.out.println("辅助过压警告"); break;
                     case 0x0D:
-                        System.out.println("系统失败");
+                        System.out.println("系统失败"); break;
                     case 0x0E:
-                        System.out.println("测量超时");
+                        System.out.println("测量超时"); break;
                     default:
                         break;
                 }*/
@@ -141,8 +141,8 @@ public class PARA_NIBP {
 
             case 0x33:  //压力数据帧
             //    this.PRE_G8 = data[4]; System.out.print("--------PRE_G8 "+PRE_G8+"   "+"  PREG_16 "+Integer.toHexString(data[4])+"   "+data[4]);
-            //    this.PRE_D8 = data[5]; System.out.print("--------PRE_D8 "+PRE_D8+"   "+"  PRED_16 "+Integer.toHexString(data[5])+"   "+data[5]);
-                this.PRE =  ((data[4] & 0xFF) << 8) | (data[5] & 0xFF);
+                this.PRE =  ((data[4] & 0xFF) << 8)            //    this.PRE_D8 = data[5]; System.out.print("--------PRE_D8 "+PRE_D8+"   "+"  PRED_16 "+Integer.toHexString(data[5])+"   "+data[5]);
+                        | (data[5] & 0xFF);
              //   System.out.println("  袖带压 = "+PRE);
 
                 default:break;

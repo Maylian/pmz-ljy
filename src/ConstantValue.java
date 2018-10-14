@@ -8,7 +8,6 @@ public class ConstantValue {
 
 
 
-
  //   private PARA_SPO2 para_spo2 = new PARA_SPO2();
 
     public static int i = 0;

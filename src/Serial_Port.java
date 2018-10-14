@@ -181,6 +181,11 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //ç›
                                          m_mwdp.spo2 = _spo2.getSPO2();
                                          m_mwdp.pr = _spo2.getPR();
                                          m_mwdp.dl = _spo2.getDL();
+                                         m_mwdp.pluse = _spo2.getPULSE();
+                                         m_mwdp.ii = _spo2.getII();
+                                         m_mwdp.spi = _spo2.getSPI();
+                                         m_mwdp.pi = _spo2.getPI();
+
                                      case 0x33:
 
                                         /* while (pls.hasValue == true)

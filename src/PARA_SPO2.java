@@ -17,9 +17,12 @@ public class PARA_SPO2 {
     private byte PR;
     private byte Singal_th;//信号强度
 
-    private byte DL;
+    private byte DL;//导联状态
     private byte PULSE;//脉搏
     private byte pulse_voice;//脉搏声音
+    private byte PI;//弱灌注信息
+    private byte II;//干扰信息（interference information ）
+    private byte SPI;//停博信息
     private byte Patient;//病人类型
 
     private byte SPR_Length; //血氧脉率帧长
@@ -73,10 +76,14 @@ public class PARA_SPO2 {
         return SPW_Length;
     }
 
-    public byte getDL()
-    {
-        return DL;
-    }
+    public byte getDL() { return DL; }
+    public byte getPULSE(){return PULSE;}
+    public byte getPulse_voice(){return pulse_voice;};
+    public byte getPI(){return PI;}
+    public byte getII(){return II;}
+    public byte getSPI(){return SPI;}
+    public byte getPatient(){return Patient;}
+
 
 
 
@@ -117,17 +124,31 @@ public class PARA_SPO2 {
             case 0x32:
                 this.SPR_Length = data[1];
             //    System.out.println(" --------0x32_lenth = "+SPR_Length);
+
                 this.DL = (byte)(data[4] & 0x01);
             //    if(DL == 0) {System.out.println("--------DL---正常");}
             //    else System.out.println("--------DL---脱落");
 
                 this.PULSE = (byte)(data[4] & 0x02);
-                if (PULSE == 0) {System.out.println("--------PULSE---");}
-                else System.out.println("--------PULSE---搜索脉搏");
+               // if (PULSE == 0) {System.out.println("--------PULSE---");}
+               // else System.out.println("--------PULSE---搜索脉搏");
 
-                this.Patient = (byte)(data[4] & 0x60);
-                if(Patient == 0){ System.out.println("------成人----");}
-                else if(Patient == 1) System.out.println("----小儿----");
+                this.PI = (byte)(data[4] & 0x04);
+                // if (PI == 0) {System.out.println("--------正常---");}
+                // else System.out.println("--------PI---弱灌注");
+
+                this.II = (byte)(data[4] & 0x08);
+                // if (II == 0) {System.out.println("--------正常---");}
+                // else System.out.println("--------II---有干扰");
+
+                this.SPI = (byte)(data[4] & 0x10);
+                // if (SPI == 0) {System.out.println("--------正常---");}
+                // else System.out.println("--------SPI---停博");
+
+                 this.Patient = (byte)((data[4] & 0x60)>> 5);
+              //  if(Patient == 0) {System.out.println("------成人----");}
+              //  else if(Patient == 1) System.out.println("----小儿----");
+              //  else if(Patient == 2)  System.out.println("----新生儿----");
 
                 this.Singal_th = data[5];
                 //System.out.println("--------Singal_th "+Singal_th);
@@ -146,8 +167,6 @@ public class PARA_SPO2 {
                 }*/
 
 
-
-
             //    System.out.println(" 0x33_lenth = "+SPW_Length);
             //    this.SPO2_data = data[4]&0xFF;
             //    this.setSPO2_data(data[4]&0xFF);
@@ -159,6 +178,7 @@ public class PARA_SPO2 {
 
             //    this.inputfile(SPO2_data);
             //   System.out.print(" "+SPO2_WAVE[j++]);
+
 
                 this.pulse_voice = (byte) ((data[5] & 0x40) >> 6);
             /*    if (pulse_voice == 0) System.out.println("--------无脉搏声音");
