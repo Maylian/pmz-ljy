@@ -17,7 +17,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public Thread m_thread;
     public boolean go_thread = false;
 
-    public int pre,sbp,map,dbp,spo2,pr,rr;
+    public int pre,sbp,map,dbp,spo2,pr,rr,dl;
     public double bt1,bt2;
     public short hr;
 
@@ -752,7 +752,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //SPO2
         s2.setText(String.valueOf(spo2));
         s3.setText(String.valueOf(pr));
-        System.out.println("spo2 = "+spo2 +"    pr = "+pr);
+ //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
+
+
 
         //RESP
         r1.setText(String.valueOf(rr));

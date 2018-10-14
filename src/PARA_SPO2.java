@@ -73,6 +73,11 @@ public class PARA_SPO2 {
         return SPW_Length;
     }
 
+    public byte getDL()
+    {
+        return DL;
+    }
+
 
 
     //写入文件
@@ -113,8 +118,8 @@ public class PARA_SPO2 {
                 this.SPR_Length = data[1];
             //    System.out.println(" --------0x32_lenth = "+SPR_Length);
                 this.DL = (byte)(data[4] & 0x01);
-                if(DL == 0) {System.out.println("--------DL---正常");}
-                else System.out.println("--------DL---脱落");
+            //    if(DL == 0) {System.out.println("--------DL---正常");}
+            //    else System.out.println("--------DL---脱落");
 
                 this.PULSE = (byte)(data[4] & 0x02);
                 if (PULSE == 0) {System.out.println("--------PULSE---");}

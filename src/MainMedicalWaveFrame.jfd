@@ -625,6 +625,10 @@ new FormModel {
 					"text": "text"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
 				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "text"
+				} )
 			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
