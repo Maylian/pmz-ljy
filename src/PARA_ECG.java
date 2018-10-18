@@ -124,7 +124,20 @@ public class PARA_ECG {
                 this.RA_FallMsg = (byte)(data[9] & 0x02); if(RA_FallMsg == 0) System.out.println("-------- RA 正常"); else if(RA_FallMsg == 1) System.out.println("-------- RA 脱落");
                 this.LL_FallMsg = (byte)(data[9] & 0x04); if(LL_FallMsg == 0) System.out.println("-------- LL 正常"); else if(LL_FallMsg == 1) System.out.println("-------- LL 脱落");
                 this.RL_FallMsg = (byte)(data[9] & 0x08); if(RL_FallMsg == 0) System.out.println("-------- RL 正常"); else if(RL_FallMsg == 1) System.out.println("-------- RL 脱落");
+
+                this.ECG_Msg = (byte)(data[5] & 0x01) ; if(ECG_Msg == 0) System.out.println("-------- I 正常"); else if (ECG_Msg == 1) System.out.println("-------- I 过载");
                 this.ECG_Msg = (byte)((data[5] & 0x02) >> 1); if(ECG_Msg == 0) System.out.println("-------- II 正常"); else if (ECG_Msg == 1) System.out.println("-------- II 过载");
+                this.ECG_Msg = (byte)((data[5] & 0x04) >>2); if(ECG_Msg == 0) System.out.println("-------- III 正常"); else if (ECG_Msg == 1) System.out.println("-------- III 过载");
+                this.ECG_Msg = (byte)((data[5] & 0x08) >> 3); if(ECG_Msg == 0) System.out.println("-------- AVR 正常"); else if (ECG_Msg == 1) System.out.println("-------- AVR 过载");
+                this.ECG_Msg = (byte)((data[5] & 0x16) >> 4); if(ECG_Msg == 0) System.out.println("-------- AVL 正常"); else if (ECG_Msg == 1) System.out.println("-------- AVL 过载");
+
+                this.ECG_Msg = (byte)(data[6] & 0x01); if(ECG_Msg == 0) System.out.println("-------- V1 正常"); else if (ECG_Msg == 1) System.out.println("--------V1 过载");
+                this.ECG_Msg = (byte)((data[6] & 0x02) >> 1); if(ECG_Msg == 0) System.out.println("--------V2 正常"); else if (ECG_Msg == 1) System.out.println("-------- V2 过载");
+                this.ECG_Msg = (byte)((data[6] & 0x04) >> 2); if(ECG_Msg == 0) System.out.println("-------- V3 正常"); else if (ECG_Msg == 1) System.out.println("-------- V3 过载");
+                this.ECG_Msg = (byte)((data[6] & 0x08) >> 3); if(ECG_Msg == 0) System.out.println("-------- V4 正常"); else if (ECG_Msg == 1) System.out.println("-------- V4 过载");
+                this.ECG_Msg = (byte)((data[6] & 0x16) >> 4); if(ECG_Msg == 0) System.out.println("-------- V5 正常"); else if (ECG_Msg == 1) System.out.println("-------- V5 过载");
+                this.ECG_Msg = (byte)((data[6] & 0x32) >> 5); if(ECG_Msg == 0) System.out.println("-------- V6   正常"); else if (ECG_Msg == 1) System.out.println("-------- V6 过载");
+
 
             case 0x33:
             //    this.HrD8 = data[4]; System.out.println('\n'+"--------HrD8 "+HrD8);

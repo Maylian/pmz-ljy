@@ -29,7 +29,8 @@ public class PARA_TEMP {
             return (BT2/10.0);
     }
 
-
+    public byte getT1_StaMsg(){return T1_StaMsg;}
+    public byte getT2_StaMsg(){return T2_StaMsg;}
 
     public PARA_TEMP(byte data[])
     {
