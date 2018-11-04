@@ -31,10 +31,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     private void e2MouseClicked(MouseEvent e) {
         // TODO add your code here
-
     }
-
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -790,6 +787,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         s3.setText(String.valueOf(pr));
  //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
 
+
+
         //RESP
         r1.setText(String.valueOf(rr));
     //    System.out.println(" rr = "+rr);
@@ -798,40 +797,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t2.setText(String.valueOf(bt1));
         t4.setText(String.valueOf(bt2));
         System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
-
-        //warning
-        if(t1_stamsg == 1) warningText.setText("T1-探头脱落");
-        else if( t1_stamsg== 2) warningText.setText("T1-超测量范围上限");
-        else if( t1_stamsg== 3) warningText.setText("T1-超测量范围下限");
-
-
-        if(t2_stamsg == 1) warningText.setText("T2-探头脱落");
-        else if( t2_stamsg== 2) warningText.setText("T2-超测量范围上限");
-        else if( t2_stamsg== 3) warningText.setText("T2-超测量范围下限");
-
-        if( dl == 1) warningText.setText("血氧导联脱落");
-
-        if( pluse == 1) warningText.setText("搜索脉搏");
-
-        if( ii == 1) warningText.setText("血氧有干扰");
-
-        if( spi == 1) warningText.setText("停博");
-
-        if( pi == 1) warningText.setText("血氧导联有干扰");
-
-
-
-
     }
 
     public void run()
     {
-        byte buf[] = new byte[1024];
-        int len = 0;
-        //Parameter pa = new Parameter(buf,len);
-     //   PARA_ECG para_ecg = new PARA_ECG(buf);
-        PARA_SPO2 para_spo2 = new PARA_SPO2(buf);
-        PARA_RESP para_resp = new PARA_RESP(buf);
         int _count = 0;
         while (go_thread)
         {
