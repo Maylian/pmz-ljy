@@ -17,7 +17,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public Thread m_thread;
     public boolean go_thread = false;
 
-    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi;
+    public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi,t1_stamsg,t2_stamsg;
     public double bt1,bt2;
     public short hr;
 
@@ -28,6 +28,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public MainMedicalWaveFrame() {
         initComponents();
     }
+
+    private void e2MouseClicked(MouseEvent e) {
+        // TODO add your code here
+
+    }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -48,6 +55,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         e9 = new JLabel();
         e10 = new JLabel();
         e11 = new JLabel();
+        e0 = new JLabel();
         NIBPdataPanel = new JPanel();
         n1 = new JLabel();
         n2 = new JLabel();
@@ -89,7 +97,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t11 = new JLabel();
         t12 = new JLabel();
         panel2 = new JPanel();
-        textField1 = new JTextField();
+        warningText = new JTextField();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -148,6 +156,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e2.setText("120");
                 e2.setFont(e2.getFont().deriveFont(e2.getFont().getSize() + 4f));
                 e2.setForeground(Color.green);
+                e2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        e2MouseClicked(e);
+                    }
+                });
                 ECGdataPanel.add(e2);
                 e2.setBounds(160, 45, 40, e2.getPreferredSize().height);
 
@@ -214,6 +228,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e11.setForeground(Color.green);
                 ECGdataPanel.add(e11);
                 e11.setBounds(280, 115, 55, 23);
+
+                //---- e0 ----
+                e0.setText("HR");
+                e0.setForeground(Color.green);
+                e0.setFont(e0.getFont().deriveFont(e0.getFont().getSize() + 4f));
+                ECGdataPanel.add(e0);
+                e0.setBounds(new Rectangle(new Point(25, 25), e0.getPreferredSize()));
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -604,10 +625,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 panel2.setBackground(Color.black);
                 panel2.setLayout(null);
 
-                //---- textField1 ----
-                textField1.setBackground(Color.yellow);
-                panel2.add(textField1);
-                textField1.setBounds(740, 10, 85, 30);
+                //---- warningText ----
+                warningText.setBackground(Color.yellow);
+                panel2.add(warningText);
+                warningText.setBounds(575, 5, 260, 35);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -664,6 +685,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel e9;
     private JLabel e10;
     private JLabel e11;
+    private JLabel e0;
     private JPanel NIBPdataPanel;
     private JLabel n1;
     private JLabel n2;
@@ -705,7 +727,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel t11;
     private JLabel t12;
     private JPanel panel2;
-    private JTextField textField1;
+    private JTextField warningText;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
@@ -768,8 +790,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         s3.setText(String.valueOf(pr));
  //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
 
-
-
         //RESP
         r1.setText(String.valueOf(rr));
     //    System.out.println(" rr = "+rr);
@@ -778,6 +798,30 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t2.setText(String.valueOf(bt1));
         t4.setText(String.valueOf(bt2));
         System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+
+        //warning
+        if(t1_stamsg == 1) warningText.setText("T1-探头脱落");
+        else if( t1_stamsg== 2) warningText.setText("T1-超测量范围上限");
+        else if( t1_stamsg== 3) warningText.setText("T1-超测量范围下限");
+
+
+        if(t2_stamsg == 1) warningText.setText("T2-探头脱落");
+        else if( t2_stamsg== 2) warningText.setText("T2-超测量范围上限");
+        else if( t2_stamsg== 3) warningText.setText("T2-超测量范围下限");
+
+        if( dl == 1) warningText.setText("血氧导联脱落");
+
+        if( pluse == 1) warningText.setText("搜索脉搏");
+
+        if( ii == 1) warningText.setText("血氧有干扰");
+
+        if( spi == 1) warningText.setText("停博");
+
+        if( pi == 1) warningText.setText("血氧导联有干扰");
+
+
+
+
     }
 
     public void run()

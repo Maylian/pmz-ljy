@@ -172,6 +172,8 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //ç›
                                      case 0x31:
                                          m_mwdp.bt1 = _temp.getBT1();
                                          m_mwdp.bt2 = _temp.getBT2();
+                                         m_mwdp.t1_stamsg = _temp.getT1_StaMsg();
+                                         m_mwdp.t2_stamsg = _temp.getT2_StaMsg();
                                  }
 
                              case 0x05:

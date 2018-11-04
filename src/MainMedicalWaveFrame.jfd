@@ -70,6 +70,7 @@ new FormModel {
 						"text": "120"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 						"foreground": sfield java.awt.Color green
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "e2MouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 160
 						"y": 45
@@ -170,6 +171,15 @@ new FormModel {
 						"height": 23
 						"x": 280
 						"y": 115
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "e0"
+						"text": "HR"
+						"foreground": sfield java.awt.Color green
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 25
+						"y": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 760
@@ -619,13 +629,13 @@ new FormModel {
 					name: "panel2"
 					"background": new java.awt.Color( 0, 0, 0, 255 )
 					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "textField1"
+						name: "warningText"
 						"background": new java.awt.Color( 255, 255, 0, 255 )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 740
-						"y": 10
-						"width": 85
-						"height": 30
+						"x": 575
+						"y": 5
+						"width": 260
+						"height": 35
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
