@@ -156,12 +156,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e2.setText("120");
                 e2.setFont(e2.getFont().deriveFont(e2.getFont().getSize() + 4f));
                 e2.setForeground(Color.green);
-                e2.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        e2MouseClicked(e);
-                    }
-                });
                 ECGdataPanel.add(e2);
                 e2.setBounds(160, 45, 40, e2.getPreferredSize().height);
 
@@ -751,10 +745,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.SetAllText();
     }
 
-    public void setECGwavedata(int data1,int data2)
+    public void setECGwavedata(int data3)
     {
-        this.ECGwavePanel1.putECGdata(data2);
-        this.ECGwavePanel2.putECGdata(data1);
         this.SetAllText();
     }
 
@@ -830,10 +822,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     {
         byte buf[] = new byte[1024];
         int len = 0;
-        //Parameter pa = new Parameter(buf,len);
-     //   PARA_ECG para_ecg = new PARA_ECG(buf);
-        PARA_SPO2 para_spo2 = new PARA_SPO2(buf);
-        PARA_RESP para_resp = new PARA_RESP(buf);
         int _count = 0;
         while (go_thread)
         {
