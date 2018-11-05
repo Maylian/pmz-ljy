@@ -16,6 +16,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     private int i = 0;
     private int[] SPO2wave = new int[5];
+    private int[] ECGwave = new int[5];
+    private int[] RESPwave = new int[5];
 
     public MedicalWaveDisplayPanel()
     {
@@ -43,6 +45,37 @@ public class MedicalWaveDisplayPanel extends JPanel{
         return 0;
     }
 
+
+
+    public synchronized void putSPO2data(int spo2)
+    {
+        while (i == 5)
+        {
+            i = 0;
+            this.SetSpo2WaveData(SPO2wave);
+        }
+        SPO2wave[i++] = spo2;
+
+    }
+    public synchronized void putECGdata(int ecg)
+    {
+        while (i == 5)
+        {
+            i = 0;
+            this.SetECG_WaveData(ECGwave);
+        }
+        ECGwave[i++] = ecg;
+    }
+    public synchronized void putRESP(int resp)
+    {
+        while (i == 5)
+        {
+            i = 0;
+            this.SetRESPWaveData(RESPwave);
+        }
+        RESPwave[i++] = resp;
+    }
+
     public synchronized int SetECG_WaveData(int[] data)//MedicalWaveFrame调用
     {
         float _fMax = 200.0f;
@@ -50,7 +83,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
         float _fNormalize = _fMax-_fMin;
 
         float _f = 0.0f;
-    //    System.out.println("wait ecg_data push");
+        //    System.out.println("wait ecg_data push");
         //m_lock.lock();
         while(m_pls.hasValue == true)
         {
@@ -66,23 +99,10 @@ public class MedicalWaveDisplayPanel extends JPanel{
         m_pls.SetHasValue(true);
         m_pls.signal();//唤醒一个等待线程。
 
-    //    System.out.println("data push finish");
+        //    System.out.println("data push finish");
 
         return 0;
     }
-
-
-    public synchronized void putSPO2data(int spo2)
-    {
-        while (i == 5)
-        {
-            i = 0;
-            this.SetSpo2WaveData(SPO2wave);
-        }
-        SPO2wave[i++] = spo2;
-
-    }
-
 
     public synchronized int SetSpo2WaveData(int[] data0)
     {

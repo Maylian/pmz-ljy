@@ -1,5 +1,7 @@
 import com.sun.org.apache.regexp.internal.RE;
 
+import java.util.ArrayList;
+
 public class PARA_RESP {
 
     private byte RR; //呼吸率
@@ -25,45 +27,30 @@ public class PARA_RESP {
     public byte getPatient(){return Patient;}
     public byte getStifleId(){return StifleId;}
     public byte getResp_Warning(){return  Resp_Warning;}
+    public int getRR_Wave()
+    {
+        return RR_Wave;
+    }
 
-    public PARA_RESP(byte[] data)
+    public PARA_RESP(ArrayList list)
     {
         // System.out.println("--开始RESP");
-        switch (data[3])
+        switch ((byte)list.get(3))
         {
-            case 0x31:
-                this.Patient = (byte) (data[4] & 0x01);
-                if(Patient == 0) {System.out.println("------成人----");}
-                else if(Patient == 1) System.out.println("----小儿----");
-                else if(Patient == 2)  System.out.println("----新生儿----");
-
-                this.StifleId = (byte)((data[4] & 0x40)>>6);
-                if(StifleId == 0) {System.out.println("------无窒息----");}
-                else if(StifleId == 1) System.out.println("----小儿----");
-
-
-
             case 0x34:
-                this.StifleId = (byte)(data[4] & 0x01);
-                if(StifleId == 0) {System.out.println("------无窒息----");}
-                else if(StifleId == 1) System.out.println("----窒息----");
-
-                this.Resp_Warning = (byte)((data[4] & 0x28)>>2);
-                if(Resp_Warning == 0) {System.out.println("------正常----");}
-                else if(Resp_Warning == 1) System.out.println("----导联脱落----");
-                else if(Resp_Warning == 2)  System.out.println("----自学习----");
-                else if(Resp_Warning == 3)  System.out.println("----参数越下线----");
-                else if(Resp_Warning == 4)  System.out.println("----参数越上线----");
-                else if(Resp_Warning == 5)  System.out.println("----噪声----");
-
-
-                this.RR = data[5];
-            //System.out.println("--------RR "+RR);
-
+                this.RR = (byte)(list.get(5));
+                System.out.println(" RR = "+RR);
+                ConstantValue.resp_flag = 1;
+                break;
             case 0x35:
-                this.RR_Wave = data[4]&0xFF;
-            //System.out.print(" "+RR_Wave);
-            default:break;
+                this.RR_Wave = (byte)list.get(4)&0xFF;
+                System.out.println("RR_wace   "+RR_Wave);
+                ConstantValue.resp_flag = 2;
+                break;
+            default:
+                ConstantValue.resp_flag = 3;
+                break;
+
         }
     }
 }

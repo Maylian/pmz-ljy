@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.FileSystem;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class PARA_SPO2 {
@@ -115,78 +116,25 @@ public class PARA_SPO2 {
     }
 
 
-    public PARA_SPO2(byte data[])
+    public PARA_SPO2(ArrayList list)
     {
-        ConstantValue.flag = 1;
+      //  ConstantValue.flag = 1;
     //    System.out.println("调用SPO2");
-        switch (data[3])
+        switch ((byte)(list.get(3)))
         {
             case 0x32:
-                this.SPR_Length = data[1];
-            //    System.out.println(" --------0x32_lenth = "+SPR_Length);
-
-                this.DL = (byte)(data[4] & 0x01);
-               if(DL == 0) {System.out.println("--------DL---正常");}
-               else if (DL == 1) System.out.println("--------DL---脱落");
-
-
-                this.PULSE = (byte)((data[4] & 0x02)>>1);
-                if (PULSE == 0) {System.out.println("--------PULSE---");}
-                else if (PULSE == 1) System.out.println("--------PULSE---搜索脉搏");
-
-                this.PI = (byte)((data[4] & 0x04)>>2);
-                 if (PI == 0) {System.out.println("--------正常---");}
-                 else if (PI == 1) System.out.println("--------PI---弱灌注");
-
-                this.II = (byte)((data[4] & 0x08)>>3);
-                 if (II == 0) {System.out.println("--------正常---");}
-                 else if (II == 1) System.out.println("--------II---有干扰");
-
-                this.SPI = (byte)((data[4] & 0x10)>>4);
-                if (SPI == 0) {System.out.println("--------正常---");}
-                else if (SPI  == 1) System.out.println("--------SPI---停博");
-
-                this.Patient = (byte)((data[4] & 0x60)>> 5);
-                if(Patient == 0) {System.out.println("------成人----");}
-                else if(Patient == 1) System.out.println("----小儿----");
-                else if(Patient == 2)  System.out.println("----新生儿----");
-
-                this.Singal_th = data[5];
-                //System.out.println("--------Singal_th "+Singal_th);
-                this.PR = data[8];   System.out.println("--------PR----"+PR);
-                this.SPO2 = data[9]; System.out.println("--------SPO2--"+SPO2);
+                this.PR = (byte)(list.get(8));
+                this.SPO2 = (byte)(list.get(9));
+                System.out.println(" 脉率 = "+PR+"     血压饱和度 = " +SPO2);
+                ConstantValue.spo2_flag = 1;
                 break;
             case 0x33:
-                this.SPW_Length = data[1];
-                this.spo2wavedata = data[4]&0xFF;
-                /*SPO2_data[i] = data[4]&0xFF;
-                i++;
-                if(i == 20)
-                {
-                    i = 0;
-                    this.setSPO2_WAVE(SPO2_data);
-                }*/
-
-
-            //    System.out.println(" 0x33_lenth = "+SPW_Length);
-            //    this.SPO2_data = data[4]&0xFF;
-            //    this.setSPO2_data(data[4]&0xFF);
-
-
-             //   this.SPO2_wave[i++] = SPO2_data;
-            //    this.SPO2_WAVE[i] = SPO2_data;
-
-
-            //    this.inputfile(SPO2_data);
-            //   System.out.print(" "+SPO2_WAVE[j++]);
-
-
-                this.pulse_voice = (byte) ((data[5] & 0x40) >> 6);
-            /*    if (pulse_voice == 0) System.out.println("--------无脉搏声音");
-                else if (pulse_voice == 1)  System.out.println("--------有脉搏声音");*/
-            break;
-
+                this.spo2wavedata = ((byte)(list.get(4))&0xff);
+                System.out.print(" "+spo2wavedata);
+                ConstantValue.spo2_flag = 2;
+                break;
             default:
+                ConstantValue.spo2_flag = 3;
                 break;
         }
     }

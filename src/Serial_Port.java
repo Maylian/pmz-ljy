@@ -19,6 +19,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
 
   //  public static boolean hasvalue = false;
     int i = 0;
+    ArrayList list = new ArrayList();
 
 
     /**
@@ -127,14 +128,12 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                         numBytes = inputStream.read(readBuffer);
                     //    Parameter parameter = new Parameter(readBuffer);
 
-                     //   PARA_ECG _ecg = new PARA_ECG(readBuffer);
-                        PARA_RESP _resp = new PARA_RESP(readBuffer);
-                        PARA_TEMP _temp = new PARA_TEMP(readBuffer);
-                        PARA_SPO2 _spo2 = new PARA_SPO2(readBuffer);
-                    //   PARA_NIBP _nibp = new PARA_NIBP(readBuffer);
 
                         int SPO2_data;
-                        int[] RESP_data = new int[128];
+                        //   int[] ECG_data = new int[64];
+                        int RESP_data;
+                        // int[] RESP_data = new int[128];
+                        int fiv_I,fiv_II,fiv_III;
 
 
 
@@ -144,82 +143,62 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
 
                         //    toJson json = new toJson();
                         //    json.tojson(readBuffer);
+                            while (list.size() != 0) {
+                                //判断数据的完整性
+                                while ((byte)list.get(0) != -1)
+                                {
+                                    list.remove(0);
+                                    if (list.size() == 0) break;  //debug后增加完善
+                                }
+                                if (list.size() == 0 | list.size() == 1) break;  //debug后增加完善
+                                switch ((byte) (list.get(2)))
+                                {
 
-                        //    int[] ECG_data = para_ecg.getECG_fiv_II();
+                                    case 0x02:
+                                        PARA_ECG ecg = new PARA_ECG(list);
+                                        Delete(1);
+                                        m_mwdp.hr = ecg.getHR();
+                                        fiv_I = ecg.getfiv_I();
+                                        fiv_II = ecg.getfiv_II();
+                                        m_mwdp.setECGwavedata(fiv_I,fiv_II);
+                                        break;
 
-                         switch (readBuffer[2])
-                         {
-                          /*   case 0x02:
-                                 switch (readBuffer[3])
-                                 {
-                                     case 0x33:
-                                         m_mwdp.hr = para_ecg.getHR();
-                                 }
-*/
+                                    case 0x03:
+                                        PARA_RESP resp = new PARA_RESP(list);
+                                        Delete(2);
+                                        m_mwdp.rr = resp.getRR();
+                                        RESP_data = resp.getRR_Wave();
+                                        m_mwdp.setRESPwavedata(RESP_data);
+                                        break;
+                                    case 0x04:
+                                        PARA_TEMP temp = new PARA_TEMP(list);
+                                        Delete(3);
+                                        m_mwdp.bt1 = temp.getBT1();
+                                        m_mwdp.bt2 = temp.getBT2();
+                                        break;
 
-                          /*   case 0x03:
-                                 switch (readBuffer[3])
-                                 {
-                                     case 0x34:
-                                         m_mwdp.rr = _resp.getRR();
-                                     case 0x35:
-                                         RESP_data = _resp.getRESP_WAVE();
-                                         m_mwdp.setSPO2_ECG_RESPwavedata(SPO2_data,RESP_data);
-                                 }*/
-                             case 0x04:
-                                 switch (readBuffer[3])
-                                 {
-                                     case 0x31:
-                                         m_mwdp.bt1 = _temp.getBT1();
-                                         m_mwdp.bt2 = _temp.getBT2();
-                                         m_mwdp.t1_stamsg = _temp.getT1_StaMsg();
-                                         m_mwdp.t2_stamsg = _temp.getT2_StaMsg();
-                                 }
+                                    case 0x05:
+                                        PARA_SPO2 spo2 = new PARA_SPO2(list);
+                                        Delete(4);
+                                        m_mwdp.pr = spo2.getPR();
+                                        m_mwdp.spo2 = spo2.getSPO2();
+                                        SPO2_data = spo2.getSpo2wavedata();
+                                        m_mwdp.setSPO2wavedata(SPO2_data);
+                                        break;
+                                    case 0x06:
+                                        PARA_NIBP nibp = new PARA_NIBP(list);
+                                        Delete(5);
+                                        m_mwdp.sbp = nibp.getSBP();
+                                        m_mwdp.map = nibp.getMAP();
+                                        m_mwdp.dbp = nibp.getDBP();
+                                        m_mwdp.pre = nibp.getPRE();
+                                        break;
+                                    default:
+                                        Delete(6);
+                                        break;
+                                }
+                            }
 
-                             case 0x05:
-                                 switch (readBuffer[3])
-                                 {
-                                     case 0x32:
-                                         m_mwdp.spo2 = _spo2.getSPO2();
-                                         m_mwdp.pr = _spo2.getPR();
-                                         m_mwdp.dl = _spo2.getDL();
-                                         m_mwdp.pluse = _spo2.getPULSE();
-                                         m_mwdp.ii = _spo2.getII();
-                                         m_mwdp.spi = _spo2.getSPI();
-                                         m_mwdp.pi = _spo2.getPI();
-
-                                     case 0x33:
-
-                                        /* while (pls.hasValue == true)
-                                         {
-                                             pls.await();
-                                         }
-                                         pls.SetHasValue(true);*/
-                                             SPO2_data = _spo2.getSpo2wavedata();
-                                             m_mwdp.setSPO2wavedata(SPO2_data);
-
-
-
-
-                                     /*    for(int i = 0;i<20;i++)
-                                             System.out.println(" ?"+SPO2_data);*/
-
-
-
-
-                                 }
-                            /* case 0x06:
-                                 switch (readBuffer[3])
-                                 {
-                                     case 0x32:
-                                         m_mwdp.sbp = _nibp.getSBP();
-                                         m_mwdp.map = _nibp.getMAP();
-                                         m_mwdp.dbp = _nibp.getDBP();
-                                     case 0x33:
-                                         m_mwdp.pre = _nibp.getPRE();
-                                 }
-*/
-                         }
 
                             //msgQueue.add(new Date()+"真实收到的数据为：---"+new String(readBuffer));
                             readBuffer = new byte[1024];// 重新构造缓冲对象，否则有可能会影响接下来接收的数据
@@ -231,6 +210,128 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                 }catch (IOException e)
                 {
                     e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+    private void Delete(int sign)
+    {
+        switch (sign)
+        {
+            //ECG
+            case 1:
+                switch (ConstantValue.ecg_flag)
+                {
+                    case 1:
+                        list.subList(0, 13).clear();
+                        break;
+                    case 2:
+                        list.subList(0, 7).clear();
+                        break;
+                    case 4:
+                        try {
+                            list.subList(0, 21).clear();
+                        } catch (Exception e) {
+                            System.out.println("ECG_case4错误");
+                            //e.printStackTrace();
+                        }
+                        break;
+                    case 5:
+                        try {
+                            list.subList(0,((byte)list.get(1)+2)).clear();
+                        } catch (Exception e) {
+                            System.out.println("ECG_case5错误");
+                            //  e.printStackTrace();
+                        }
+                        break;
+                }
+                break;
+            //RESP
+            case 2:
+                switch (ConstantValue.resp_flag)
+                {
+                    case 1:
+                        list.subList(0, 7).clear();
+                        break;
+                    case 2:
+                        list.subList(0, 7).clear();
+                        break;
+                    case 3:
+                        list.subList(0,((byte)list.get(1)+2)).clear();
+                        break;
+                }
+                break;
+            case 3:
+                switch (ConstantValue.temp_flag)
+                {
+                    case 1:
+                        list.subList(0,9).clear();
+                        break;
+                    case 2:
+                        list.subList(0,(byte)list.get(1)+2).clear();
+                        break;
+                }
+                break;
+            //SPO2
+            case 4:
+                switch (ConstantValue.spo2_flag)
+                {
+                    case 1:
+                        //    list.removeRange(0,11);
+                        list.subList(0, 11).clear();
+                        break;
+                    case 2:
+                        //    list.removeRange(0,7);
+                        list.subList(0, 7).clear();
+                        break;
+                    case 3:
+                        list.subList(0,((byte)list.get(1)+2)).clear();
+                        break;
+                }
+                break;
+            //NIBP
+            case 5:
+                switch (ConstantValue.nibp_flag)
+                {
+                    case 1:
+                        list.subList(0, 9).clear();
+                        break;
+                    case 2:
+                        list.subList(0, 14).clear();
+                        break;
+                    case 3:
+                        list.subList(0, 7).clear();
+                        break;
+                    case 4:
+                        try {
+                            //debug后增加完善
+                            if (list.size() < ((byte)list.get(1)+2))
+                            {
+                                list.clear();
+                                break;
+                            }
+                            list.subList(0,((byte)list.get(1)+2)).clear();
+                        } catch (Exception e) {
+                            System.out.println("NIBP错误");
+                            // e.printStackTrace();
+                        }
+                        break;
+                }
+                break;
+            //不完善的数据
+            case 6:
+                //debug后增加完善
+                try {
+                    if (list.size() < ((byte)list.get(1)+2))
+                    {
+                        list.clear();
+                        break;
+                    }
+                    list.subList(0,((byte)list.get(1)+2)).clear();
+                } catch (Exception e) {
+                    System.out.println("不完善数据错误");
+                    //   e.printStackTrace();
                 }
                 break;
         }

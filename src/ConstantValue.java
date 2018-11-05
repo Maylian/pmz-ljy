@@ -6,6 +6,12 @@ public class ConstantValue {
     public static int sign;
     private static int ceshi;
 
+    public static int spo2_flag;
+    public static int nibp_flag;
+    public static int resp_flag;
+    public static int ecg_flag;
+    public static int temp_flag;
+
 
 
  //   private PARA_SPO2 para_spo2 = new PARA_SPO2();
@@ -13,14 +19,5 @@ public class ConstantValue {
     public static int i = 0;
     public static int[] SPO2wave = new int[20];
 
-    public void setSPO2data(int data)
-    {
-        while (i == 20)
-        {
-            i = 0;
-        }
-        this.SPO2wave[i] = data;
-        i++;
-    }
 
 }
