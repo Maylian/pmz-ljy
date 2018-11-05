@@ -3,8 +3,8 @@ JFDML JFormDesigner: "6.0.3.0.150" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-			name: "this"
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "PESPWarning"
 			"title": "RESP Alarm Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -35,7 +35,7 @@ new FormModel {
 					"y": 55
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider1"
+					name: "RESPslider1"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 60
@@ -43,7 +43,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider2"
+					name: "RESPslider2"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 165
@@ -51,25 +51,30 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField1"
+					name: "RESPtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 35
 					"y": 195
+					"width": 64
+					"height": 30
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField2"
+					name: "RESPtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
 					"x": 145
 					"y": 195
 				} )
-			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "Center"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 265
+				"height": 253
+				"x": 10
+				"y": 0
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 260, 285 )
+			"size": new java.awt.Dimension( 280, 285 )
 		} )
 	}
 }

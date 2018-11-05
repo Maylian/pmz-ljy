@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-			name: "this"
+			name: "SPO2Warning"
 			"title": "SPO2 Alarm Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -27,7 +27,7 @@ new FormModel {
 					"y": 60
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider1"
+					name: "SPO2slider"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 40
@@ -35,7 +35,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField1"
+					name: "SPO2textField"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
 					"y": 195
@@ -73,7 +73,7 @@ new FormModel {
 					"y": 60
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider3"
+					name: "SPO2PRslider1"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 40
@@ -81,7 +81,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider4"
+					name: "SPO2PRslider2"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 120
@@ -89,13 +89,13 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField3"
+					name: "SPO2PRtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
 					"y": 195
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField4"
+					name: "SPO2PRtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
