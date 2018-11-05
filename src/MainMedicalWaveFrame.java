@@ -748,8 +748,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.SetAllText();
     }
 
-    public void setECGwavedata(int data3)
+    public void setECGwavedata(int data1,int data2)
     {
+        this.ECGwavePanel1.putECGdata(data2);
+        this.ECGwavePanel2.putECGdata(data1);
         this.SetAllText();
     }
 
