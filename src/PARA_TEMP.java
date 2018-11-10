@@ -46,8 +46,8 @@ public class PARA_TEMP {
             case 0x31:
                 this.BT1 = (((byte)list.get(5)&0x03) << 8) | ((byte)list.get(6)&0xFF);
                 this.BT2 = (((byte)list.get(5)&0x30) << 4) | ((byte)list.get(7)&0xff);
-                System.out.println("--------BT1  "+BT1/10.0);
-                System.out.println("--------BT2  "+BT2/10.0);
+               /* System.out.println("--------BT1  "+BT1/10.0);
+                System.out.println("--------BT2  "+BT2/10.0);*/
                 ConstantValue.temp_flag = 1;
                 break;
             default:

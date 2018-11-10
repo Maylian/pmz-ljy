@@ -1,7 +1,10 @@
 import com.sun.org.apache.xpath.internal.SourceTree;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.omg.CORBA.INTERNAL;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 
 import javax.print.DocFlavor;
+import java.awt.font.TextHitInfo;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -128,13 +131,25 @@ public class PARA_ECG {
                 break;
             case 0x33:
                 this.HR = (short) ((((byte)list.get(5)&0xFF) << 8) | ((byte)list.get(4)&0xFF));
-                System.out.println("  心率 = "+HR);
+            //    System.out.println("  心率 = "+HR);
                 ConstantValue.ecg_flag = 2;
                 break;
+            case 0x3E:
+                this.thr_II_D8 = (byte)list.get(6);
+                this.thr_II_G8 = (byte)list.get(7);
+                thr_II = ((thr_II_G8&0xFF) << 8) | thr_II_D8&0xFF;
+                System.out.println("------------thr_II "+thr_II);
             case 0x3F:
-                this.fiv_I = ((byte)list.get(7) << 8)|((byte)list.get(6));
-                this.fiv_II = ((byte)list.get(9) << 8) | ((byte)list.get(8));
-                this.fiv_III = ((byte)list.get(11) << 8) | ((byte)list.get(10));
+                this.fiv_I_D8 = (byte)list.get(6);
+                this.fiv_I_G8 = (byte)list.get(7);
+                this.fiv_I = ((fiv_I_G8&0xFF) << 8) | fiv_I_D8&0xFF;
+                this.fiv_II_D8 = (byte)list.get(8);
+                this.fiv_II_G8 = (byte)list.get(9);
+                this.fiv_II = ((fiv_II_G8&0xFF) << 8) | fiv_II_D8&0xFF;
+                this.fiv_III = (((byte)list.get(11)&0XFF) << 8) | ((byte)list.get(10)&0XFF);
+                System.out.println(" --------------fiv_I "+fiv_I);
+                System.out.println(" --------------fiv_II "+fiv_II);
+                System.out.println(" --------------fiv_III "+fiv_III);
                 ConstantValue.ecg_flag = 4;
                 break;
             default:
