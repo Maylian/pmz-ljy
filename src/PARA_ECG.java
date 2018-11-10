@@ -127,6 +127,7 @@ public class PARA_ECG {
             case 0x31:
                 this.Patient_Type = (byte)((byte)list.get(4)&0x07);
                 this.job_mode = (byte) ((byte)list.get(4)&0x70);
+
                 ConstantValue.ecg_flag = 1;
                 break;
             case 0x33:

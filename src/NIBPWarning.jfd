@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-			name: "this"
+			name: "NIBPWarning"
 			"title": "NIBP Alarm Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -35,7 +35,7 @@ new FormModel {
 					"y": 60
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "SBPslider3"
+					name: "DBPslider1"
 					"orientation": 1
 					"maximum": 300
 					"minimum": 10
@@ -45,7 +45,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "SBPslider4"
+					name: "DBPslider2"
 					"orientation": 1
 					"maximum": 300
 					"minimum": 30
@@ -55,13 +55,15 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField3"
+					name: "DBPtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
 					"y": 195
+					"width": 64
+					"height": 30
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField4"
+					name: "DBPtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
@@ -75,7 +77,7 @@ new FormModel {
 				"y": 5
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-				name: "DBPWarningPanel3"
+				name: "PRWarningPanel3"
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label7"
 					"text": "PR"
@@ -102,7 +104,7 @@ new FormModel {
 					"y": 60
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider5"
+					name: "PRslider1"
 					"orientation": 1
 					"maximum": 250
 					"minimum": 30
@@ -112,7 +114,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider6"
+					name: "PRslider2"
 					"orientation": 1
 					"maximum": 250
 					"minimum": 30
@@ -122,13 +124,15 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField5"
+					name: "PRtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
 					"y": 195
+					"width": 64
+					"height": 30
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField6"
+					name: "PRtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
@@ -189,13 +193,15 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField1"
+					name: "SBPtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 15
 					"y": 195
+					"width": 64
+					"height": 30
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField2"
+					name: "SBPtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30

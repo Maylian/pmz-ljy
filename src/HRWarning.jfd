@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-			name: "this"
+			name: "HRWarning"
 			"title": "HR Alarm Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
@@ -35,7 +35,7 @@ new FormModel {
 					"y": 55
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider1"
+					name: "HRslider1"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 60
@@ -43,7 +43,7 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JSlider" ) {
-					name: "slider2"
+					name: "HRslider2"
 					"orientation": 1
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 165
@@ -51,13 +51,15 @@ new FormModel {
 					"height": 100
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField1"
+					name: "HRtextField1"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 35
 					"y": 195
+					"width": 64
+					"height": 30
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "textField2"
+					name: "HRtextField2"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
