@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class PARA_RESP {
 
-    private byte RR; //呼吸率
+    private int RR; //呼吸率
     private int RR_Wave;
     private byte Patient;//病人类型
     private byte StifleId;//窒息标识
     private byte Resp_Warning;//报警信息
     private int[] RESP_WAVE = new int[128];
 
-    public byte getRR()
+    public int getRR()
     {
         return RR;
     }
@@ -42,7 +42,7 @@ public class PARA_RESP {
         FileWriter fw = null;
         try
         {
-            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\RESP.txt");
             fw = new FileWriter(f,true);
         }catch (IOException e)
         {
@@ -69,14 +69,14 @@ public class PARA_RESP {
         switch ((byte)list.get(3))
         {
             case 0x34:
-                this.RR = (byte)(list.get(5));
-                System.out.println(" RR = "+RR);
+                this.RR = (byte)(list.get(5))&0xFF;
+                System.out.println(" +++++++++++++++RR = "+RR);
                 ConstantValue.resp_flag = 1;
                 break;
             case 0x35:
                 this.RR_Wave = (byte)list.get(4)&0xFF;
-            //    this.inputfile(RR_Wave);
-             //   System.out.println("--------RR_wace   "+RR_Wave);
+              //  this.inputfile(RR_Wave);
+                System.out.println("------------RR_wace   "+RR_Wave);
                 ConstantValue.resp_flag = 2;
                 break;
             default:

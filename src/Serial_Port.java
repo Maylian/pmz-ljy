@@ -133,7 +133,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                         //   int[] ECG_data = new int[64];
                         int RESP_data;
                         // int[] RESP_data = new int[128];
-                        int fiv_I,fiv_II,fiv_III;
+                        int fiv_I,fiv_II,fiv_III,thr_I,thr_II,thr_III;
 
 
 
@@ -158,9 +158,11 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                                         PARA_ECG ecg = new PARA_ECG(list);
                                         Delete(1);
                                         m_mwdp.hr = ecg.getHR();
-                                        fiv_I = ecg.getfiv_I();
-                                        fiv_II = ecg.getfiv_II();
-                                        m_mwdp.setECGwavedata(fiv_I,fiv_II);
+                                    //    fiv_I = ecg.getFiv_I();
+                                        fiv_II = ecg.getFiv_II();
+                                     //   thr_I = ecg.getThr_I();
+                                        thr_II = ecg.getThr_II();
+                                        m_mwdp.setECGwavedata(fiv_II,thr_II);
                                         break;
 
                                     case 0x03:
@@ -237,6 +239,14 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                         } catch (Exception e) {
                             list.clear();
                             System.out.println("--------ECG case2 错误");
+                        }
+                        break;
+                    case 3:
+                        try {
+                            list.subList(0, 9).clear();
+                        } catch (Exception e) {
+                            list.clear();
+                            System.out.println("--------ECG case3 错误");
                         }
                         break;
                     case 4:
@@ -516,10 +526,10 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
     {
         int i = this.StartComport();
         if (i == 1) {
-        //        this.start(); // 启动线程来处理收到的数据   //目前可行可不行
+        //        this.start(); // 启动线程来处理收到的数据
             try //向发送命令
             {
-                String str = "FF 04 02 01 00 06 FF 04 02 12 00 17";//  //FF 04 46 01 00 4A FF 04 46 02 01 4C  // FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18 //五：FF 04 02 01 01 07 FF 04 02 12 01 18
+                String str = "FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18";//  //FF 04 46 01 00 4A FF 04 46 02 01 4C  // FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18 //五：FF 04 02 01 01 07 FF 04 02 12 01 18
                 byte[] bytes = this.hexStrToBinaryStr(str);
                 outputStream.write(bytes);
             } catch (IOException e) {

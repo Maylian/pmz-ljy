@@ -56,7 +56,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "e1"
 						"text": " 1"
-						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 30, false )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 32, false )
 						"foreground": sfield java.awt.Color green
 						"horizontalAlignment": 0
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -207,7 +207,7 @@ new FormModel {
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 38, false )
 						"foreground": sfield java.awt.Color white
 						"horizontalTextPosition": 0
-						"horizontalAlignment": 0
+						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 120
 						"height": 67
@@ -230,7 +230,7 @@ new FormModel {
 						"text": "2"
 						"foreground": sfield java.awt.Color white
 						"font": #SwingDerivedFont3
-						"horizontalAlignment": 0
+						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 110
 						"height": 70
@@ -240,13 +240,13 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n5"
 						"text": "2"
-						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 13, false )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 17, false )
 						"foreground": sfield java.awt.Color white
 						"horizontalAlignment": 0
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 95
-						"height": 34
-						"x": 150
+						"height": 50
+						"x": 155
 						"y": 125
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -257,8 +257,8 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 70
 						"height": 34
-						"x": 165
-						"y": 125
+						"x": 170
+						"y": 130
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n7"
@@ -358,7 +358,7 @@ new FormModel {
 						"text": "3"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 45, false )
 						"foreground": sfield java.awt.Color cyan
-						"horizontalAlignment": 0
+						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 120
 						"height": 91
@@ -447,7 +447,7 @@ new FormModel {
 						"text": "2"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 65536, 42, false )
 						"foreground": sfield java.awt.Color yellow
-						"horizontalAlignment": 0
+						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 125
 						"height": 78

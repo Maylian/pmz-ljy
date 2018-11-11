@@ -19,7 +19,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi,t1_stamsg,t2_stamsg;
     public double bt1,bt2;
-    public short hr;
+    public int  hr;
 
 
 
@@ -143,7 +143,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
                 //---- e1 ----
                 e1.setText(" 1");
-                e1.setFont(e1.getFont().deriveFont(e1.getFont().getSize() + 30f));
+                e1.setFont(e1.getFont().deriveFont(e1.getFont().getSize() + 32f));
                 e1.setForeground(Color.green);
                 e1.setHorizontalAlignment(SwingConstants.CENTER);
                 ECGdataPanel.add(e1);
@@ -153,12 +153,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e2.setText("120");
                 e2.setFont(e2.getFont().deriveFont(e2.getFont().getSize() + 4f));
                 e2.setForeground(Color.green);
-                e2.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        e2MouseClicked(e);
-                    }
-                });
                 ECGdataPanel.add(e2);
                 e2.setBounds(160, 45, 40, e2.getPreferredSize().height);
 
@@ -248,7 +242,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(ECGdataPanel);
-            ECGdataPanel.setBounds(760, 45, 340, 160);
+            ECGdataPanel.setBounds(765, 45, 340, 160);
 
             //======== NIBPdataPanel ========
             {
@@ -269,7 +263,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n2.setFont(n2.getFont().deriveFont(n2.getFont().getSize() + 38f));
                 n2.setForeground(Color.white);
                 n2.setHorizontalTextPosition(SwingConstants.CENTER);
-                n2.setHorizontalAlignment(SwingConstants.CENTER);
+                n2.setHorizontalAlignment(SwingConstants.LEFT);
                 NIBPdataPanel.add(n2);
                 n2.setBounds(0, 43, 120, 67);
 
@@ -284,24 +278,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n4.setText("2");
                 n4.setForeground(Color.white);
                 n4.setFont(n4.getFont().deriveFont(n4.getFont().getSize() + 38f));
-                n4.setHorizontalAlignment(SwingConstants.CENTER);
+                n4.setHorizontalAlignment(SwingConstants.LEFT);
                 NIBPdataPanel.add(n4);
                 n4.setBounds(145, 40, 110, 70);
 
                 //---- n5 ----
                 n5.setText("2");
-                n5.setFont(n5.getFont().deriveFont(n5.getFont().getSize() + 13f));
+                n5.setFont(n5.getFont().deriveFont(n5.getFont().getSize() + 17f));
                 n5.setForeground(Color.white);
                 n5.setHorizontalAlignment(SwingConstants.CENTER);
                 NIBPdataPanel.add(n5);
-                n5.setBounds(150, 125, 95, 34);
+                n5.setBounds(155, 125, 95, 50);
 
                 //---- n6 ----
                 n6.setText("(       )");
                 n6.setFont(n6.getFont().deriveFont(n6.getFont().getSize() + 13f));
                 n6.setForeground(Color.white);
                 NIBPdataPanel.add(n6);
-                n6.setBounds(165, 125, 70, 34);
+                n6.setBounds(170, 130, 70, 34);
 
                 //---- n7 ----
                 n7.setText("NN");
@@ -399,7 +393,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s2.setText("3");
                 s2.setFont(s2.getFont().deriveFont(s2.getFont().getSize() + 45f));
                 s2.setForeground(Color.cyan);
-                s2.setHorizontalAlignment(SwingConstants.CENTER);
+                s2.setHorizontalAlignment(SwingConstants.LEFT);
                 SPO2dataPanel.add(s2);
                 s2.setBounds(5, 25, 120, 91);
 
@@ -474,7 +468,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 r1.setText("2");
                 r1.setFont(r1.getFont().deriveFont(r1.getFont().getStyle() & ~Font.BOLD, r1.getFont().getSize() + 42f));
                 r1.setForeground(Color.yellow);
-                r1.setHorizontalAlignment(SwingConstants.CENTER);
+                r1.setHorizontalAlignment(SwingConstants.LEFT);
                 RESPdataPanel.add(r1);
                 r1.setBounds(5, 20, 125, 78);
 
@@ -733,26 +727,27 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.ECGwavePanel2.DispStart();
         this.Spo2WavePanel.DispStart();
         this.RESPwavePanel.DispStart();
+        this.SetAllText();
         return;
     }
 
     public void setSPO2wavedata(int data1)
     {
         this.Spo2WavePanel.putSPO2data(data1);
-        this.SetAllText();
+    //    this.SetAllText();
     }
 
-    public void setRESPwavedata(int data2)
+    public void setRESPwavedata(int data1)
     {
-        this.RESPwavePanel.putRESP(data2);
-        this.SetAllText();
+        this.RESPwavePanel.putRESPdata(data1);
+    //    this.SetAllText();
     }
 
     public void setECGwavedata(int data1,int data2)
     {
         this.ECGwavePanel1.putECGdata(data2);
         this.ECGwavePanel2.putECGdata(data1);
-        this.SetAllText();
+     //   this.SetAllText();
     }
 
  /*   //将数据传过来并设置比例、显示
@@ -786,7 +781,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         //ECG模块
         e1.setText(String.valueOf(hr));
-    //    System.out.println(" hr =  "+hr);
+   //     System.out.println("========= hr =  "+hr);
 
         //SPO2
         s2.setText(String.valueOf(spo2));
@@ -796,7 +791,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
 
         //RESP
-        r1.setText(String.valueOf(rr));
+        if (rr == 240) //Invalid value
+        {
+            r1.setText(String.valueOf("---"));
+        }
+        else  r1.setText(String.valueOf(rr));
     //    System.out.println(" rr = "+rr);
 
         //TEMP

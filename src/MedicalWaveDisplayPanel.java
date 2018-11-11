@@ -17,8 +17,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     private int i = 0;
     private int[] SPO2wave = new int[10];
-    private int[] ECGwave = new int[30];
-    private int[] RESPwave = new int[30];
+    private int[] ECGwave = new int[10];
+    private int[] RESPwave = new int[10];
 
     public MedicalWaveDisplayPanel()
     {
@@ -60,16 +60,16 @@ public class MedicalWaveDisplayPanel extends JPanel{
     }
     public synchronized void putECGdata(int ecg)
     {
-        while (i == 30)
+        while (i == 10)
         {
             i = 0;
             this.SetECG_WaveData(ECGwave);
         }
         ECGwave[i++] = ecg;
     }
-    public synchronized void putRESP(int resp)
+    public synchronized void putRESPdata(int resp)
     {
-        while (i == 30)
+        while (i == 10)
         {
             i = 0;
             this.SetRESPWaveData(RESPwave);
@@ -79,8 +79,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
 
     public synchronized int SetECG_WaveData(int[] data)//MedicalWaveFrame调用
     {
-        float _fMax = 200.0f;
-        float _fMin = -190.0f;
+        float _fMax = 600.0f;
+        float _fMin = -350.0f;
         float _fNormalize = _fMax-_fMin;
 
         float _f = 0.0f;
@@ -125,7 +125,7 @@ public class MedicalWaveDisplayPanel extends JPanel{
         {
          //   f = (data0[i] - Min)/Mid;
              f = (Max - data0[i])/Mid;
-            this.surf.spo2_data[i] = f;
+            this.surf.data[i] = f;
         }
 
     //    System.out.println("wait spo2 data push");
@@ -147,20 +147,62 @@ public class MedicalWaveDisplayPanel extends JPanel{
         return 0;
     }
 
+    public synchronized int SetRESP_WaveData(int[] data0)
+    {
+
+        //  float Min = Arrays.stream(data0).min().getAsInt();
+        //   float Max = Arrays.stream(data0).max().getAsInt();
+
+        float Max = 220.0f;
+        float Min = 5.0f;
+        float Mid = Max - Min;
+        float f = 0.0f;
+
+        while (m_pls.hasValue == true)
+        {
+            m_pls.await();
+        }
+
+        for(int i = 0;i < data0.length; i++)
+        {
+            //   f = (data0[i] - Min)/Mid;
+            f = (Max - data0[i])/Mid;
+            this.surf.data[i] = f;
+        }
+
+        //    System.out.println("wait spo2 data push");
+      /*  while (m_pls.hasValue = true)
+        {
+            m_pls.await();
+        } */
+/*
+        for(int i = 0;i < data0.length; i++)
+        {
+            f = (data0[i] - Min)/Mid;
+            this.surf.data[i] = f;
+        }
+*/
+        m_pls.SetHasValue(true);
+        m_pls.signal();
+
+        //    System.out.println("data push finish");
+        return 0;
+    }
+
     public synchronized int SetRESPWaveData(int[] data0)
     {
 
       //  float Min = Arrays.stream(data0).min().getAsInt();
       //  float Max = Arrays.stream(data0).max().getAsInt();
 
-        float Max = 250.0f;
+        float Max = 260.0f;
         float Min = 10.0f;
         float Mid = Max - Min;
         float f = 0.0f;
     //    System.out.println("resp data push");
         while(m_pls.hasValue == true)
         {
-            System.out.println("Panel await();");
+            System.out.println("resp_Panel await();");
             m_pls.await();
         }
       /*  while (m_pls.hasValue = true)
@@ -169,7 +211,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
         } */
         for(int i = 0;i < data0.length; i++)
         {
-            f = (data0[i] - Min)/Mid;
+         //   f = (data0[i] - Min)/Mid;
+            f = (Max - data0[i])/Mid;
             this.surf.data[i] = f;
         }
         m_pls.SetHasValue(true);

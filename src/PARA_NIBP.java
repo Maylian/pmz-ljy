@@ -109,7 +109,7 @@ public class PARA_NIBP {
                 this.PRE_D8 = (byte)list.get(5);
                 //    this.PRE = ((((short)list.get(5)&0xFF) << 8))|((byte)(list.get(4)));
                 this.PRE = (((PRE_G8&0xFF) << 8) | PRE_D8&0xFF);
-                System.out.println("PRE = "+PRE);
+           //     System.out.println("PRE = "+PRE);
                 ConstantValue.nibp_flag = 3;
                 break;
             default:
