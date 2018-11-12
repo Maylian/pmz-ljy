@@ -1,4 +1,4 @@
-
+import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -19,7 +19,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi,t1_stamsg,t2_stamsg;
     public double bt1,bt2;
-    public int  hr;
+    public short hr,spo2_bar;
+
+   // static AudioClip spo2_bit = Applet.newAudioClip(class.getClassLoader().getResource());
 
 
 
@@ -76,6 +78,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         s6 = new JLabel();
         s7 = new JLabel();
         s8 = new JLabel();
+        spo2_Bar1 = new JProgressBar();
         RESPdataPanel = new JPanel();
         r1 = new JLabel();
         r2 = new JLabel();
@@ -403,7 +406,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s3.setForeground(Color.cyan);
                 s3.setHorizontalAlignment(SwingConstants.LEFT);
                 SPO2dataPanel.add(s3);
-                s3.setBounds(180, 40, 110, 75);
+                s3.setBounds(200, 40, 100, 75);
 
                 //---- s4 ----
                 s4.setText("90");
@@ -424,21 +427,31 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s6.setFont(s6.getFont().deriveFont(s6.getFont().getSize() + 10f));
                 s6.setForeground(Color.cyan);
                 SPO2dataPanel.add(s6);
-                s6.setBounds(175, 10, 45, 30);
+                s6.setBounds(200, 10, 45, 30);
 
                 //---- s7 ----
                 s7.setText("120");
                 s7.setForeground(Color.cyan);
                 s7.setFont(s7.getFont().deriveFont(s7.getFont().getSize() + 4f));
                 SPO2dataPanel.add(s7);
-                s7.setBounds(295, 20, 35, 22);
+                s7.setBounds(300, 20, 35, 22);
 
                 //---- s8 ----
                 s8.setText("50");
                 s8.setForeground(Color.cyan);
                 s8.setFont(s8.getFont().deriveFont(s8.getFont().getSize() + 4f));
                 SPO2dataPanel.add(s8);
-                s8.setBounds(295, 45, 35, 22);
+                s8.setBounds(300, 45, 35, 22);
+
+                //---- spo2_Bar1 ----
+                spo2_Bar1.setOrientation(SwingConstants.VERTICAL);
+                spo2_Bar1.setMaximum(15);
+                spo2_Bar1.setForeground(Color.cyan);
+                spo2_Bar1.setAlignmentX(-0.5F);
+                spo2_Bar1.setBackground(Color.black);
+                spo2_Bar1.setValue(2);
+                SPO2dataPanel.add(spo2_Bar1);
+                spo2_Bar1.setBounds(170, 10, 25, 105);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -700,6 +713,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel s6;
     private JLabel s7;
     private JLabel s8;
+    private JProgressBar spo2_Bar1;
     private JPanel RESPdataPanel;
     private JLabel r1;
     private JLabel r2;
@@ -734,6 +748,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public void setSPO2wavedata(int data1)
     {
         this.Spo2WavePanel.putSPO2data(data1);
+        this.SetAllText();
     //    this.SetAllText();
     }
 
@@ -786,6 +801,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //SPO2
         s2.setText(String.valueOf(spo2));
         s3.setText(String.valueOf(pr));
+        spo2_Bar1.setValue(spo2_bar);
  //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
 
 
