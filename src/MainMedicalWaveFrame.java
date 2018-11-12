@@ -19,7 +19,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public int pre,sbp,map,dbp,spo2,pr,rr,dl,pluse,ii,spi,pi,t1_stamsg,t2_stamsg;
     public double bt1,bt2;
-    public int  hr;
+    public short hr;
 
 
 
@@ -31,7 +31,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     private void e2MouseClicked(MouseEvent e) {
         // TODO add your code here
+
     }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -110,28 +113,28 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             ECGwavePanel1.setBorder(new TitledBorder(new EtchedBorder(), "   II", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel1);
-            ECGwavePanel1.setBounds(0, 45, 760, 185);
+            ECGwavePanel1.setBounds(0, 50, 760, 185);
 
             //---- ECGwavePanel2 ----
             ECGwavePanel2.setBackground(Color.black);
             ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel2);
-            ECGwavePanel2.setBounds(0, 230, 760, 185);
+            ECGwavePanel2.setBounds(0, 235, 760, 185);
 
             //---- Spo2WavePanel ----
             Spo2WavePanel.setBackground(Color.black);
             Spo2WavePanel.setBorder(new TitledBorder(new EtchedBorder(), "  PLETH", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.cyan));
             panel1InfoDisplay.add(Spo2WavePanel);
-            Spo2WavePanel.setBounds(0, 415, 760, 185);
+            Spo2WavePanel.setBounds(0, 420, 760, 185);
 
             //---- RESPwavePanel ----
             RESPwavePanel.setBackground(Color.black);
             RESPwavePanel.setBorder(new TitledBorder(new EtchedBorder(), "  RESP", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.yellow));
             panel1InfoDisplay.add(RESPwavePanel);
-            RESPwavePanel.setBounds(0, 600, 760, 165);
+            RESPwavePanel.setBounds(0, 605, 760, 165);
 
             //======== ECGdataPanel ========
             {
@@ -265,7 +268,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n2.setHorizontalTextPosition(SwingConstants.CENTER);
                 n2.setHorizontalAlignment(SwingConstants.LEFT);
                 NIBPdataPanel.add(n2);
-                n2.setBounds(0, 43, 120, 67);
+                n2.setBounds(15, 40, 100, 67);
 
                 //---- n3 ----
                 n3.setText("/");
@@ -373,7 +376,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(NIBPdataPanel);
-            NIBPdataPanel.setBounds(760, 205, 340, 180);
+            NIBPdataPanel.setBounds(765, 205, 340, 180);
 
             //======== SPO2dataPanel ========
             {
@@ -455,7 +458,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(SPO2dataPanel);
-            SPO2dataPanel.setBounds(760, 385, 340, 120);
+            SPO2dataPanel.setBounds(765, 385, 340, 120);
 
             //======== RESPdataPanel ========
             {
@@ -501,7 +504,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(RESPdataPanel);
-            RESPdataPanel.setBounds(760, 505, 340, 105);
+            RESPdataPanel.setBounds(765, 505, 340, 105);
 
             //======== panel3 ========
             {
@@ -609,7 +612,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel3);
-            panel3.setBounds(760, 610, 340, 145);
+            panel3.setBounds(765, 610, 340, 145);
 
             //======== panel2 ========
             {
@@ -727,27 +730,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.ECGwavePanel2.DispStart();
         this.Spo2WavePanel.DispStart();
         this.RESPwavePanel.DispStart();
-        this.SetAllText();
         return;
     }
 
     public void setSPO2wavedata(int data1)
     {
         this.Spo2WavePanel.putSPO2data(data1);
-    //    this.SetAllText();
+        this.SetAllText();
     }
 
-    public void setRESPwavedata(int data1)
+    public void setRESPwavedata(int data2)
     {
-        this.RESPwavePanel.putRESPdata(data1);
-    //    this.SetAllText();
+      //  this.RESPwavePanel;
+        this.SetAllText();
     }
 
     public void setECGwavedata(int data1,int data2)
     {
-        this.ECGwavePanel1.putECGdata(data2);
-        this.ECGwavePanel2.putECGdata(data1);
-     //   this.SetAllText();
+        this.SetAllText();
     }
 
  /*   //将数据传过来并设置比例、显示
@@ -774,38 +774,54 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             panel1.setVisible(true);
             l2.setText(String.valueOf(pre));
         }
-        else if (pre < 3)
-        {
-            panel1.setVisible(false);
-        }
 
         //ECG模块
         e1.setText(String.valueOf(hr));
-   //     System.out.println("========= hr =  "+hr);
+    //    System.out.println(" hr =  "+hr);
 
         //SPO2
         s2.setText(String.valueOf(spo2));
         s3.setText(String.valueOf(pr));
  //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
 
-
-
         //RESP
-        if (rr == 240) //Invalid value
-        {
-            r1.setText(String.valueOf("---"));
-        }
-        else  r1.setText(String.valueOf(rr));
+        r1.setText(String.valueOf(rr));
     //    System.out.println(" rr = "+rr);
 
         //TEMP
         t2.setText(String.valueOf(bt1));
         t4.setText(String.valueOf(bt2));
-    //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+        System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+
+        //warning
+        if(t1_stamsg == 1) warningText.setText("T1-探头脱落");
+        else if( t1_stamsg== 2) warningText.setText("T1-超测量范围上限");
+        else if( t1_stamsg== 3) warningText.setText("T1-超测量范围下限");
+
+
+        if(t2_stamsg == 1) warningText.setText("T2-探头脱落");
+        else if( t2_stamsg== 2) warningText.setText("T2-超测量范围上限");
+        else if( t2_stamsg== 3) warningText.setText("T2-超测量范围下限");
+
+        if( dl == 1) warningText.setText("血氧导联脱落");
+
+        if( pluse == 1) warningText.setText("搜索脉搏");
+
+        if( ii == 1) warningText.setText("血氧有干扰");
+
+        if( spi == 1) warningText.setText("停博");
+
+        if( pi == 1) warningText.setText("血氧导联有干扰");
+
+
+
+
     }
 
     public void run()
     {
+        byte buf[] = new byte[1024];
+        int len = 0;
         int _count = 0;
         while (go_thread)
         {

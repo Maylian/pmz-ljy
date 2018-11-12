@@ -14,7 +14,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   II", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 45
+					"y": 50
 					"height": 185
 					"width": 760
 				} )
@@ -24,7 +24,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   I", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 230
+					"y": 235
 					"width": 760
 					"height": 185
 				} )
@@ -34,7 +34,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  PLETH", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color cyan )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 415
+					"y": 420
 					"width": 760
 					"height": 185
 				} )
@@ -44,7 +44,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  RESP", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color yellow )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 600
+					"y": 605
 					"width": 760
 					"height": 165
 				} )
@@ -209,10 +209,10 @@ new FormModel {
 						"horizontalTextPosition": 0
 						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 120
+						"width": 100
 						"height": 67
-						"x": 0
-						"y": 43
+						"x": 15
+						"y": 40
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n3"
@@ -333,7 +333,7 @@ new FormModel {
 						"height": 130
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 765
 					"y": 205
 					"width": 340
 					"height": 180
@@ -433,7 +433,7 @@ new FormModel {
 						"y": 45
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 765
 					"y": 385
 					"width": 340
 					"height": 120
@@ -477,7 +477,7 @@ new FormModel {
 						"y": 40
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 765
 					"y": 505
 					"width": 340
 					"height": 105
@@ -619,7 +619,7 @@ new FormModel {
 						"y": 100
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 765
 					"y": 610
 					"width": 340
 					"height": 145
@@ -647,7 +647,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1130, 825 )
+			"size": new java.awt.Dimension( 1115, 810 )
 		} )
 	}
 }
