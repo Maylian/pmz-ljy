@@ -1,6 +1,9 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
 /*
@@ -21,6 +24,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public double bt1,bt2;
     public short hr,spo2_bar;
 
+    Date time = new Date(); //获取系统当前时间
+    SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //时间1
+    SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //时间2
+
+
    // static AudioClip spo2_bit = Applet.newAudioClip(class.getClassLoader().getResource());
 
 
@@ -34,6 +42,26 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private void e2MouseClicked(MouseEvent e) {
         // TODO add your code here
     }
+
+    // 发送启动测量命令
+    private void StarNibpMouseClicked(MouseEvent e) {
+        try {
+            byte[] startbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 01 4C");
+            Serial_Port.outputStream.write(startbytes);
+        } catch (IOException e12) {
+            e12.printStackTrace();
+        }
+    }
+
+    private void StopNibpMouseClicked(MouseEvent e) {
+        try {
+            byte[] stopbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 00 4B");
+            Serial_Port.outputStream.write(stopbytes);
+        } catch (IOException e12) {
+            e12.printStackTrace();
+        }
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -98,6 +126,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t12 = new JLabel();
         panel2 = new JPanel();
         warningText = new JTextField();
+        StarNibp = new JButton();
+        StopNibp = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -398,7 +428,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s2.setForeground(Color.cyan);
                 s2.setHorizontalAlignment(SwingConstants.LEFT);
                 SPO2dataPanel.add(s2);
-                s2.setBounds(5, 25, 120, 91);
+                s2.setBounds(5, 25, 110, 91);
 
                 //---- s3 ----
                 s3.setText("2");
@@ -450,8 +480,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 spo2_Bar1.setAlignmentX(-0.5F);
                 spo2_Bar1.setBackground(Color.black);
                 spo2_Bar1.setValue(2);
+                spo2_Bar1.setBorderPainted(false);
                 SPO2dataPanel.add(spo2_Bar1);
-                spo2_Bar1.setBounds(170, 10, 25, 105);
+                spo2_Bar1.setBounds(170, 15, 25, 100);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -632,7 +663,35 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 //---- warningText ----
                 warningText.setBackground(Color.darkGray);
                 panel2.add(warningText);
-                warningText.setBounds(695, 5, 140, 35);
+                warningText.setBounds(935, 5, 140, 35);
+
+                //---- StarNibp ----
+                StarNibp.setText("\u542f\u52a8\u6d4b\u91cf");
+                StarNibp.setBackground(Color.black);
+                StarNibp.setForeground(new Color(102, 255, 255));
+                StarNibp.setFont(StarNibp.getFont().deriveFont(StarNibp.getFont().getSize() + 2f));
+                StarNibp.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        StarNibpMouseClicked(e);
+                    }
+                });
+                panel2.add(StarNibp);
+                StarNibp.setBounds(700, 0, 95, 43);
+
+                //---- StopNibp ----
+                StopNibp.setText("\u505c\u6b62\u6d4b\u91cf");
+                StopNibp.setForeground(Color.cyan);
+                StopNibp.setBackground(Color.black);
+                StopNibp.setFont(StopNibp.getFont().deriveFont(StopNibp.getFont().getSize() + 2f));
+                StopNibp.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        StopNibpMouseClicked(e);
+                    }
+                });
+                panel2.add(StopNibp);
+                StopNibp.setBounds(605, 0, 95, 43);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -733,6 +792,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel t12;
     private JPanel panel2;
     private JTextField warningText;
+    private JButton StarNibp;
+    private JButton StopNibp;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
@@ -793,6 +854,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         {
             panel1.setVisible(false);
         }
+        //时间1
+        n1.setText(dateFormat1.format(time));
 
         //ECG模块
         e1.setText(String.valueOf(hr));
@@ -801,7 +864,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //SPO2
         s2.setText(String.valueOf(spo2));
         s3.setText(String.valueOf(pr));
+
         spo2_Bar1.setValue(spo2_bar);
+
  //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
 
 

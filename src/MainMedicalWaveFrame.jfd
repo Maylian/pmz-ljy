@@ -360,7 +360,7 @@ new FormModel {
 						"foreground": sfield java.awt.Color cyan
 						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 120
+						"width": 110
 						"height": 91
 						"x": 5
 						"y": 25
@@ -440,10 +440,11 @@ new FormModel {
 						"alignmentX": -0.5f
 						"background": sfield java.awt.Color black
 						"value": 2
+						"borderPainted": false
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 170
-						"y": 10
-						"height": 105
+						"y": 15
+						"height": 100
 						"width": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -645,10 +646,36 @@ new FormModel {
 						name: "warningText"
 						"background": sfield java.awt.Color darkGray
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 695
+						"x": 935
 						"y": 5
 						"width": 140
 						"height": 35
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "StarNibp"
+						"text": "启动测量"
+						"background": new java.awt.Color( 0, 0, 0, 255 )
+						"foreground": new java.awt.Color( 102, 255, 255, 255 )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StarNibpMouseClicked", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 700
+						"y": 0
+						"width": 95
+						"height": 43
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "StopNibp"
+						"text": "停止测量"
+						"foreground": new java.awt.Color( 0, 255, 255, 255 )
+						"background": new java.awt.Color( 0, 0, 0, 255 )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StopNibpMouseClicked", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 605
+						"y": 0
+						"width": 95
+						"height": 43
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
