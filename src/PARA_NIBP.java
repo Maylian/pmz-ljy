@@ -6,26 +6,29 @@ public class PARA_NIBP {
 
     private byte NIBP_FrameHeader = ConstantValue.Frame_Header;
     private byte SBP_D7;//收缩压
-    private byte SBP_G2;
     private byte DBP_D7;//舒张压
-    private byte DBP_G2;
     private byte MAP_D7;//平均动脉压=（收缩+2*舒张）/3
-    private byte MAP_G2;
+
     private int SBP;
     private int DBP;
     private int MAP;
+    private byte SBP_G2;
+    private byte DBP_G2;
+    private byte MAP_G2;
 
     private byte PRE_G8;//压力数据高8
     private byte PRE_D8;//压力数据低8
     private int PRE;
+
     private byte MSU_time_G8;//自动测量 测量时间高8位
     private byte MSU_time_D8;
     private int MSU_time;
     private byte NextMSU_G7;//下一次测量时间高7位
     private byte NextMSU_D7;
     private int NextMSU;
-    private int MSU_mode;
-    private byte G2;
+
+    private int MSU_mode; //测量模式
+    private byte G2;//三个的高两位
 
 
     public float NIBP_Wave;
@@ -39,40 +42,25 @@ public class PARA_NIBP {
         return NIBP_FrameHeader;
     }
 
-    public void setPRE(int PRE)
-    {
-        this.PRE = PRE;
-    }
     public int getPRE()
     {
         return PRE;
-    }
-
-    public void setSBP(int SBP)
-    {
-        this.SBP = SBP;
     }
     public int getSBP()
     {
         return SBP;
     }
-
-    public void setMAP(int MAP)
-    {
-        this.MAP = MAP;
-    }
     public int getMAP()
     {
         return MAP;
     }
-
-    public void setDBP(int DBP)
-    {
-        this.DBP = DBP;
-    }
     public int getDBP()
     {
         return DBP;
+    }
+    public int getMSU_mode()
+    {
+        return MSU_mode;
     }
 
 
@@ -86,8 +74,6 @@ public class PARA_NIBP {
         {
             case 0x31:
                 this.MSU_mode = ((byte)list.get(5)&0x03);
-                if (MSU_mode == 0) System.out.println("手动测量模式");
-                else if (MSU_mode == 1) System.out.println("自动测量模式");
                 ConstantValue.nibp_flag = 1;
                 break;
             case 0x32:

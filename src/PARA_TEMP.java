@@ -22,14 +22,14 @@ public class PARA_TEMP {
     public double getBT1()
     {
         if(BT1 == 600)
-            return 0.0;
+            return 600.0;
         else
             return (BT1/10.0);
     }
     public double getBT2()
     {
         if(BT2 == 600)
-            return 0.0;
+            return 600.0;
         else
             return (BT2/10.0);
     }

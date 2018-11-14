@@ -14,7 +14,7 @@ public class PARA_SPO2 {
 
     private static int i = 0;
 
-    private byte SPO2; //血氧饱和度
+    private int SPO2; //血氧饱和度
     private byte PR;
     private byte Singal_th;//信号强度
 
@@ -32,7 +32,8 @@ public class PARA_SPO2 {
     private static int SPO2_data[] = new int[20];
     private int SPO2_WAVE[] = new int[20]; //SPO2波形数据
     private int spo2wavedata;
-    private short spo2_Bar;
+    private short spo2_Bar; //spo2棒图数据
+    private byte spo2_voice; //脉搏声音
 
 
 
@@ -40,20 +41,10 @@ public class PARA_SPO2 {
  /*   public void setFrame_header(byte Frame_header){ this.Frame_header = Frame_header;}
     public byte getFrame_header() { return Frame_header;}*/
 
-    public void setSPO2(byte SPO2) { this.SPO2 = SPO2;}
-    public byte getSPO2(){ return SPO2;}
-    public void setPR(byte PR) { this.PR = PR;}
+
+    public int getSPO2(){ return SPO2;}
     public byte getPR(){ return PR;}
 
-    public void setSPO2_WAVE(int[] SPO2_WAVE)
-    {
-        this.SPO2_WAVE = SPO2_WAVE;
-    }
-
-    public int[] getSPO2_WAVE()
-    {
-        return SPO2_WAVE;
-    }
     public int getSpo2wavedata()
     {
         return spo2wavedata;
@@ -61,6 +52,10 @@ public class PARA_SPO2 {
     public short getSpo2_Bar()
     {
         return spo2_Bar;
+    }
+    public byte getSpo2_voice()
+    {
+        return spo2_voice;
     }
 
 
@@ -129,15 +124,16 @@ public class PARA_SPO2 {
         {
             case 0x32:
                 this.PR = (byte)(list.get(8));
-                this.SPO2 = (byte)(list.get(9));
+                this.SPO2 = ((byte)(list.get(9))&0xff);
                 System.out.println(" 脉率 = "+PR+"     血压饱和度 = " +SPO2);
                 ConstantValue.spo2_flag = 1;
                 break;
             case 0x33:
                 this.spo2wavedata = ((byte)(list.get(4))&0xff);
                 this.spo2_Bar = (short)((byte)list.get(4)&0x1f);
+                this.spo2_voice = (byte) ((byte)list.get(4)&0x40);
             //    System.out.println("----------------------棒图"+spo2_Bar);
-            //     System.out.print(" s "+spo2wavedata);
+             //    System.out.print(" s "+spo2wavedata);
             //    this.inputfile(spo2wavedata);
                 ConstantValue.spo2_flag = 2;
                 break;

@@ -12,7 +12,7 @@ import java.util.concurrent.locks.Lock;
 public class Surface extends JPanel implements Runnable{
     public Thread thread;
     public long sleepAmount = 1000;//sleep 1 second.
-    private int m_sfWidth,m_sfHeight;
+    private int m_sfWidth,m_sfHeight; //251行
     private BufferedImage m_bimg; //BufferedImage的成员变量 m_bimg;
     private Graphics2D m_big; //Java Graipcs2D Context;//提供对几何形状、坐标转换、颜色管理和文本布局更为复杂的控制
     private Font m_font = new Font("Times New Roman", Font.PLAIN, 11); //set Font
@@ -33,7 +33,7 @@ public class Surface extends JPanel implements Runnable{
     public List<Float> m_wavePointArray = new ArrayList<Float>(30);//构造一个具有指定初始容量的空列表//存点
     public float data[] = new float[10]; //接收的数据
   //  public float spo2_data[] = new float[10];
-    public float resp_data[] = new float[30];
+ //   public float resp_data[] = new float[30];
     private boolean m_drawstutas = false;
 
     private boolean m_havedata = false;
@@ -173,6 +173,7 @@ public class Surface extends JPanel implements Runnable{
                     if (pts[k] != pts[k + 1]) {
                         m_big.drawLine(j, pts[k], j - 1, pts[k + 1]);//画线段 x1:(j,pts[k]) x2:(j-1,pts[k+1])
                     } else {
+                     //   m_big.drawLine(j,pts[k],j-1,pts[k]);
                         m_big.fillRect(j, pts[k], 2, 2); //画的线的粗细并用前景色填充
                     }
                 }
@@ -194,7 +195,7 @@ public class Surface extends JPanel implements Runnable{
             m_ptArrayIndex = 0;
             //m_drawstutas = false;
             //m_havedata = false;
-            for (int _inx1 = 0; _inx1 < 10; _inx1++) {  //128
+            for (int _inx1 = 0; _inx1 <10; _inx1++) {  //128
                 this.data[_inx1] = 0;
             }
             // m_drawstutas1 = true;
@@ -218,7 +219,7 @@ public class Surface extends JPanel implements Runnable{
         }*/
 
         g.drawImage(m_bimg, 0, 0, this);//direct curve to background, do not erase the background...
-        System.out.println();
+      //  System.out.println("绘图-");
     }
 
         public void start() {//pass

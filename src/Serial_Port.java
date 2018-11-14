@@ -185,6 +185,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //ç›
                                         m_mwdp.pr = spo2.getPR();
                                         m_mwdp.spo2 = spo2.getSPO2();
                                         m_mwdp.spo2_bar = spo2.getSpo2_Bar();
+                                        m_mwdp.spo2_voice = spo2.getSpo2_voice();
                                         SPO2_data = spo2.getSpo2wavedata();
                                         m_mwdp.setSPO2wavedata(SPO2_data);
                                         break;
@@ -195,6 +196,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //ç›
                                         m_mwdp.map = nibp.getMAP();
                                         m_mwdp.dbp = nibp.getDBP();
                                         m_mwdp.pre = nibp.getPRE();
+                                        m_mwdp.msu_mode = nibp.getMSU_mode();
                                         break;
                                     default:
                                         Delete(6);

@@ -58,7 +58,7 @@ new FormModel {
 						"text": " 1"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 32, false )
 						"foreground": sfield java.awt.Color green
-						"horizontalAlignment": 0
+						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 5
 						"y": 40
@@ -181,7 +181,7 @@ new FormModel {
 						"y": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 765
+					"x": 760
 					"y": 45
 					"width": 340
 					"height": 160
@@ -209,9 +209,9 @@ new FormModel {
 						"horizontalTextPosition": 0
 						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 120
+						"width": 115
 						"height": 67
-						"x": 0
+						"x": 5
 						"y": 43
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -295,14 +295,14 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n10"
-						"text": "手动测量..."
+						"text": "测量模式"
 						"foreground": sfield java.awt.Color white
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 90
+						"width": 100
 						"height": 34
 						"x": 5
-						"y": 115
+						"y": 130
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 						name: "panel1"
@@ -360,7 +360,7 @@ new FormModel {
 						"foreground": sfield java.awt.Color cyan
 						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 110
+						"width": 120
 						"height": 91
 						"x": 5
 						"y": 25
@@ -372,9 +372,9 @@ new FormModel {
 						"foreground": sfield java.awt.Color cyan
 						"horizontalAlignment": 2
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 100
+						"width": 105
 						"height": 75
-						"x": 200
+						"x": 195
 						"y": 40
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -439,10 +439,9 @@ new FormModel {
 						"foreground": sfield java.awt.Color cyan
 						"alignmentX": -0.5f
 						"background": sfield java.awt.Color black
-						"value": 2
 						"borderPainted": false
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 170
+						"x": 165
 						"y": 15
 						"height": 100
 						"width": 25
@@ -466,7 +465,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 125
 						"height": 78
-						"x": 5
+						"x": 15
 						"y": 20
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -477,7 +476,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 35
 						"height": 22
-						"x": 145
+						"x": 160
 						"y": 15
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -488,7 +487,7 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 35
 						"height": 22
-						"x": 145
+						"x": 160
 						"y": 40
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -504,10 +503,10 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t1"
 						"text": "T1"
-						"font": &SwingDerivedFont8 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 9, false )
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 26
+						"width": 30
 						"height": 35
 						"x": 10
 						"y": 35
@@ -519,17 +518,17 @@ new FormModel {
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 110
-						"height": 45
-						"x": 40
-						"y": 25
+						"height": 55
+						"x": 50
+						"y": 20
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t3"
 						"text": "T2"
-						"font": #SwingDerivedFont8
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 9, false )
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"width": 26
+						"width": 30
 						"height": 35
 						"x": 10
 						"y": 95
@@ -541,19 +540,19 @@ new FormModel {
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 110
-						"height": 50
-						"x": 45
-						"y": 90
+						"height": 55
+						"x": 50
+						"y": 85
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t5"
 						"text": "39.0"
 						"foreground": sfield java.awt.Color white
-						"font": &SwingDerivedFont9 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						"font": &SwingDerivedFont8 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 24
-						"x": 155
+						"x": 165
 						"y": 25
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -564,40 +563,40 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 35
 						"height": 25
-						"x": 200
+						"x": 210
 						"y": 15
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t7"
 						"text": "36.0"
 						"foreground": sfield java.awt.Color white
-						"font": #SwingDerivedFont9
+						"font": #SwingDerivedFont8
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 24
-						"x": 155
+						"x": 165
 						"y": 50
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t8"
 						"text": "39.0"
 						"foreground": sfield java.awt.Color white
-						"font": #SwingDerivedFont9
+						"font": #SwingDerivedFont8
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 24
-						"x": 155
+						"x": 165
 						"y": 90
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t9"
 						"text": "36.0"
 						"foreground": sfield java.awt.Color white
-						"font": #SwingDerivedFont9
+						"font": #SwingDerivedFont8
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 24
-						"x": 155
+						"x": 165
 						"y": 115
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
@@ -608,29 +607,29 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 45
 						"height": 23
-						"x": 235
+						"x": 240
 						"y": 65
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t11"
 						"text": "2.0"
 						"foreground": sfield java.awt.Color white
-						"font": &SwingDerivedFont10 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+						"font": &SwingDerivedFont9 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 45
 						"height": 28
-						"x": 285
+						"x": 290
 						"y": 100
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t12"
 						"text": "0.0"
 						"foreground": sfield java.awt.Color white
-						"font": #SwingDerivedFont10
+						"font": #SwingDerivedFont9
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 45
 						"height": 28
-						"x": 235
+						"x": 240
 						"y": 100
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {

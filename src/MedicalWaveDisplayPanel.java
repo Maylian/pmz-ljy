@@ -111,8 +111,8 @@ public class MedicalWaveDisplayPanel extends JPanel{
       //  float Min = Arrays.stream(data0).min().getAsInt();
      //   float Max = Arrays.stream(data0).max().getAsInt();
 
-        float Max = 230.0f;
-        float Min = 5.0f;
+        float Max = 248.0f;
+        float Min = 10.0f;
         float Mid = Max - Min;
         float f = 0.0f;
 
