@@ -3,11 +3,13 @@ JFDML JFormDesigner: "6.0.3.0.150" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"$locationPolicy": 1
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panel1InfoDisplay"
 				"background": sfield java.awt.Color black
+				"minimumSize": new java.awt.Dimension( 1024, 768 )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
 					name: "ECGwavePanel1"
 					"background": new java.awt.Color( 0, 0, 0, 255 )
@@ -70,6 +72,7 @@ new FormModel {
 						"text": "120"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 						"foreground": sfield java.awt.Color green
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "HRSetMouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 160
 						"y": 45
@@ -276,6 +279,7 @@ new FormModel {
 						"text": "188"
 						"foreground": sfield java.awt.Color white
 						"font": #SwingDerivedFont4
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "NIBPSetMouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 45
 						"height": 20
@@ -393,6 +397,7 @@ new FormModel {
 						"text": "100"
 						"foreground": sfield java.awt.Color cyan
 						"font": #SwingDerivedFont5
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "SPO2SetMouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 22
@@ -461,6 +466,7 @@ new FormModel {
 						"text": "30"
 						"foreground": sfield java.awt.Color yellow
 						"font": &SwingDerivedFont7 new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "RESPSetMouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 35
 						"height": 25
@@ -548,6 +554,7 @@ new FormModel {
 						"text": "39.0"
 						"foreground": sfield java.awt.Color white
 						"font": &SwingDerivedFont8 new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "TEMPSetMouseClicked", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 40
 						"height": 24
@@ -653,7 +660,6 @@ new FormModel {
 						name: "f1"
 						"text": "0000-00-00"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
-						"foreground": new java.awt.Color( 0, 0, 0, 255 )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 105
 						"height": 20
@@ -664,7 +670,6 @@ new FormModel {
 						name: "f2"
 						"text": "00:00:00"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
-						"foreground": new java.awt.Color( 0, 0, 0, 255 )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 90
 						"height": 20
@@ -806,8 +811,9 @@ new FormModel {
 					"x": 0
 					"y": 0
 				} )
-			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "Center"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 1118
+				"height": 778
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

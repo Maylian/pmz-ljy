@@ -32,6 +32,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd"); //系统显示时间
     SimpleDateFormat dateFormat3 = new SimpleDateFormat("hh:mm:ss");
 
+    // 得到显示器屏幕的宽高
+   public int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+    public int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+
 
 
     /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
@@ -44,6 +49,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public MainMedicalWaveFrame() {
         initComponents();
+
+        // 得到窗口的宽高,居中显示
+     //  this.setBounds((width - this.getWidth()) / 2, (height - this.getHeight()) / 2, this.getWidth(), this.getHeight());
+
     }
 
 
@@ -153,6 +162,29 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         // TODO add your code here
     }
 
+    private void HRSetMouseClicked(MouseEvent e) {
+        HRWarning setHR = new HRWarning();
+        //setHR.setVisible(true);
+    }
+
+    private void NIBPSetMouseClicked(MouseEvent e) {
+        NIBPWarning setNIBP = new  NIBPWarning();
+    }
+
+    private void SPO2SetMouseClicked(MouseEvent e) {
+        SPO2Warning setSPO2 = new  SPO2Warning();
+    }
+
+    private void TEMPSetMouseClicked(MouseEvent e) {
+        TEMPWarning setTEMP = new  TEMPWarning();
+    }
+
+    private void RESPSetMouseClicked(MouseEvent e) {
+        RESPWarning setRESP = new  RESPWarning();
+    }
+
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -238,11 +270,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         //======== this ========
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        contentPane.setLayout(null);
 
         //======== panel1InfoDisplay ========
         {
             panel1InfoDisplay.setBackground(Color.black);
+            panel1InfoDisplay.setMinimumSize(new Dimension(1024, 768));
             panel1InfoDisplay.setLayout(null);
 
             //---- ECGwavePanel1 ----
@@ -293,6 +326,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e2.setText("120");
                 e2.setFont(e2.getFont().deriveFont(e2.getFont().getSize() + 4f));
                 e2.setForeground(Color.green);
+                e2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        HRSetMouseClicked(e);
+                    }
+                });
                 ECGdataPanel.add(e2);
                 e2.setBounds(160, 45, 40, e2.getPreferredSize().height);
 
@@ -448,6 +487,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n8.setText("188");
                 n8.setForeground(Color.white);
                 n8.setFont(n8.getFont().deriveFont(n8.getFont().getSize() + 3f));
+                n8.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        NIBPSetMouseClicked(e);
+                    }
+                });
                 NIBPdataPanel.add(n8);
                 n8.setBounds(285, 50, 45, 20);
 
@@ -556,6 +601,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s5.setText("100");
                 s5.setForeground(Color.cyan);
                 s5.setFont(s5.getFont().deriveFont(s5.getFont().getSize() + 4f));
+                s5.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        SPO2SetMouseClicked(e);
+                    }
+                });
                 SPO2dataPanel.add(s5);
                 s5.setBounds(125, 25, 40, 22);
 
@@ -618,6 +669,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 r2.setText("30");
                 r2.setForeground(Color.yellow);
                 r2.setFont(r2.getFont().deriveFont(r2.getFont().getSize() + 4f));
+                r2.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        RESPSetMouseClicked(e);
+                    }
+                });
                 RESPdataPanel.add(r2);
                 r2.setBounds(195, 15, 35, 25);
 
@@ -691,6 +748,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 t5.setText("39.0");
                 t5.setForeground(Color.white);
                 t5.setFont(t5.getFont().deriveFont(t5.getFont().getSize() + 6f));
+                t5.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        TEMPSetMouseClicked(e);
+                    }
+                });
                 panel3.add(t5);
                 t5.setBounds(165, 25, 40, 24);
 
@@ -773,14 +836,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 //---- f1 ----
                 f1.setText("0000-00-00");
                 f1.setFont(f1.getFont().deriveFont(f1.getFont().getSize() + 2f));
-                f1.setForeground(Color.black);
                 panel2.add(f1);
                 f1.setBounds(10, 0, 105, 20);
 
                 //---- f2 ----
                 f2.setText("00:00:00");
                 f2.setFont(f2.getFont().deriveFont(f2.getFont().getSize() + 2f));
-                f2.setForeground(Color.black);
                 panel2.add(f2);
                 f2.setBounds(15, 20, 90, 20);
 
@@ -951,9 +1012,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 panel1InfoDisplay.setPreferredSize(preferredSize);
             }
         }
-        contentPane.add(panel1InfoDisplay, BorderLayout.CENTER);
+        contentPane.add(panel1InfoDisplay);
+        panel1InfoDisplay.setBounds(0, 0, 1118, 778);
+
+        { // compute preferred size
+            Dimension preferredSize = new Dimension();
+            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+                Rectangle bounds = contentPane.getComponent(i).getBounds();
+                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+            }
+            Insets insets = contentPane.getInsets();
+            preferredSize.width += insets.right;
+            preferredSize.height += insets.bottom;
+            contentPane.setMinimumSize(preferredSize);
+            contentPane.setPreferredSize(preferredSize);
+        }
         pack();
-        setLocationRelativeTo(getOwner());
+        setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

@@ -11,7 +11,7 @@ import java.awt.*;
 public class TEMPWarning {
     public TEMPWarning() {
         initComponents();
-
+        TEMPWarning.setVisible(true);
     }
 
     private void initComponents() {
@@ -48,44 +48,57 @@ public class TEMPWarning {
 
             //======== T1WarningPanel ========
             {
+                T1WarningPanel.setBackground(new Color(60, 63, 65));
                 T1WarningPanel.setLayout(null);
 
                 //---- label1 ----
                 label1.setText("T1");
                 label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 8f));
+                label1.setForeground(Color.lightGray);
                 T1WarningPanel.add(label1);
-                label1.setBounds(80, 15, 55, label1.getPreferredSize().height);
+                label1.setBounds(90, 20, 55, label1.getPreferredSize().height);
 
                 //---- label2 ----
                 label2.setText("\u4e0a\u9650");
                 label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 5f));
+                label2.setForeground(Color.lightGray);
                 T1WarningPanel.add(label2);
-                label2.setBounds(new Rectangle(new Point(30, 55), label2.getPreferredSize()));
+                label2.setBounds(new Rectangle(new Point(45, 60), label2.getPreferredSize()));
 
                 //---- label3 ----
                 label3.setText("\u4e0b\u9650");
                 label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 5f));
+                label3.setForeground(Color.lightGray);
                 T1WarningPanel.add(label3);
-                label3.setBounds(new Rectangle(new Point(110, 55), label3.getPreferredSize()));
+                label3.setBounds(new Rectangle(new Point(120, 60), label3.getPreferredSize()));
 
                 //---- T1slider1 ----
                 T1slider1.setOrientation(SwingConstants.VERTICAL);
                 T1slider1.setMajorTickSpacing(10);
                 T1slider1.setMinorTickSpacing(1);
-                T1slider1.setPaintTicks(true);
+                T1slider1.setBackground(new Color(60, 63, 65));
                 T1WarningPanel.add(T1slider1);
-                T1slider1.setBounds(40, 85, T1slider1.getPreferredSize().width, 100);
+                T1slider1.setBounds(40, 90, T1slider1.getPreferredSize().width, 100);
 
                 //---- T1slider2 ----
                 T1slider2.setOrientation(SwingConstants.VERTICAL);
                 T1slider2.setMajorTickSpacing(10);
                 T1slider2.setMinorTickSpacing(1);
+                T1slider2.setBackground(new Color(60, 63, 65));
                 T1WarningPanel.add(T1slider2);
-                T1slider2.setBounds(120, 85, T1slider2.getPreferredSize().width, 100);
+                T1slider2.setBounds(120, 90, T1slider2.getPreferredSize().width, 100);
+
+                //---- T1textField1 ----
+                T1textField1.setBackground(Color.darkGray);
+                T1textField1.setForeground(Color.lightGray);
                 T1WarningPanel.add(T1textField1);
-                T1textField1.setBounds(25, 190, 65, 30);
+                T1textField1.setBounds(25, 195, 65, 30);
+
+                //---- T1textField2 ----
+                T1textField2.setBackground(Color.darkGray);
+                T1textField2.setForeground(Color.lightGray);
                 T1WarningPanel.add(T1textField2);
-                T1textField2.setBounds(100, 190, 65, 30);
+                T1textField2.setBounds(105, 195, 65, 30);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -102,27 +115,31 @@ public class TEMPWarning {
                 }
             }
             TEMPWarningContentPane.add(T1WarningPanel);
-            T1WarningPanel.setBounds(15, 15, T1WarningPanel.getPreferredSize().width, 270);
+            T1WarningPanel.setBounds(0, 0, 180, 300);
 
             //======== T2WarningPanel ========
             {
+                T2WarningPanel.setBackground(new Color(60, 63, 65));
                 T2WarningPanel.setLayout(null);
 
                 //---- label4 ----
                 label4.setText("T2");
                 label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 8f));
+                label4.setForeground(Color.lightGray);
                 T2WarningPanel.add(label4);
                 label4.setBounds(75, 20, 55, label4.getPreferredSize().height);
 
                 //---- label5 ----
                 label5.setText("\u4e0a\u9650");
                 label5.setFont(label5.getFont().deriveFont(label5.getFont().getSize() + 5f));
+                label5.setForeground(Color.lightGray);
                 T2WarningPanel.add(label5);
                 label5.setBounds(new Rectangle(new Point(30, 60), label5.getPreferredSize()));
 
                 //---- label6 ----
                 label6.setText("\u4e0b\u9650");
                 label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 5f));
+                label6.setForeground(Color.lightGray);
                 T2WarningPanel.add(label6);
                 label6.setBounds(new Rectangle(new Point(115, 60), label6.getPreferredSize()));
 
@@ -130,6 +147,7 @@ public class TEMPWarning {
                 T2slider1.setOrientation(SwingConstants.VERTICAL);
                 T2slider1.setMajorTickSpacing(10);
                 T2slider1.setMinorTickSpacing(1);
+                T2slider1.setBackground(new Color(60, 63, 65));
                 T2WarningPanel.add(T2slider1);
                 T2slider1.setBounds(40, 90, T2slider1.getPreferredSize().width, 100);
 
@@ -137,12 +155,21 @@ public class TEMPWarning {
                 T2slider2.setOrientation(SwingConstants.VERTICAL);
                 T2slider2.setMajorTickSpacing(10);
                 T2slider2.setMinorTickSpacing(1);
+                T2slider2.setBackground(new Color(60, 63, 65));
                 T2WarningPanel.add(T2slider2);
                 T2slider2.setBounds(120, 90, T2slider2.getPreferredSize().width, 100);
+
+                //---- T2textField1 ----
+                T2textField1.setBackground(Color.darkGray);
+                T2textField1.setForeground(Color.lightGray);
                 T2WarningPanel.add(T2textField1);
                 T2textField1.setBounds(15, 195, 65, 30);
+
+                //---- T2textField2 ----
+                T2textField2.setBackground(Color.darkGray);
+                T2textField2.setForeground(Color.lightGray);
                 T2WarningPanel.add(T2textField2);
-                T2textField2.setBounds(95, 195, 65, 30);
+                T2textField2.setBounds(100, 195, 65, 30);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -159,21 +186,24 @@ public class TEMPWarning {
                 }
             }
             TEMPWarningContentPane.add(T2WarningPanel);
-            T2WarningPanel.setBounds(185, 10, 159, 275);
+            T2WarningPanel.setBounds(180, 0, 185, 300);
 
             //======== TDWarningPanel ========
             {
+                TDWarningPanel.setBackground(new Color(60, 63, 65));
                 TDWarningPanel.setLayout(null);
 
                 //---- label7 ----
                 label7.setText("TD");
                 label7.setFont(label7.getFont().deriveFont(label7.getFont().getSize() + 8f));
+                label7.setForeground(Color.lightGray);
                 TDWarningPanel.add(label7);
                 label7.setBounds(35, 20, 55, label7.getPreferredSize().height);
 
                 //---- label9 ----
                 label9.setText("\u4e0b\u9650");
                 label9.setFont(label9.getFont().deriveFont(label9.getFont().getSize() + 5f));
+                label9.setForeground(Color.lightGray);
                 TDWarningPanel.add(label9);
                 label9.setBounds(30, 60, 50, label9.getPreferredSize().height);
 
@@ -182,10 +212,15 @@ public class TEMPWarning {
                 TDslider.setMaximum(10);
                 TDslider.setMajorTickSpacing(1);
                 TDslider.setValue(2);
+                TDslider.setBackground(new Color(60, 63, 65));
                 TDWarningPanel.add(TDslider);
-                TDslider.setBounds(40, 90, TDslider.getPreferredSize().width, 100);
+                TDslider.setBounds(35, 90, TDslider.getPreferredSize().width, 100);
+
+                //---- TDtextField ----
+                TDtextField.setBackground(Color.darkGray);
+                TDtextField.setForeground(Color.lightGray);
                 TDWarningPanel.add(TDtextField);
-                TDtextField.setBounds(15, 195, 65, 30);
+                TDtextField.setBounds(20, 195, 65, 30);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -202,7 +237,7 @@ public class TEMPWarning {
                 }
             }
             TEMPWarningContentPane.add(TDWarningPanel);
-            TDWarningPanel.setBounds(360, 10, 110, 275);
+            TDWarningPanel.setBounds(360, 0, 125, 300);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
