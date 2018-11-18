@@ -14,8 +14,8 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   II", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 45
-					"height": 185
+					"y": 85
+					"height": 175
 					"width": 760
 				} )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
@@ -24,9 +24,9 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "   I", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color green )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 230
+					"y": 260
 					"width": 760
-					"height": 185
+					"height": 175
 				} )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
 					name: "Spo2WavePanel"
@@ -34,9 +34,9 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "  PLETH", 4, 0, new java.awt.Font( "微软雅黑", 1, 12 ), sfield java.awt.Color cyan )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 415
+					"y": 435
 					"width": 760
-					"height": 185
+					"height": 165
 				} )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
 					name: "RESPwavePanel"
@@ -181,10 +181,10 @@ new FormModel {
 						"y": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
-					"y": 45
+					"x": 765
+					"y": 80
 					"width": 340
-					"height": 160
+					"height": 155
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "NIBPdataPanel"
@@ -333,8 +333,8 @@ new FormModel {
 						"height": 130
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
-					"y": 205
+					"x": 765
+					"y": 235
 					"width": 340
 					"height": 180
 				} )
@@ -447,8 +447,8 @@ new FormModel {
 						"width": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
-					"y": 385
+					"x": 765
+					"y": 415
 					"width": 340
 					"height": 120
 				} )
@@ -490,10 +490,10 @@ new FormModel {
 						"height": 65
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
-					"y": 505
+					"x": 765
+					"y": 535
 					"width": 340
-					"height": 105
+					"height": 100
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel3"
@@ -632,61 +632,186 @@ new FormModel {
 						"y": 100
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
-					"y": 610
+					"x": 765
+					"y": 635
 					"width": 340
-					"height": 145
+					"height": 140
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "panel2"
-					"background": new java.awt.Color( 0, 0, 0, 255 )
+					"background": sfield java.awt.Color gray
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "warningText"
 						"background": sfield java.awt.Color darkGray
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 935
+						"x": 895
 						"y": 5
 						"width": 140
 						"height": 35
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "StarNibp"
-						"text": "启动测量"
-						"background": new java.awt.Color( 0, 0, 0, 255 )
-						"foreground": new java.awt.Color( 102, 255, 255, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "f1"
+						"text": "0000-00-00"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StarNibpMouseClicked", true ) )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 700
+						"width": 105
+						"height": 20
+						"x": 10
 						"y": 0
-						"width": 95
-						"height": 43
 					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "StopNibp"
-						"text": "停止测量"
-						"foreground": new java.awt.Color( 0, 255, 255, 255 )
-						"background": new java.awt.Color( 0, 0, 0, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "f2"
+						"text": "00:00:00"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 2, false )
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StopNibpMouseClicked", true ) )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 605
-						"y": 0
-						"width": 95
-						"height": 43
+						"width": 90
+						"height": 20
+						"x": 15
+						"y": 20
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "f3"
+						"text": "床号"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 60
+						"height": 40
+						"x": 120
+						"y": 5
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "f4"
+						"text": "2"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 55
+						"height": 40
+						"x": 190
+						"y": 5
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "f5"
+						"text": "成人"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 70
+						"height": 40
+						"x": 255
+						"y": 5
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
-					"y": 0
-					"width": 1115
+					"y": 30
+					"width": 1120
 					"height": 45
+				} )
+				add( new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+					name: "menuBar1"
+					"foreground": sfield java.awt.Color white
+					"background": new java.awt.Color( 102, 102, 102, 255 )
+					"border": new javax.swing.border.LineBorder( sfield java.awt.Color darkGray, 1, false )
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "m4"
+						"text": "主菜单"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
+						"background": new java.awt.Color( 153, 153, 153, 255 )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "m4MouseClicked", true ) )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "m41"
+							"text": "病人信息设置"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+							"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "PatientInfoActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "m42"
+							"text": "报警设置"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"foreground": sfield java.awt.Color black
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+						} )
+						add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+							name: "m43"
+							"text": "数据回顾"
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							add( new FormComponent( "javax.swing.JMenuItem" ) {
+								name: "mI1"
+								"text": "NIBP测量回顾"
+								"background": new java.awt.Color( 153, 153, 153, 255 )
+								"foreground": new java.awt.Color( 0, 0, 0, 255 )
+								"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+							} )
+							add( new FormComponent( "javax.swing.JMenuItem" ) {
+								name: "mI2"
+								"text": "心电波形回顾"
+								"background": new java.awt.Color( 153, 153, 153, 255 )
+								"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+								"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JMenuItem" ) {
+								name: "mI3"
+								"text": "脉搏波形回顾"
+								"background": new java.awt.Color( 153, 153, 153, 255 )
+								"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+								"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							} )
+							add( new FormComponent( "javax.swing.JMenuItem" ) {
+								name: "mI4"
+								"text": "呼吸波形回顾"
+								"background": new java.awt.Color( 153, 153, 153, 255 )
+								"foreground": new java.awt.Color( 0, 0, 0, 255 )
+								"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+							} )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "m47"
+							"text": "心电分析"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+							"foreground": new java.awt.Color( 0, 0, 0, 255 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "m3"
+						"text": "无创血压"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
+						"background": new java.awt.Color( 153, 153, 153, 255 )
+						"foreground": new java.awt.Color( 0, 0, 0, 255 )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "StarMI"
+							"text": "启动测量"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+							"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StarNibpMouseClicked", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "StopMI"
+							"text": "停止测量"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+							"background": new java.awt.Color( 153, 153, 153, 255 )
+							"foreground": new java.awt.Color( 0, 0, 0, 255 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "StopNibpMouseClicked", true ) )
+						} )
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 1120
+					"height": 31
+					"x": 0
+					"y": 0
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1130, 825 )
+			"size": new java.awt.Dimension( 1120, 810 )
 		} )
 	}
 }

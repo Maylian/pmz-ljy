@@ -6,14 +6,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /*
  * Created by JFormDesigner on Sat Sep 08 12:05:31 CST 2018
  */
+
+
+
 /**
  * @author pmz
  */
-
-
 public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public Thread m_thread;
@@ -25,9 +29,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     Date time = new Date(); //获取系统当前时间
     SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //血压测量时间
-    SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //系统显示时间
+    SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd"); //系统显示时间
+    SimpleDateFormat dateFormat3 = new SimpleDateFormat("hh:mm:ss");
 
-   /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
+
+
+    /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
 
    // static AudioClip spo2_bit = Applet.newAudioClip(class.getClassLoader().getResource());
 
@@ -39,20 +46,100 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         initComponents();
     }
 
-    private void e2MouseClicked(MouseEvent e) {
-        // TODO add your code here
+
+
+       //病人信息设置
+    private void PatientInfoActionPerformed(ActionEvent e) {
+        JLabel l1 =  new JLabel("床号");
+        JLabel l2 = new JLabel("姓名");
+        JLabel l3 = new JLabel("性别");
+        JLabel l4 = new JLabel("病人类型");
+        JTextField t1 = new JTextField("2");
+        JTextField t2 = new JTextField("张三");
+        JTextField t3 = new JTextField("男");
+        JTextField t4 = new JTextField("成人");
+        JButton b1 = new JButton("更新病人");
+        JLabel l9 = new JLabel();
+
+        //======== d1 ========
+        JDialog d1 = new JDialog();
+        d1.setVisible(true);
+        d1.setTitle("病人信息设置");
+        d1.setLocation(530,219);
+        d1.setSize(500,400);
+
+        //======== l1 ========
+        {
+            d1.add(l1);
+            l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 5f));
+            l1.setBounds(new Rectangle(new Point(80, 50), l1.getPreferredSize()));
+        }
+        //======== l2 ========
+        {
+            d1.add(l2);
+            l2.setFont(l2.getFont().deriveFont(l2.getFont().getSize() + 5f));
+            l2.setBounds(new Rectangle(new Point(80, 100), l2.getPreferredSize()));
+        }
+        //======== l3 ========
+        {
+            d1.add(l3);
+            l3.setFont(l3.getFont().deriveFont(l3.getFont().getSize() + 5f));
+            l3.setBounds(new Rectangle(new Point(80, 150), l3.getPreferredSize()));
+        }
+        //======== l4 ========
+        {
+            d1.add(l4);
+            l4.setFont(l4.getFont().deriveFont(l4.getFont().getSize() + 5f));
+            l4.setBounds(new Rectangle(new Point(80, 200), l4.getPreferredSize()));
+        }
+        //======== t1 ========
+        {
+            d1.add(t1);
+            t1.setFont(t1.getFont().deriveFont(t1.getFont().getSize() + 5f));
+            t1.setBounds(200, 50, 100, t1.getPreferredSize().height);
+        }
+        //======== t2 ========
+        {
+            d1.add(t2);
+            t2.setFont(t2.getFont().deriveFont(t2.getFont().getSize() + 5f));
+            t2.setBounds(200, 100, 100, t1.getPreferredSize().height);
+        }
+        //======== t3 ========
+        {
+            d1.add(t3);
+            t3.setFont(t3.getFont().deriveFont(t3.getFont().getSize() + 5f));
+            t3.setBounds(200, 150, 100, t1.getPreferredSize().height);
+        }
+        //======== t4 ========
+        {
+            d1.add(t4);
+            t4.setFont(t4.getFont().deriveFont(t4.getFont().getSize() + 5f));
+            t4.setBounds(200, 200, 100, t1.getPreferredSize().height);
+        }
+        //======== b1 ========
+        {
+            d1.add(b1);
+            b1.setFont(b1.getFont().deriveFont(b1.getFont().getSize() + 5f));
+            b1.setBounds(120, 250, 150, b1.getPreferredSize().height);
+            d1.add(l9);
+        }
+
     }
+
+
+
 
     // 发送启动测量命令
     private void StarNibpMouseClicked(MouseEvent e) {
         try {
-            byte[] startbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 01 4C FF 04 46 0A 02 55"); //
+            byte[] startbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 01 4C");
             Serial_Port.outputStream.write(startbytes);
         } catch (IOException e12) {
             e12.printStackTrace();
         }
     }
-    //发送停止测量命令
+
+    // 发送停止测量命令
     private void StopNibpMouseClicked(MouseEvent e) {
         try {
             byte[] stopbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 00 4B");
@@ -60,6 +147,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         } catch (IOException e12) {
             e12.printStackTrace();
         }
+    }
+
+    private void m4MouseClicked(MouseEvent e) {
+        // TODO add your code here
     }
 
 
@@ -126,8 +217,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         t12 = new JLabel();
         panel2 = new JPanel();
         warningText = new JTextField();
-        StarNibp = new JButton();
-        StopNibp = new JButton();
+        f1 = new JLabel();
+        f2 = new JLabel();
+        f3 = new JLabel();
+        f4 = new JLabel();
+        f5 = new JLabel();
+        menuBar1 = new JMenuBar();
+        m4 = new JMenu();
+        m41 = new JMenuItem();
+        m42 = new JMenuItem();
+        m43 = new JMenu();
+        mI1 = new JMenuItem();
+        mI2 = new JMenuItem();
+        mI3 = new JMenuItem();
+        mI4 = new JMenuItem();
+        m47 = new JMenuItem();
+        m3 = new JMenu();
+        StarMI = new JMenuItem();
+        StopMI = new JMenuItem();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -143,21 +250,21 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             ECGwavePanel1.setBorder(new TitledBorder(new EtchedBorder(), "   II", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel1);
-            ECGwavePanel1.setBounds(0, 45, 760, 185);
+            ECGwavePanel1.setBounds(0, 85, 760, 175);
 
             //---- ECGwavePanel2 ----
             ECGwavePanel2.setBackground(Color.black);
             ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel2);
-            ECGwavePanel2.setBounds(0, 230, 760, 185);
+            ECGwavePanel2.setBounds(0, 260, 760, 175);
 
             //---- Spo2WavePanel ----
             Spo2WavePanel.setBackground(Color.black);
             Spo2WavePanel.setBorder(new TitledBorder(new EtchedBorder(), "  PLETH", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.cyan));
             panel1InfoDisplay.add(Spo2WavePanel);
-            Spo2WavePanel.setBounds(0, 415, 760, 185);
+            Spo2WavePanel.setBounds(0, 435, 760, 165);
 
             //---- RESPwavePanel ----
             RESPwavePanel.setBackground(Color.black);
@@ -275,7 +382,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(ECGdataPanel);
-            ECGdataPanel.setBounds(760, 45, 340, 160);
+            ECGdataPanel.setBounds(765, 80, 340, 155);
 
             //======== NIBPdataPanel ========
             {
@@ -406,7 +513,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(NIBPdataPanel);
-            NIBPdataPanel.setBounds(760, 205, 340, 180);
+            NIBPdataPanel.setBounds(765, 235, 340, 180);
 
             //======== SPO2dataPanel ========
             {
@@ -498,7 +605,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(SPO2dataPanel);
-            SPO2dataPanel.setBounds(760, 385, 340, 120);
+            SPO2dataPanel.setBounds(765, 415, 340, 120);
 
             //======== RESPdataPanel ========
             {
@@ -543,7 +650,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(RESPdataPanel);
-            RESPdataPanel.setBounds(760, 505, 340, 105);
+            RESPdataPanel.setBounds(765, 535, 340, 100);
 
             //======== panel3 ========
             {
@@ -651,45 +758,49 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel3);
-            panel3.setBounds(760, 610, 340, 145);
+            panel3.setBounds(765, 635, 340, 140);
 
             //======== panel2 ========
             {
-                panel2.setBackground(Color.black);
+                panel2.setBackground(Color.gray);
                 panel2.setLayout(null);
 
                 //---- warningText ----
                 warningText.setBackground(Color.darkGray);
                 panel2.add(warningText);
-                warningText.setBounds(935, 5, 140, 35);
+                warningText.setBounds(895, 5, 140, 35);
 
-                //---- StarNibp ----
-                StarNibp.setText("\u542f\u52a8\u6d4b\u91cf");
-                StarNibp.setBackground(Color.black);
-                StarNibp.setForeground(new Color(102, 255, 255));
-                StarNibp.setFont(StarNibp.getFont().deriveFont(StarNibp.getFont().getSize() + 2f));
-                StarNibp.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        StarNibpMouseClicked(e);
-                    }
-                });
-                panel2.add(StarNibp);
-                StarNibp.setBounds(700, 0, 95, 43);
+                //---- f1 ----
+                f1.setText("0000-00-00");
+                f1.setFont(f1.getFont().deriveFont(f1.getFont().getSize() + 2f));
+                f1.setForeground(Color.black);
+                panel2.add(f1);
+                f1.setBounds(10, 0, 105, 20);
 
-                //---- StopNibp ----
-                StopNibp.setText("\u505c\u6b62\u6d4b\u91cf");
-                StopNibp.setForeground(Color.cyan);
-                StopNibp.setBackground(Color.black);
-                StopNibp.setFont(StopNibp.getFont().deriveFont(StopNibp.getFont().getSize() + 2f));
-                StopNibp.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        StopNibpMouseClicked(e);
-                    }
-                });
-                panel2.add(StopNibp);
-                StopNibp.setBounds(605, 0, 95, 43);
+                //---- f2 ----
+                f2.setText("00:00:00");
+                f2.setFont(f2.getFont().deriveFont(f2.getFont().getSize() + 2f));
+                f2.setForeground(Color.black);
+                panel2.add(f2);
+                f2.setBounds(15, 20, 90, 20);
+
+                //---- f3 ----
+                f3.setText("\u5e8a\u53f7");
+                f3.setFont(f3.getFont().deriveFont(f3.getFont().getSize() + 8f));
+                panel2.add(f3);
+                f3.setBounds(120, 5, 60, 40);
+
+                //---- f4 ----
+                f4.setText("2");
+                f4.setFont(f4.getFont().deriveFont(f4.getFont().getSize() + 6f));
+                panel2.add(f4);
+                f4.setBounds(190, 5, 55, 40);
+
+                //---- f5 ----
+                f5.setText("\u6210\u4eba");
+                f5.setFont(f5.getFont().deriveFont(f5.getFont().getSize() + 8f));
+                panel2.add(f5);
+                f5.setBounds(255, 5, 70, 40);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -706,7 +817,125 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel2);
-            panel2.setBounds(0, 0, 1115, 45);
+            panel2.setBounds(0, 30, 1120, 45);
+
+            //======== menuBar1 ========
+            {
+                menuBar1.setForeground(Color.white);
+                menuBar1.setBackground(new Color(102, 102, 102));
+                menuBar1.setBorder(new LineBorder(Color.darkGray));
+
+                //======== m4 ========
+                {
+                    m4.setText("\u4e3b\u83dc\u5355");
+                    m4.setFont(m4.getFont().deriveFont(m4.getFont().getSize() + 7f));
+                    m4.setBackground(new Color(153, 153, 153));
+                    m4.setForeground(Color.black);
+                    m4.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            m4MouseClicked(e);
+                        }
+                    });
+
+                    //---- m41 ----
+                    m41.setText("\u75c5\u4eba\u4fe1\u606f\u8bbe\u7f6e");
+                    m41.setFont(m41.getFont().deriveFont(m41.getFont().getSize() + 4f));
+                    m41.setBackground(new Color(153, 153, 153));
+                    m41.setForeground(Color.black);
+                    m41.addActionListener(e -> PatientInfoActionPerformed(e));
+                    m4.add(m41);
+
+                    //---- m42 ----
+                    m42.setText("\u62a5\u8b66\u8bbe\u7f6e");
+                    m42.setFont(m42.getFont().deriveFont(m42.getFont().getSize() + 4f));
+                    m42.setForeground(Color.black);
+                    m42.setBackground(new Color(153, 153, 153));
+                    m4.add(m42);
+
+                    //======== m43 ========
+                    {
+                        m43.setText("\u6570\u636e\u56de\u987e");
+                        m43.setBackground(new Color(153, 153, 153));
+                        m43.setFont(m43.getFont().deriveFont(m43.getFont().getSize() + 4f));
+                        m43.setForeground(Color.black);
+
+                        //---- mI1 ----
+                        mI1.setText("NIBP\u6d4b\u91cf\u56de\u987e");
+                        mI1.setBackground(new Color(153, 153, 153));
+                        mI1.setForeground(Color.black);
+                        mI1.setFont(mI1.getFont().deriveFont(mI1.getFont().getSize() + 3f));
+                        m43.add(mI1);
+
+                        //---- mI2 ----
+                        mI2.setText("\u5fc3\u7535\u6ce2\u5f62\u56de\u987e");
+                        mI2.setBackground(new Color(153, 153, 153));
+                        mI2.setFont(mI2.getFont().deriveFont(mI2.getFont().getSize() + 3f));
+                        mI2.setForeground(Color.black);
+                        m43.add(mI2);
+
+                        //---- mI3 ----
+                        mI3.setText("\u8109\u640f\u6ce2\u5f62\u56de\u987e");
+                        mI3.setBackground(new Color(153, 153, 153));
+                        mI3.setFont(mI3.getFont().deriveFont(mI3.getFont().getSize() + 3f));
+                        mI3.setForeground(Color.black);
+                        m43.add(mI3);
+
+                        //---- mI4 ----
+                        mI4.setText("\u547c\u5438\u6ce2\u5f62\u56de\u987e");
+                        mI4.setBackground(new Color(153, 153, 153));
+                        mI4.setForeground(Color.black);
+                        mI4.setFont(mI4.getFont().deriveFont(mI4.getFont().getSize() + 3f));
+                        m43.add(mI4);
+                    }
+                    m4.add(m43);
+
+                    //---- m47 ----
+                    m47.setText("\u5fc3\u7535\u5206\u6790");
+                    m47.setFont(m47.getFont().deriveFont(m47.getFont().getSize() + 4f));
+                    m47.setBackground(new Color(153, 153, 153));
+                    m47.setForeground(Color.black);
+                    m4.add(m47);
+                }
+                menuBar1.add(m4);
+
+                //======== m3 ========
+                {
+                    m3.setText("\u65e0\u521b\u8840\u538b");
+                    m3.setFont(m3.getFont().deriveFont(m3.getFont().getSize() + 7f));
+                    m3.setBackground(new Color(153, 153, 153));
+                    m3.setForeground(Color.black);
+
+                    //---- StarMI ----
+                    StarMI.setText("\u542f\u52a8\u6d4b\u91cf");
+                    StarMI.setFont(StarMI.getFont().deriveFont(StarMI.getFont().getSize() + 4f));
+                    StarMI.setBackground(new Color(153, 153, 153));
+                    StarMI.setForeground(Color.black);
+                    StarMI.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            StarNibpMouseClicked(e);
+                        }
+                    });
+                    m3.add(StarMI);
+
+                    //---- StopMI ----
+                    StopMI.setText("\u505c\u6b62\u6d4b\u91cf");
+                    StopMI.setFont(StopMI.getFont().deriveFont(StopMI.getFont().getSize() + 4f));
+                    StopMI.setBackground(new Color(153, 153, 153));
+                    StopMI.setForeground(Color.black);
+                    StopMI.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            StopNibpMouseClicked(e);
+                        }
+                    });
+                    m3.add(StopMI);
+                }
+                menuBar1.add(m3);
+            }
+            panel1InfoDisplay.add(menuBar1);
+            menuBar1.setBounds(0, 0, 1120, 31);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -790,8 +1019,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel t12;
     private JPanel panel2;
     private JTextField warningText;
-    private JButton StarNibp;
-    private JButton StopNibp;
+    private JLabel f1;
+    private JLabel f2;
+    private JLabel f3;
+    private JLabel f4;
+    private JLabel f5;
+    private JMenuBar menuBar1;
+    private JMenu m4;
+    private JMenuItem m41;
+    private JMenuItem m42;
+    private JMenu m43;
+    private JMenuItem mI1;
+    private JMenuItem mI2;
+    private JMenuItem mI3;
+    private JMenuItem mI4;
+    private JMenuItem m47;
+    private JMenu m3;
+    private JMenuItem StarMI;
+    private JMenuItem StopMI;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
@@ -805,40 +1050,25 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public void setSPO2wavedata(int data1)
     {
-    //    this.SetRESPText();
-        this.SetAllText();
         this.Spo2WavePanel.putSPO2data(data1);
-
+        this.SetAllText();
     }
 
     public void setRESPwavedata(int data1)
     {
-    //    this.SetRESPText();
-        this.SetAllText();
         this.RESPwavePanel.putRESPdata(data1);
-
+        this.SetAllText();
     }
 
     public void setECGwavedata(int data1,int data2)
     {
-    //    this.SetRESPText();
-        this.SetAllText();
         this.ECGwavePanel1.putECGdata(data1);//2导联
         this.ECGwavePanel2.putECGdata(data2);//1导联
-
+        this.SetAllText();
     }
 
 
  //显示各参数数据
-    public void SetRESPText()
-    {
-    //    System.out.println("rr = "+rr);
-        if (rr == 240) //呼吸率
-            r4.setText(String.valueOf("---"));
-        else r4.setText(String.valueOf(rr));
-        //    System.out.println(" rr = "+rr);
-
-           }
     public void SetAllText()
     {
         /**
@@ -869,7 +1099,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * ECG模块
          */
-      //  System.out.println("hr = "+hr);
         if(hr == -100) //心率
             e1.setText(String.valueOf("- - -")); //Invalid value
         else
@@ -879,13 +1108,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * SPO2模块
          */
-     //   System.out.println("spo2 = "+spo2);
         if (spo2 == 120) //血氧
             s2.setText(String.valueOf("- - -")); //Invalid value
         else if ((spo2 <= 100)&&(spo2 >= 0))
             s2.setText(String.valueOf(spo2));
-    //    System.out.println("pr = "+pr);
-        if (pr == 255 | pr == -1) //脉率
+        if (pr == 255) //脉率
             s3.setText(String.valueOf("- - -"));
         else s3.setText(String.valueOf(pr)); //if ((pr >= 25)&&(pr <255))
 
@@ -902,8 +1129,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
          * RESP模块
          */
         if (rr == 240) //呼吸率
-            r4.setText(String.valueOf("- - -"));
-        else r4.setText(String.valueOf(rr));
+        {
+            r4.setText(String.valueOf("- - -")); //Invalid value
+        }
+        else  r4.setText(String.valueOf(rr));
+    //    System.out.println(" rr = "+rr);
 
         /**
          * TEMP模块
@@ -917,6 +1147,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         else
             t4.setText(String.valueOf(bt2));
     //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+        /**
+         * 显示时间
+         */
+        f1.setText(dateFormat2.format(time));
+        f2.setText(dateFormat3.format(time));
+        System.out.println(dateFormat3.format(time));
     }
 
     public void run()
@@ -926,7 +1162,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         {
             try
             {
-                this.SetAllText();
             //    setSPO2_ECG_RESPwavedata(para_spo2.getSPO2_WAVE(),para_resp.getRESP_WAVE());
 
                 System.out.println("Sleep Count"+_count);
