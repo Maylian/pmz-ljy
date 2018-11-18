@@ -157,7 +157,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //Áõ
                                     case 0x02:
                                         PARA_ECG ecg = new PARA_ECG(list);
                                         Delete(1);
-                                        m_mwdp.hr = ecg.getHR();
+                                        if (ConstantValue.ecg_flag == 2) m_mwdp.hr = ecg.getHR();
                                     //    fiv_I = ecg.getFiv_I();
                                         fiv_II = ecg.getFiv_II();
                                      //   thr_I = ecg.getThr_I();
@@ -168,9 +168,16 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //Áõ
                                     case 0x03:
                                         PARA_RESP resp = new PARA_RESP(list);
                                         Delete(2);
-                                        m_mwdp.rr = resp.getRR();
-                                        RESP_data = resp.getRR_Wave();
-                                        m_mwdp.setRESPwavedata(RESP_data);
+                                        switch (ConstantValue.resp_flag)
+                                        {
+                                            case 1:
+                                                m_mwdp.rr = resp.getRR();
+                                                break;
+                                            case 2:
+                                                RESP_data = resp.getRR_Wave();
+                                                m_mwdp.setRESPwavedata(RESP_data);
+                                                break;
+                                        }
                                         break;
                                     case 0x04:
                                         PARA_TEMP temp = new PARA_TEMP(list);
@@ -182,12 +189,23 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //Áõ
                                     case 0x05:
                                         PARA_SPO2 spo2 = new PARA_SPO2(list);
                                         Delete(4);
-                                        m_mwdp.pr = spo2.getPR();
-                                        m_mwdp.spo2 = spo2.getSPO2();
-                                        m_mwdp.spo2_bar = spo2.getSpo2_Bar();
-                                        m_mwdp.spo2_voice = spo2.getSpo2_voice();
-                                        SPO2_data = spo2.getSpo2wavedata();
-                                        m_mwdp.setSPO2wavedata(SPO2_data);
+                                        switch (ConstantValue.spo2_flag)
+                                        {
+                                            case 1:
+                                                m_mwdp.pr = spo2.getPR();
+                                                m_mwdp.spo2 = spo2.getSPO2();
+                                                break;
+                                            case 2:
+                                                SPO2_data = spo2.getSpo2wavedata();
+                                                m_mwdp.setSPO2wavedata(SPO2_data);
+                                                m_mwdp.spo2_bar = spo2.getSpo2_Bar();
+                                                m_mwdp.spo2_voice = spo2.getSpo2_voice();
+                                                break;
+                                        }
+
+
+
+
                                         break;
                                     case 0x06:
                                         PARA_NIBP nibp = new PARA_NIBP(list);
@@ -374,6 +392,12 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //Áõ
                             // e.printStackTrace();
                         }
                         break;
+                    case 5:
+                        list.subList(0,6).clear();
+                        break;
+                    case 6:
+                        list.subList(0,6).clear();
+                        break;
                 }
                 break;
             //‰∏çÂÆåÂñÑÁöÑÊï∞ÊçÆ
@@ -545,5 +569,6 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //Áõ
     {
         this.Send_DownFrame();
         this.m_mwdp = _mwdp;
+      //  m_mwdp.SetAllText();
     }
 }

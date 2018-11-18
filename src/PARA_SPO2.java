@@ -8,14 +8,11 @@ import java.util.LinkedList;
 
 public class PARA_SPO2 {
  //   private byte Frame_header =Test.FRAME_Header;
-    ConstantValue c = new ConstantValue();
-    PaintLockService pls = new PaintLockService();
-
 
     private static int i = 0;
 
     private int SPO2; //血氧饱和度
-    private byte PR;
+    private int PR;
     private byte Singal_th;//信号强度
 
     private byte DL;//导联状态
@@ -29,9 +26,7 @@ public class PARA_SPO2 {
     private byte SPR_Length; //血氧脉率帧长
     private byte SPW_Length; //血氧波形帧长
 
-    private static int SPO2_data[] = new int[20];
-    private int SPO2_WAVE[] = new int[20]; //SPO2波形数据
-    private int spo2wavedata;
+    private int spo2wavedata; //SPO2波形数据
     private short spo2_Bar; //spo2棒图数据
     private byte spo2_voice; //脉搏声音
 
@@ -43,7 +38,7 @@ public class PARA_SPO2 {
 
 
     public int getSPO2(){ return SPO2;}
-    public byte getPR(){ return PR;}
+    public int getPR(){ return PR;}
 
     public int getSpo2wavedata()
     {
@@ -94,7 +89,7 @@ public class PARA_SPO2 {
         FileWriter fw = null;
         try
         {
-            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_5.txt");
             fw = new FileWriter(f,true);
         }catch (IOException e)
         {
@@ -125,7 +120,7 @@ public class PARA_SPO2 {
             case 0x32:
                 this.PR = (byte)(list.get(8));
                 this.SPO2 = ((byte)(list.get(9))&0xff);
-                System.out.println(" 脉率 = "+PR+"     血压饱和度 = " +SPO2);
+                System.out.println(" -----脉率 = "+PR+"     血压饱和度 = " +SPO2);
                 ConstantValue.spo2_flag = 1;
                 break;
             case 0x33:

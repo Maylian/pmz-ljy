@@ -29,7 +29,7 @@ public class PaintLockService {
         try
         {
             lock.lock();
-            System.out.println(" await sss" + System.currentTimeMillis());//耗时
+         //   System.out.println(" await sss" + System.currentTimeMillis());//耗时
             condition.await();
         }
         catch (InterruptedException e)

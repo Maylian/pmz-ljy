@@ -261,7 +261,7 @@ public class Surface extends JPanel implements Runnable{
 
             }
             while (m_pls.hasValue == false) {
-                System.out.println("Surface");
+              //  System.out.println("Surface");
                 m_pls.await();
             }
 

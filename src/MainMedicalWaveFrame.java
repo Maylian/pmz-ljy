@@ -9,12 +9,11 @@ import javax.swing.border.*;
 /*
  * Created by JFormDesigner on Sat Sep 08 12:05:31 CST 2018
  */
-
-
-
 /**
  * @author pmz
  */
+
+
 public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public Thread m_thread;
@@ -47,7 +46,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     // 发送启动测量命令
     private void StarNibpMouseClicked(MouseEvent e) {
         try {
-            byte[] startbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 01 4C");
+            byte[] startbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 01 4C FF 04 46 0A 02 55"); //
             Serial_Port.outputStream.write(startbytes);
         } catch (IOException e12) {
             e12.printStackTrace();
@@ -109,9 +108,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         s8 = new JLabel();
         spo2_Bar1 = new JProgressBar();
         RESPdataPanel = new JPanel();
-        r1 = new JLabel();
         r2 = new JLabel();
         r3 = new JLabel();
+        r4 = new JLabel();
         panel3 = new JPanel();
         t1 = new JLabel();
         t2 = new JLabel();
@@ -181,7 +180,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 e1.setForeground(Color.green);
                 e1.setHorizontalAlignment(SwingConstants.LEFT);
                 ECGdataPanel.add(e1);
-                e1.setBounds(5, 40, 150, 85);
+                e1.setBounds(15, 40, 140, 85);
 
                 //---- e2 ----
                 e2.setText("120");
@@ -299,7 +298,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n2.setHorizontalTextPosition(SwingConstants.CENTER);
                 n2.setHorizontalAlignment(SwingConstants.LEFT);
                 NIBPdataPanel.add(n2);
-                n2.setBounds(5, 43, 115, 67);
+                n2.setBounds(10, 43, 110, 67);
 
                 //---- n3 ----
                 n3.setText("/");
@@ -322,7 +321,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n5.setForeground(Color.white);
                 n5.setHorizontalAlignment(SwingConstants.CENTER);
                 NIBPdataPanel.add(n5);
-                n5.setBounds(155, 125, 95, 50);
+                n5.setBounds(150, 125, 105, 50);
 
                 //---- n6 ----
                 n6.setText("(       )");
@@ -429,7 +428,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s2.setForeground(Color.cyan);
                 s2.setHorizontalAlignment(SwingConstants.LEFT);
                 SPO2dataPanel.add(s2);
-                s2.setBounds(5, 25, 120, 91);
+                s2.setBounds(10, 25, 115, 91);
 
                 //---- s3 ----
                 s3.setText("2");
@@ -508,27 +507,26 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 RESPdataPanel.setBackground(Color.black);
                 RESPdataPanel.setLayout(null);
 
-                //---- r1 ----
-                r1.setText("2");
-                r1.setFont(r1.getFont().deriveFont(r1.getFont().getStyle() & ~Font.BOLD, r1.getFont().getSize() + 42f));
-                r1.setForeground(Color.yellow);
-                r1.setHorizontalAlignment(SwingConstants.LEFT);
-                RESPdataPanel.add(r1);
-                r1.setBounds(15, 20, 125, 78);
-
                 //---- r2 ----
                 r2.setText("30");
                 r2.setForeground(Color.yellow);
                 r2.setFont(r2.getFont().deriveFont(r2.getFont().getSize() + 4f));
                 RESPdataPanel.add(r2);
-                r2.setBounds(160, 15, 35, 22);
+                r2.setBounds(195, 15, 35, 25);
 
                 //---- r3 ----
                 r3.setText("8");
                 r3.setForeground(Color.yellow);
                 r3.setFont(r3.getFont().deriveFont(r3.getFont().getSize() + 4f));
                 RESPdataPanel.add(r3);
-                r3.setBounds(160, 40, 35, 22);
+                r3.setBounds(195, 40, 35, 22);
+
+                //---- r4 ----
+                r4.setText("text");
+                r4.setForeground(Color.yellow);
+                r4.setFont(r4.getFont().deriveFont(r4.getFont().getSize() + 30f));
+                RESPdataPanel.add(r4);
+                r4.setBounds(15, 30, 150, 65);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -774,9 +772,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel s8;
     private JProgressBar spo2_Bar1;
     private JPanel RESPdataPanel;
-    private JLabel r1;
     private JLabel r2;
     private JLabel r3;
+    private JLabel r4;
     private JPanel panel3;
     private JLabel t1;
     private JLabel t2;
@@ -807,25 +805,40 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public void setSPO2wavedata(int data1)
     {
-        this.Spo2WavePanel.putSPO2data(data1);
+    //    this.SetRESPText();
         this.SetAllText();
+        this.Spo2WavePanel.putSPO2data(data1);
+
     }
 
     public void setRESPwavedata(int data1)
     {
-        this.RESPwavePanel.putRESPdata(data1);
+    //    this.SetRESPText();
         this.SetAllText();
+        this.RESPwavePanel.putRESPdata(data1);
+
     }
 
     public void setECGwavedata(int data1,int data2)
     {
+    //    this.SetRESPText();
+        this.SetAllText();
         this.ECGwavePanel1.putECGdata(data1);//2导联
         this.ECGwavePanel2.putECGdata(data2);//1导联
-        this.SetAllText();
+
     }
 
 
  //显示各参数数据
+    public void SetRESPText()
+    {
+    //    System.out.println("rr = "+rr);
+        if (rr == 240) //呼吸率
+            r4.setText(String.valueOf("---"));
+        else r4.setText(String.valueOf(rr));
+        //    System.out.println(" rr = "+rr);
+
+           }
     public void SetAllText()
     {
         /**
@@ -856,6 +869,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * ECG模块
          */
+      //  System.out.println("hr = "+hr);
         if(hr == -100) //心率
             e1.setText(String.valueOf("- - -")); //Invalid value
         else
@@ -865,11 +879,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * SPO2模块
          */
+     //   System.out.println("spo2 = "+spo2);
         if (spo2 == 120) //血氧
             s2.setText(String.valueOf("- - -")); //Invalid value
         else if ((spo2 <= 100)&&(spo2 >= 0))
             s2.setText(String.valueOf(spo2));
-        if (pr == 255) //脉率
+    //    System.out.println("pr = "+pr);
+        if (pr == 255 | pr == -1) //脉率
             s3.setText(String.valueOf("- - -"));
         else s3.setText(String.valueOf(pr)); //if ((pr >= 25)&&(pr <255))
 
@@ -886,11 +902,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
          * RESP模块
          */
         if (rr == 240) //呼吸率
-        {
-            r1.setText(String.valueOf("- - -")); //Invalid value
-        }
-        else  r1.setText(String.valueOf(rr));
-    //    System.out.println(" rr = "+rr);
+            r4.setText(String.valueOf("- - -"));
+        else r4.setText(String.valueOf(rr));
 
         /**
          * TEMP模块
@@ -913,6 +926,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         {
             try
             {
+                this.SetAllText();
             //    setSPO2_ECG_RESPwavedata(para_spo2.getSPO2_WAVE(),para_resp.getRESP_WAVE());
 
                 System.out.println("Sleep Count"+_count);

@@ -93,10 +93,14 @@ public class PARA_NIBP {
             case 0x33:
                 this.PRE_G8 = (byte)list.get(4);
                 this.PRE_D8 = (byte)list.get(5);
-                //    this.PRE = ((((short)list.get(5)&0xFF) << 8))|((byte)(list.get(4)));
                 this.PRE = (((PRE_G8&0xFF) << 8) | PRE_D8&0xFF);
-           //     System.out.println("PRE = "+PRE);
+             //   System.out.println("PRE = "+PRE);
                 ConstantValue.nibp_flag = 3;
+                break;
+            case 0x37:
+                System.out.println("参数异常反馈帧");
+                System.out.println(Integer.toHexString((byte)list.get(0))+" "+Integer.toHexString((byte)list.get(1))+" "+Integer.toHexString((byte)list.get(2))+" "+Integer.toHexString((byte)list.get(3))+" "+Integer.toHexString((byte)list.get(4))+" "+Integer.toHexString((byte)list.get(5)));
+                ConstantValue.nibp_flag = 6;
                 break;
             default:
                 ConstantValue.nibp_flag = 4;

@@ -139,14 +139,14 @@ public class PARA_ECG {
                 break;
             case 0x33:
                 this.HR = (short) ((((byte)list.get(5)&0xFF) << 8) | ((byte)list.get(4)&0xFF));
-                System.out.println("  ++++++++++心率 = "+HR);
+            //    System.out.println("  ++++++++++心率 = "+HR);
                 ConstantValue.ecg_flag = 2;
                 break;
             case 0x3E:
                 this.thr_II_D8 = (byte)list.get(6);
                 this.thr_II_G8 = (byte)list.get(7);
                 thr_II = (short) (((thr_II_G8&0xFF) << 8) | thr_II_D8&0xFF);
-                System.out.println("------------thr_II "+thr_II);
+            //    System.out.println("------------thr_II "+thr_II);
                 ConstantValue.flag = 3;
                 break;
             case 0x3F:
@@ -158,7 +158,7 @@ public class PARA_ECG {
                 this.fiv_II = (short) (((fiv_II_G8&0xFF) << 8) | fiv_II_D8&0xFF);
                 this.fiv_III = (short) ((((byte)list.get(11)&0XFF) << 8) | ((byte)list.get(10)&0XFF));
             //    System.out.println(" --------------fiv_I "+fiv_I);
-                System.out.println(" --------------fiv_II "+fiv_II);
+            //    System.out.println(" --------------fiv_II "+fiv_II);
             //    System.out.println(" --------------fiv_III "+fiv_III);
                 ConstantValue.ecg_flag = 4;
                 break;
