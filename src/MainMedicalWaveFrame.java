@@ -829,33 +829,24 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     }
 
 
- //显示各参数数据
-    public void SetRESPText()
-    {
-    //    System.out.println("rr = "+rr);
-        if (rr == 240) //呼吸率
-            r4.setText(String.valueOf("---"));
-        else r4.setText(String.valueOf(rr));
-        //    System.out.println(" rr = "+rr);
-
-           }
     public void SetAllText()
     {
         /**
          * NIBP
          */
-        n2.setText(String.valueOf(sbp)); //收缩压
-        n4.setText(String.valueOf(dbp)); //平均压
-        n5.setText(String.valueOf(map)); //舒张压
-        if(pre != 0) //袖带压
+        if (sbp == 0) n2.setText(String.valueOf("---")); //Invalid value
+        else n2.setText(String.valueOf(sbp)); //收缩压
+        if (map == 0) n5.setText(String.valueOf("---")); //Invalid value
+        else n5.setText(String.valueOf(map)); //平均压
+        if (dbp == 0) n4.setText(String.valueOf("---")); //Invalid value
+        else n4.setText(String.valueOf(dbp)); //舒张压
+        //袖带压
+        if(pre > 3)
         {
             panel1.setVisible(true);
             l2.setText(String.valueOf(pre));
         }
-        else if (pre < 3)
-        {
-            panel1.setVisible(false);
-        }
+        else if (pre < 3) panel1.setVisible(false);
         //测量模式
         if (msu_mode == 0)
             n10.setText(String.valueOf("手动测量...")); //默认
@@ -909,11 +900,11 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
          * TEMP模块
          */
         if (bt1 == 600.0)
-            t2.setText(String.valueOf("- - -")); //Invalid value
+            t2.setText(String.valueOf("--.-")); //Invalid value
         else
             t2.setText(String.valueOf(bt1));
         if (bt2 == 600.0)
-            t4.setText(String.valueOf("- - -"));
+            t4.setText(String.valueOf("--.-"));
         else
             t4.setText(String.valueOf(bt2));
     //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);

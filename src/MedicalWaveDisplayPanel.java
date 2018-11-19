@@ -57,6 +57,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
             i = 0;
             this.SetSpo2WaveData(SPO2wave);
         }
+        if (spo2 == 255 | spo2 <10) spo2 = 227;
         SPO2wave[i++] = spo2;
 
     }
@@ -66,6 +67,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
             i = 0;
             this.SetECG_WaveData(ECGwave);
         }
+
         ECGwave[i++] = ecg;
     }
 
@@ -74,6 +76,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
             i = 0;
             this.SetRESPWaveData(RESPwave);
         }
+        if (resp == 255 | resp <10) resp = 128;
         RESPwave[i++] = resp;
     }
 
@@ -90,6 +93,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
             //      System.out.println("ECG_Panel await();");
             m_pls.await();
         }
+        this.surf.datalength= data.length;
         for (int _i0 = 0; _i0 < data.length; _i0++) {
             _f = (data[_i0] - _fMin) / _fNormalize;
             this.surf.data[_i0] = _f;//32行
@@ -116,14 +120,16 @@ public class MedicalWaveDisplayPanel extends JPanel {
         while (m_pls.hasValue == true) {
             m_pls.await();
         }
-
+        this.surf.datalength= data0.length;
             for (int i = 0; i < data0.length; i++) {
             //   f = (data0[i] - Min)/Mid;
             f = (Max - data0[i]) / Mid;
         //    this.inputfile(f);
            /* if (f == 0.0882353) System.out.println("原-"+data0[i]+"---------------后"+f);
             else System.out.println("原-"+data0[i]+"后"+f);*/
-         //       System.out.println("先 "+data0[i]+"后----"+f);
+                /*this.inputfile(data0[i]);
+                this.inputfile1(f);*/
+           //     System.out.println("先 "+data0[i]+"后----"+f);
 
             this.surf.data[i] = f;
         }
@@ -152,8 +158,8 @@ public class MedicalWaveDisplayPanel extends JPanel {
         //  float Min = Arrays.stream(data0).min().getAsInt();
         //  float Max = Arrays.stream(data0).max().getAsInt();
 
-        float Max = 260.0f;
-        float Min = 90.0f;
+        float Max = 200.0f;
+        float Min = 70.0f;
         float Mid = Max - Min;
         float f = 0.0f;
         //    System.out.println("resp data push");
@@ -161,9 +167,13 @@ public class MedicalWaveDisplayPanel extends JPanel {
             //    System.out.println("resp_Panel await();");
             m_pls.await();
         }
+        this.surf.datalength= data0.length;
         for (int i = 0; i < data0.length; i++) {
             f = (data0[i] - Min) / Mid;
             //   f = (Max - data0[i])/Mid;
+        //    System.out.println("先 "+data0[i]+"后----"+f);
+          /*  this.inputfile(data0[i]);
+            this.inputfile1(f);*/
             this.surf.data[i] = f;
         }
         m_pls.SetHasValue(true);
@@ -174,7 +184,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
     public void inputfile(float data) {
         FileWriter fw = null;
         try {
-            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_no5.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_前6.txt");
             fw = new FileWriter(f, true);
         } catch (IOException e) {
             e.printStackTrace();
@@ -189,6 +199,26 @@ public class MedicalWaveDisplayPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void inputfile1(float data) {
+        FileWriter fw = null;
+        try {
+            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_后6.txt");
+            fw = new FileWriter(f, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PrintWriter pw = new PrintWriter(fw);
+        pw.print(data + " ");
+        pw.flush();
+        try {
+            fw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

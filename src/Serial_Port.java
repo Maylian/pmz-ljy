@@ -158,11 +158,11 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                                         PARA_ECG ecg = new PARA_ECG(list);
                                         Delete(1);
                                         if (ConstantValue.ecg_flag == 2) m_mwdp.hr = ecg.getHR();
-                                    //    fiv_I = ecg.getFiv_I();
+                                        fiv_I = ecg.getFiv_I();
                                         fiv_II = ecg.getFiv_II();
                                      //   thr_I = ecg.getThr_I();
                                         thr_II = ecg.getThr_II();
-                                        m_mwdp.setECGwavedata(fiv_II,thr_II);
+                                        m_mwdp.setECGwavedata(fiv_II,fiv_I);
                                         break;
 
                                     case 0x03:
@@ -202,17 +202,16 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                                                 m_mwdp.spo2_voice = spo2.getSpo2_voice();
                                                 break;
                                         }
-
-
-
-
                                         break;
                                     case 0x06:
                                         PARA_NIBP nibp = new PARA_NIBP(list);
                                         Delete(5);
-                                        m_mwdp.sbp = nibp.getSBP();
-                                        m_mwdp.map = nibp.getMAP();
-                                        m_mwdp.dbp = nibp.getDBP();
+                                        if (ConstantValue.nibp_flag == 2)
+                                        {
+                                            m_mwdp.sbp = nibp.getSBP();
+                                            m_mwdp.map = nibp.getMAP();
+                                            m_mwdp.dbp = nibp.getDBP();
+                                        }
                                         m_mwdp.pre = nibp.getPRE();
                                         m_mwdp.msu_mode = nibp.getMSU_mode();
                                         break;
@@ -556,7 +555,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
         //        this.start(); // 启动线程来处理收到的数据
             try //向发送命令
             {
-                String str = "FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18";//  //FF 04 46 01 00 4A FF 04 46 02 01 4C  // FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18 //五：FF 04 02 01 01 07 FF 04 02 12 01 18
+                String str = "FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18";  //五：FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18
                 byte[] bytes = this.hexStrToBinaryStr(str);
                 outputStream.write(bytes);
             } catch (IOException e) {
