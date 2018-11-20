@@ -4,24 +4,27 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-			name: "PESPWarning"
-			"title": "RESP Alarm Setting"
+			name: "RESPWarning"
+			"title": "RESP  Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "RESPWarningPanel"
+				"background": &ColorUIResource0 new javax.swing.plaf.ColorUIResource( 60, 63, 65 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
-					"text": "RESP"
+					"text": "HR"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 105
+					"x": 110
 					"y": 20
-					"width": 60
+					"width": 35
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label2"
 					"text": "上限"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 45
 					"y": 55
@@ -30,6 +33,7 @@ new FormModel {
 					name: "label3"
 					"text": "下限"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 155
 					"y": 55
@@ -37,6 +41,8 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JSlider" ) {
 					name: "RESPslider1"
 					"orientation": 1
+					"background": #ColorUIResource0
+					"foreground": new java.awt.Color( 153, 153, 153, 255 )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 60
 					"y": 90
@@ -45,6 +51,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JSlider" ) {
 					name: "RESPslider2"
 					"orientation": 1
+					"background": #ColorUIResource0
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 165
 					"y": 90
@@ -52,6 +59,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "RESPtextField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 35
 					"y": 195
@@ -60,6 +69,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "RESPtextField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
@@ -67,14 +78,14 @@ new FormModel {
 					"y": 195
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 265
+				"x": 0
 				"height": 253
-				"x": 10
 				"y": 0
+				"width": 260
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 280, 285 )
+			"size": new java.awt.Dimension( 260, 285 )
 		} )
 	}
 }

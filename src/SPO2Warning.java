@@ -11,7 +11,7 @@ import java.awt.*;
 public class SPO2Warning {
     public SPO2Warning() {
         initComponents();
-
+        SPO2Warning.setVisible(true);
     }
 
     private void initComponents() {
@@ -40,26 +40,34 @@ public class SPO2Warning {
 
             //======== SPO2WarningPanel ========
             {
+                SPO2WarningPanel.setBackground(new Color(60, 63, 65));
                 SPO2WarningPanel.setLayout(null);
 
                 //---- label1 ----
                 label1.setText("SPO2");
                 label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 8f));
+                label1.setForeground(Color.lightGray);
                 SPO2WarningPanel.add(label1);
                 label1.setBounds(30, 20, 55, label1.getPreferredSize().height);
 
                 //---- label2 ----
                 label2.setText("\u4e0b\u9650");
                 label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 5f));
+                label2.setForeground(Color.lightGray);
                 SPO2WarningPanel.add(label2);
                 label2.setBounds(new Rectangle(new Point(30, 60), label2.getPreferredSize()));
 
                 //---- SPO2slider ----
                 SPO2slider.setOrientation(SwingConstants.VERTICAL);
+                SPO2slider.setBackground(new Color(60, 63, 65));
                 SPO2WarningPanel.add(SPO2slider);
                 SPO2slider.setBounds(40, 90, SPO2slider.getPreferredSize().width, 100);
+
+                //---- SPO2textField ----
+                SPO2textField.setBackground(Color.darkGray);
+                SPO2textField.setForeground(Color.lightGray);
                 SPO2WarningPanel.add(SPO2textField);
-                SPO2textField.setBounds(new Rectangle(new Point(15, 195), SPO2textField.getPreferredSize()));
+                SPO2textField.setBounds(15, 195, 64, 30);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -76,41 +84,55 @@ public class SPO2Warning {
                 }
             }
             SPO2WarningContentPane.add(SPO2WarningPanel);
-            SPO2WarningPanel.setBounds(10, 5, SPO2WarningPanel.getPreferredSize().width, 275);
+            SPO2WarningPanel.setBounds(0, 0, 100, 285);
 
             //======== SPO2PRWarningPanel2 ========
             {
+                SPO2PRWarningPanel2.setBackground(new Color(60, 63, 65));
                 SPO2PRWarningPanel2.setLayout(null);
 
                 //---- label4 ----
                 label4.setText("SPO2 PR");
                 label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 8f));
+                label4.setForeground(Color.lightGray);
                 SPO2PRWarningPanel2.add(label4);
                 label4.setBounds(50, 20, 105, label4.getPreferredSize().height);
 
                 //---- label5 ----
                 label5.setText("\u4e0a\u9650");
                 label5.setFont(label5.getFont().deriveFont(label5.getFont().getSize() + 5f));
+                label5.setForeground(Color.lightGray);
                 SPO2PRWarningPanel2.add(label5);
                 label5.setBounds(new Rectangle(new Point(30, 60), label5.getPreferredSize()));
 
                 //---- label6 ----
                 label6.setText("\u4e0b\u9650");
                 label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 5f));
+                label6.setForeground(Color.lightGray);
                 SPO2PRWarningPanel2.add(label6);
                 label6.setBounds(new Rectangle(new Point(115, 60), label6.getPreferredSize()));
 
                 //---- SPO2PRslider1 ----
                 SPO2PRslider1.setOrientation(SwingConstants.VERTICAL);
+                SPO2PRslider1.setBackground(new Color(60, 63, 65));
                 SPO2PRWarningPanel2.add(SPO2PRslider1);
                 SPO2PRslider1.setBounds(40, 90, SPO2PRslider1.getPreferredSize().width, 100);
 
                 //---- SPO2PRslider2 ----
                 SPO2PRslider2.setOrientation(SwingConstants.VERTICAL);
+                SPO2PRslider2.setBackground(new Color(60, 63, 65));
                 SPO2PRWarningPanel2.add(SPO2PRslider2);
                 SPO2PRslider2.setBounds(120, 90, SPO2PRslider2.getPreferredSize().width, 100);
+
+                //---- SPO2PRtextField1 ----
+                SPO2PRtextField1.setBackground(Color.darkGray);
+                SPO2PRtextField1.setForeground(Color.lightGray);
                 SPO2PRWarningPanel2.add(SPO2PRtextField1);
-                SPO2PRtextField1.setBounds(new Rectangle(new Point(15, 195), SPO2PRtextField1.getPreferredSize()));
+                SPO2PRtextField1.setBounds(15, 195, 64, 30);
+
+                //---- SPO2PRtextField2 ----
+                SPO2PRtextField2.setBackground(Color.darkGray);
+                SPO2PRtextField2.setForeground(Color.lightGray);
                 SPO2PRWarningPanel2.add(SPO2PRtextField2);
                 SPO2PRtextField2.setBounds(95, 195, 64, 30);
 
@@ -129,7 +151,7 @@ public class SPO2Warning {
                 }
             }
             SPO2WarningContentPane.add(SPO2PRWarningPanel2);
-            SPO2PRWarningPanel2.setBounds(105, 5, SPO2PRWarningPanel2.getPreferredSize().width, 270);
+            SPO2PRWarningPanel2.setBounds(100, 0, 180, 285);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();

@@ -3,16 +3,18 @@ JFDML JFormDesigner: "6.0.3.0.150" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "HRWarning"
-			"title": "HR Alarm Setting"
+			"title": "HR  Setting"
 			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "HRWarningPanel"
+				"background": &ColorUIResource0 new javax.swing.plaf.ColorUIResource( 60, 63, 65 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "HR"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 8, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 110
 					"y": 20
@@ -22,6 +24,7 @@ new FormModel {
 					name: "label2"
 					"text": "上限"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 45
 					"y": 55
@@ -30,6 +33,7 @@ new FormModel {
 					name: "label3"
 					"text": "下限"
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 155
 					"y": 55
@@ -37,6 +41,9 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JSlider" ) {
 					name: "HRslider1"
 					"orientation": 1
+					"background": #ColorUIResource0
+					"foreground": new java.awt.Color( 153, 153, 153, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "HRslider1StateChanged", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 60
 					"y": 90
@@ -45,6 +52,8 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JSlider" ) {
 					name: "HRslider2"
 					"orientation": 1
+					"background": #ColorUIResource0
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "HRslider2StateChanged", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 165
 					"y": 90
@@ -52,6 +61,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "HRtextField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 35
 					"y": 195
@@ -60,14 +71,19 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "HRtextField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 64
 					"height": 30
 					"x": 145
 					"y": 195
 				} )
-			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "Center"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"height": 253
+				"y": 0
+				"width": 260
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

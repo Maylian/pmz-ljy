@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ext">
+    <CLASSES>
+      <root url="file://D:/jdk/lib/ext" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://D:/jdk/lib/ext" />
+    </NATIVE>
+    <SOURCES />
+    <jarDirectory url="file://D:/jdk/lib/ext" recursive="false" />
+  </library>
+</component>
