@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class TEMPWarning {
     public TEMPWarning() {
-        initComponents();
+         initComponents();
         TEMPWarning.setVisible(true);
     }
 

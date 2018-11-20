@@ -11,9 +11,9 @@ import javax.swing.plaf.*;
  * @author Brainrain
  */
 public class NIBPWarning {
-    public NIBPWarning() {
-        initComponents();
-        NIBPWarning.setVisible(true);
+     public NIBPWarning() {
+         initComponents();
+         NIBPWarning.setVisible(true);
     }
 
     //获取slider值在text中显示

@@ -11,8 +11,8 @@ import javax.swing.plaf.*;
  */
 public class RESPWarning {
     public RESPWarning() {
-        initComponents();
-        RESPWarning.setVisible(true);
+         initComponents();
+         RESPWarning.setVisible(true);
     }
 
     private void initComponents() {

@@ -10,8 +10,8 @@ import java.awt.*;
  */
 public class SPO2Warning {
     public SPO2Warning() {
-        initComponents();
-        SPO2Warning.setVisible(true);
+         initComponents();
+         SPO2Warning.setVisible(true);
     }
 
     private void initComponents() {

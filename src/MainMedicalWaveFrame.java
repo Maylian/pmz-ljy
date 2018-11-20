@@ -33,6 +33,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
 
 
+
     /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
 
    // static AudioClip spo2_bit = Applet.newAudioClip(class.getClassLoader().getResource());
@@ -149,24 +150,25 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     }
 
     private void HRSetMouseClicked(MouseEvent e) {
-        HRWarning setHR = new HRWarning();
-        //setHR.setVisible(true);
+
+         HRWarning setHR = new HRWarning();
+         //setHR.setVisible(true);
     }
 
     private void NIBPSetMouseClicked(MouseEvent e) {
-        NIBPWarning setNIBP = new  NIBPWarning();
+         NIBPWarning setNIBP = new  NIBPWarning();
     }
 
     private void SPO2SetMouseClicked(MouseEvent e) {
-        SPO2Warning setSPO2 = new  SPO2Warning();
+         SPO2Warning setSPO2 = new  SPO2Warning();
     }
 
     private void TEMPSetMouseClicked(MouseEvent e) {
-        TEMPWarning setTEMP = new  TEMPWarning();
+         TEMPWarning setTEMP = new  TEMPWarning();
     }
 
     private void RESPSetMouseClicked(MouseEvent e) {
-        RESPWarning setRESP = new  RESPWarning();
+         RESPWarning setRESP = new  RESPWarning();
     }
 
 
@@ -176,7 +178,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1InfoDisplay = new JPanel();
         ECGwavePanel1 = new MedicalWaveDisplayPanel();
-        ECGwavePanel2 = new MedicalWaveDisplayPanel();
         Spo2WavePanel = new MedicalWaveDisplayPanel();
         RESPwavePanel = new MedicalWaveDisplayPanel();
         ECGdataPanel = new JPanel();
@@ -253,6 +254,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         m3 = new JMenu();
         StarMI = new JMenuItem();
         StopMI = new JMenuItem();
+        ECGwavePanel2 = new MedicalWaveDisplayPanel();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -271,13 +273,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
             panel1InfoDisplay.add(ECGwavePanel1);
             ECGwavePanel1.setBounds(0, 70, 760, 165);
-
-            //---- ECGwavePanel2 ----
-            ECGwavePanel2.setBackground(Color.black);
-            ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
-                new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
-            panel1InfoDisplay.add(ECGwavePanel2);
-            ECGwavePanel2.setBounds(0, 235, 760, 165);
 
             //---- Spo2WavePanel ----
             Spo2WavePanel.setBackground(Color.black);
@@ -830,7 +825,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 f2.setText("00:00:00");
                 f2.setFont(f2.getFont().deriveFont(f2.getFont().getSize() + 2f));
                 panel2.add(f2);
-                f2.setBounds(15, 20, 90, 20);
+                f2.setBounds(10, 20, 90, 20);
 
                 //---- f3 ----
                 f3.setText("\u5e8a\u53f7");
@@ -985,6 +980,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             panel1InfoDisplay.add(menuBar1);
             menuBar1.setBounds(0, 0, 1055, 31);
 
+            //---- ECGwavePanel2 ----
+            ECGwavePanel2.setBackground(Color.black);
+            ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
+            panel1InfoDisplay.add(ECGwavePanel2);
+            ECGwavePanel2.setBounds(0, 240, 760, 165);
+
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
                 for(int i = 0; i < panel1InfoDisplay.getComponentCount(); i++) {
@@ -1008,7 +1010,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel1InfoDisplay;
     private MedicalWaveDisplayPanel ECGwavePanel1;
-    private MedicalWaveDisplayPanel ECGwavePanel2;
     private MedicalWaveDisplayPanel Spo2WavePanel;
     private MedicalWaveDisplayPanel RESPwavePanel;
     private JPanel ECGdataPanel;
@@ -1085,6 +1086,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JMenu m3;
     private JMenuItem StarMI;
     private JMenuItem StopMI;
+    private MedicalWaveDisplayPanel ECGwavePanel2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
@@ -1099,7 +1101,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public void setSPO2wavedata(int data1)
     {
     //    this.SetRESPText();
-        this.SetAllText();
+    //    this.SetAllText();
         this.Spo2WavePanel.putSPO2data(data1);
         this.SetAllText();
     }
@@ -1201,9 +1203,9 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * 显示时间
          */
-        f1.setText(dateFormat2.format(time));
-        f2.setText(dateFormat3.format(time));
-        System.out.println(dateFormat3.format(time));
+         f1.setText(dateFormat2.format(time));
+         f2.setText(dateFormat3.format(time));
+         System.out.println(dateFormat3.format(time));
     }
 
     public void run()
