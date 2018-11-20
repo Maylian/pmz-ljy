@@ -130,13 +130,12 @@ public class NIBPWarning {
                 DBPtextField1.setBackground(Color.darkGray);
                 DBPWarningPanel.add(DBPtextField1);
                 DBPtextField1.setBounds(15, 195, 64, 30);
-                DBPtextField1.setText(""+  DBPslider1.getValue());
+
                 //---- DBPtextField2 ----
                 DBPtextField2.setForeground(Color.lightGray);
                 DBPtextField2.setBackground(Color.darkGray);
                 DBPWarningPanel.add(DBPtextField2);
                 DBPtextField2.setBounds(95, 195, 64, 30);
-                DBPtextField2.setText(""+  DBPslider2.getValue());
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -204,14 +203,12 @@ public class NIBPWarning {
                 PRtextField1.setBackground(Color.darkGray);
                 PRWarningPanel.add(PRtextField1);
                 PRtextField1.setBounds(15, 195, 64, 30);
-                PRtextField1.setText(""+  PRslider1.getValue());
 
                 //---- PRtextField2 ----
                 PRtextField2.setForeground(Color.lightGray);
                 PRtextField2.setBackground(Color.darkGray);
                 PRWarningPanel.add(PRtextField2);
                 PRtextField2.setBounds(95, 195, 64, 30);
-                PRtextField2.setText(""+  PRslider2.getValue());
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -279,14 +276,12 @@ public class NIBPWarning {
                 SBPtextField1.setBackground(Color.darkGray);
                 SBPWarningPanel.add(SBPtextField1);
                 SBPtextField1.setBounds(15, 195, 64, 30);
-                SBPtextField1.setText(""+ SBPslider1.getValue());
 
                 //---- SBPtextField2 ----
                 SBPtextField2.setForeground(Color.lightGray);
                 SBPtextField2.setBackground(Color.darkGray);
                 SBPWarningPanel.add(SBPtextField2);
                 SBPtextField2.setBounds(95, 195, 64, 30);
-                SBPtextField2.setText(""+  SBPslider2.getValue());
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
