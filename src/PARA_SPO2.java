@@ -89,7 +89,7 @@ public class PARA_SPO2 {
         FileWriter fw = null;
         try
         {
-            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_5.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\SPO2原6.txt");
             fw = new FileWriter(f,true);
         }catch (IOException e)
         {
@@ -129,7 +129,7 @@ public class PARA_SPO2 {
                 this.spo2_voice = (byte) ((byte)list.get(4)&0x40);
             //    System.out.println("----------------------棒图"+spo2_Bar);
              //    System.out.print(" s "+spo2wavedata);
-            //    this.inputfile(spo2wavedata);
+                this.inputfile(spo2wavedata);
                 ConstantValue.spo2_flag = 2;
                 break;
             default:

@@ -34,7 +34,7 @@ public class PARA_RESP {
         FileWriter fw = null;
         try
         {
-            File f = new File("C:\\Users\\814-2\\Desktop\\RESP.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\RESP原2.txt");
             fw = new FileWriter(f,true);
         }catch (IOException e)
         {
@@ -67,8 +67,8 @@ public class PARA_RESP {
                 break;
             case 0x35:
                 this.RR_Wave = (byte)list.get(4)&0xFF;
-              //  this.inputfile(RR_Wave);
-             //   System.out.println("------------RR_wace   "+RR_Wave);
+            //    this.inputfile(RR_Wave);
+            //    System.out.println("------------RR_wace   "+RR_Wave);
                 ConstantValue.resp_flag = 2;
                 break;
             default:

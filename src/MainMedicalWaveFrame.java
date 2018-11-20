@@ -12,12 +12,11 @@ import java.util.Calendar;
 /*
  * Created by JFormDesigner on Sat Sep 08 12:05:31 CST 2018
  */
-
-
-
 /**
  * @author pmz
  */
+
+
 public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public Thread m_thread;
@@ -44,10 +43,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public MainMedicalWaveFrame() {
         initComponents();
-
-        // 得到窗口的宽高,居中显示
-     //  this.setBounds((width - this.getWidth()) / 2, (height - this.getHeight()) / 2, this.getWidth(), this.getHeight());
-
     }
 
 
@@ -130,9 +125,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     }
 
-
-
-
     // 发送启动测量命令
     private void StarNibpMouseClicked(MouseEvent e) {
         try {
@@ -142,8 +134,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             e12.printStackTrace();
         }
     }
-
-    // 发送停止测量命令
+    //发送停止测量命令
     private void StopNibpMouseClicked(MouseEvent e) {
         try {
             byte[] stopbytes = Serial_Port.hexStrToBinaryStr("FF 04 46 02 00 4B");
@@ -1036,17 +1027,17 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JPanel NIBPdataPanel;
     private JLabel n1;
     private JLabel n2;
+    private JLabel n3;
     private JLabel n4;
     private JLabel n5;
     private JLabel n6;
     private JLabel n7;
     private JLabel n8;
+    private JLabel n9;
     private JLabel n10;
     private JPanel panel1;
     private JLabel l1;
     private JLabel l2;
-    private JLabel n3;
-    private JLabel n9;
     private JPanel SPO2dataPanel;
     private JLabel s1;
     private JLabel s2;
@@ -1107,6 +1098,8 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public void setSPO2wavedata(int data1)
     {
+    //    this.SetRESPText();
+        this.SetAllText();
         this.Spo2WavePanel.putSPO2data(data1);
         this.SetAllText();
     }
@@ -1131,18 +1124,19 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * NIBP
          */
-        n2.setText(String.valueOf(sbp)); //收缩压
-        n4.setText(String.valueOf(dbp)); //平均压
-        n5.setText(String.valueOf(map)); //舒张压
-        if(pre != 0) //袖带压
+        if (sbp == 0) n2.setText(String.valueOf("---")); //Invalid value
+        else n2.setText(String.valueOf(sbp)); //收缩压
+        if (map == 0) n5.setText(String.valueOf("---")); //Invalid value
+        else n5.setText(String.valueOf(map)); //平均压
+        if (dbp == 0) n4.setText(String.valueOf("---")); //Invalid value
+        else n4.setText(String.valueOf(dbp)); //舒张压
+        //袖带压
+        if(pre > 3)
         {
             panel1.setVisible(true);
             l2.setText(String.valueOf(pre));
         }
-        else if (pre < 3)
-        {
-            panel1.setVisible(false);
-        }
+        else if (pre < 3) panel1.setVisible(false);
         //测量模式
         if (msu_mode == 0)
             n10.setText(String.valueOf("手动测量...")); //默认
@@ -1156,6 +1150,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * ECG模块
          */
+      //  System.out.println("hr = "+hr);
         if(hr == -100) //心率
             e1.setText(String.valueOf("- - -")); //Invalid value
         else
@@ -1165,11 +1160,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         /**
          * SPO2模块
          */
+     //   System.out.println("spo2 = "+spo2);
         if (spo2 == 120) //血氧
             s2.setText(String.valueOf("- - -")); //Invalid value
         else if ((spo2 <= 100)&&(spo2 >= 0))
             s2.setText(String.valueOf(spo2));
-        if (pr == 255) //脉率
+    //    System.out.println("pr = "+pr);
+        if (pr == 255 | pr == -1) //脉率
             s3.setText(String.valueOf("- - -"));
         else s3.setText(String.valueOf(pr)); //if ((pr >= 25)&&(pr <255))
 
@@ -1186,21 +1183,18 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
          * RESP模块
          */
         if (rr == 240) //呼吸率
-        {
-            r4.setText(String.valueOf("- - -")); //Invalid value
-        }
-        else  r4.setText(String.valueOf(rr));
-    //    System.out.println(" rr = "+rr);
+            r4.setText(String.valueOf("- - -"));
+        else r4.setText(String.valueOf(rr));
 
         /**
          * TEMP模块
          */
         if (bt1 == 600.0)
-            t2.setText(String.valueOf("- - -")); //Invalid value
+            t2.setText(String.valueOf("--.-")); //Invalid value
         else
             t2.setText(String.valueOf(bt1));
         if (bt2 == 600.0)
-            t4.setText(String.valueOf("- - -"));
+            t4.setText(String.valueOf("--.-"));
         else
             t4.setText(String.valueOf(bt2));
     //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
@@ -1219,6 +1213,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         {
             try
             {
+                this.SetAllText();
             //    setSPO2_ECG_RESPwavedata(para_spo2.getSPO2_WAVE(),para_resp.getRESP_WAVE());
 
                 System.out.println("Sleep Count"+_count);

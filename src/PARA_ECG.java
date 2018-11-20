@@ -103,7 +103,7 @@ public class PARA_ECG {
         FileWriter fw = null;
         try
         {
-            File f = new File("C:\\Users\\814-2\\Desktop\\ECG_5_I.txt");
+            File f = new File("C:\\Users\\814-2\\Desktop\\ECG_5_II.txt");
             fw = new FileWriter(f,true);
         }catch (IOException e)
         {
@@ -139,7 +139,7 @@ public class PARA_ECG {
                 break;
             case 0x33:
                 this.HR = (short) ((((byte)list.get(5)&0xFF) << 8) | ((byte)list.get(4)&0xFF));
-            //    System.out.println("  ++++++++++心率 = "+HR);
+                System.out.println("  ++++++++++心率 = "+HR);
                 ConstantValue.ecg_flag = 2;
                 break;
             case 0x3E:
@@ -157,6 +157,7 @@ public class PARA_ECG {
                 this.fiv_II_G8 = (byte)list.get(9);
                 this.fiv_II = (short) (((fiv_II_G8&0xFF) << 8) | fiv_II_D8&0xFF);
                 this.fiv_III = (short) ((((byte)list.get(11)&0XFF) << 8) | ((byte)list.get(10)&0XFF));
+                this.inputfile(fiv_II);
             //    System.out.println(" --------------fiv_I "+fiv_I);
             //    System.out.println(" --------------fiv_II "+fiv_II);
             //    System.out.println(" --------------fiv_III "+fiv_III);

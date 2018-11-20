@@ -28,10 +28,12 @@ public class Surface extends JPanel implements Runnable{
     private int ptNum;
     private int m_ptArrayIndex = 0;
   // private int m_sptArrayIndex = 0;
+    public int datalength;
 
     private Rectangle graphOutlineRect = new Rectangle();//构造一个新的 Rectangle，其左上角的坐标为 (0,0)，宽度和高度均为 0。
     public List<Float> m_wavePointArray = new ArrayList<Float>(30);//构造一个具有指定初始容量的空列表，存点
     public float data[] = new float[10]; //接收的数据
+  //   public float data[] = new float[datalength];
   //  public float spo2_data[] = new float[10];
  //   public float resp_data[] = new float[30];
     private boolean m_drawstutas = false;
