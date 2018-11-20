@@ -14,15 +14,15 @@ import javax.swing.plaf.*;
 public class HRWarning {
     public HRWarning() {
         initComponents();
-        HRWarning.setVisible(true);
+
     }
 
     private void HRslider1StateChanged(ChangeEvent e) {
-        HRtextField1.setText(""+HRslider1.getValue());
+        // TODO add your code here
     }
 
     private void HRslider2StateChanged(ChangeEvent e) {
-        HRtextField2.setText(""+HRslider2.getValue());
+        // TODO add your code here
     }
 
     private void initComponents() {
@@ -90,13 +90,13 @@ public class HRWarning {
                 HRtextField1.setForeground(Color.lightGray);
                 HRWarningPanel.add(HRtextField1);
                 HRtextField1.setBounds(35, 195, 64, 30);
-                HRtextField1.setText(""+HRslider1.getValue());
+
                 //---- HRtextField2 ----
                 HRtextField2.setBackground(Color.darkGray);
                 HRtextField2.setForeground(Color.lightGray);
                 HRWarningPanel.add(HRtextField2);
                 HRtextField2.setBounds(145, 195, 64, 30);
-                HRtextField2.setText(""+HRslider2.getValue());
+
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
                     for(int i = 0; i < HRWarningPanel.getComponentCount(); i++) {

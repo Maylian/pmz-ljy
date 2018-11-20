@@ -10,6 +10,7 @@ new FormModel {
 				"background": sfield java.awt.Color black
 				"minimumSize": new java.awt.Dimension( 1024, 768 )
 				"preferredSize": new java.awt.Dimension( 1038, 774 )
+				"foreground": new java.awt.Color( 0, 0, 0, 255 )
 				add( new FormComponent( "MedicalWaveDisplayPanel" ) {
 					name: "ECGwavePanel1"
 					"background": new java.awt.Color( 0, 0, 0, 255 )
@@ -816,7 +817,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 1055, 810 )
+			"size": new java.awt.Dimension( 1055, 805 )
 		} )
 	}
 }
