@@ -125,11 +125,9 @@ public class MedicalWaveDisplayPanel extends JPanel {
             //   f = (data0[i] - Min)/Mid;
             f = (Max - data0[i]) / Mid;
         //    this.inputfile(f);
-           /* if (f == 0.0882353) System.out.println("原-"+data0[i]+"---------------后"+f);
-            else System.out.println("原-"+data0[i]+"后"+f);*/
                 /*this.inputfile(data0[i]);
                 this.inputfile1(f);*/
-           //     System.out.println("先 "+data0[i]+"后----"+f);
+        //        System.out.println("先 "+data0[i]+"后----"+f);
 
             this.surf.data[i] = f;
         }

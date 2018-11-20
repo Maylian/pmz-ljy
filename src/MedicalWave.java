@@ -28,6 +28,8 @@ public class MedicalWave {
 
        // _sp.StartSerial_Port();
         _mmwf.DrawStart();//Strart Draw  Graph
+    //    _mmwf.RealTime();
+
 
         System.out.println("Medical Wave Demo Frame exit()");
         Serial_Port _sp = new Serial_Port(_mmwf);

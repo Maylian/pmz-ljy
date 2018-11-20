@@ -13,11 +13,4 @@ public class ConstantValue {
     public static int temp_flag;
 
 
-
- //   private PARA_SPO2 para_spo2 = new PARA_SPO2();
-
-    public static int i = 0;
-    public static int[] SPO2wave = new int[20];
-
-
 }

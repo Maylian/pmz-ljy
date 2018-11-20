@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,7 +25,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     public double bt1,bt2;
     public short hr,spo2_bar,spo2_voice;
 
-    Date time = new Date(); //获取系统当前时间
+  //  Date time = new Date(); //获取系统当前时间
     SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //血压测量时间
     SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //系统显示时间
 
@@ -802,10 +804,26 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.RESPwavePanel.DispStart();
         return;
     }
+    public void RealTime()
+    {
+        while (true)
+        {
+            try {
+                Date time = new Date();
+                SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //血压测量时间
+                SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //系统显示时间
+                n1.setText(dateFormat1.format(time));
+              //  Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void setSPO2wavedata(int data1)
     {
     //    this.SetRESPText();
+    //    m_thread.start();
         this.SetAllText();
         this.Spo2WavePanel.putSPO2data(data1);
 
@@ -831,6 +849,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
     public void SetAllText()
     {
+
         /**
          * NIBP
          */
@@ -855,7 +874,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         else if (msu_mode == 2)
             n10.setText(String.valueOf("连续测量..."));
         //测量时间
-        n1.setText(dateFormat1.format(time));
+        n1.setText(String.valueOf(dateFormat1.format(new Date()))); //时间实时显示
 
         /**
          * ECG模块
