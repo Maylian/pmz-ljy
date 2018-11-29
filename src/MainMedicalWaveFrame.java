@@ -1,5 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.Calendar;
 /*
  * Created by JFormDesigner on Sat Sep 08 12:05:31 CST 2018
  */
@@ -27,9 +26,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
   //  Date time = new Date(); //获取系统当前时间
     SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //血压测量时间
-    SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //系统显示时间
+    SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd"); //系统显示时间
+    SimpleDateFormat dateFormat3 = new SimpleDateFormat("hh:mm:ss");
 
-   /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
+
+
+    /// AudioClip spvoice =  java.applet.Applet.newAudioClip(this.getClass().getResource(6.m4a));
 
    // static AudioClip spo2_bit = Applet.newAudioClip(class.getClassLoader().getResource());
 
@@ -41,8 +43,84 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         initComponents();
     }
 
-    private void e2MouseClicked(MouseEvent e) {
-        // TODO add your code here
+
+
+       //病人信息设置
+    private void PatientInfoActionPerformed(ActionEvent e) {
+        JLabel l1 =  new JLabel("床号");
+        JLabel l2 = new JLabel("姓名");
+        JLabel l3 = new JLabel("性别");
+        JLabel l4 = new JLabel("病人类型");
+        JTextField t1 = new JTextField("2");
+        JTextField t2 = new JTextField("张三");
+        JTextField t3 = new JTextField("男");
+        JTextField t4 = new JTextField("成人");
+        JButton b1 = new JButton("更新病人");
+        JLabel l9 = new JLabel();
+
+        //======== d1 ========
+        JDialog d1 = new JDialog();
+        d1.setVisible(true);
+        d1.setTitle("病人信息设置");
+        d1.setLocation(530,219);
+        d1.setSize(500,400);
+
+        //======== l1 ========
+        {
+            d1.add(l1);
+            l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 5f));
+            l1.setBounds(new Rectangle(new Point(80, 50), l1.getPreferredSize()));
+        }
+        //======== l2 ========
+        {
+            d1.add(l2);
+            l2.setFont(l2.getFont().deriveFont(l2.getFont().getSize() + 5f));
+            l2.setBounds(new Rectangle(new Point(80, 100), l2.getPreferredSize()));
+        }
+        //======== l3 ========
+        {
+            d1.add(l3);
+            l3.setFont(l3.getFont().deriveFont(l3.getFont().getSize() + 5f));
+            l3.setBounds(new Rectangle(new Point(80, 150), l3.getPreferredSize()));
+        }
+        //======== l4 ========
+        {
+            d1.add(l4);
+            l4.setFont(l4.getFont().deriveFont(l4.getFont().getSize() + 5f));
+            l4.setBounds(new Rectangle(new Point(80, 200), l4.getPreferredSize()));
+        }
+        //======== t1 ========
+        {
+            d1.add(t1);
+            t1.setFont(t1.getFont().deriveFont(t1.getFont().getSize() + 5f));
+            t1.setBounds(200, 50, 100, t1.getPreferredSize().height);
+        }
+        //======== t2 ========
+        {
+            d1.add(t2);
+            t2.setFont(t2.getFont().deriveFont(t2.getFont().getSize() + 5f));
+            t2.setBounds(200, 100, 100, t1.getPreferredSize().height);
+        }
+        //======== t3 ========
+        {
+            d1.add(t3);
+            t3.setFont(t3.getFont().deriveFont(t3.getFont().getSize() + 5f));
+            t3.setBounds(200, 150, 100, t1.getPreferredSize().height);
+        }
+        //======== t4 ========
+        {
+            d1.add(t4);
+            t4.setFont(t4.getFont().deriveFont(t4.getFont().getSize() + 5f));
+            t4.setBounds(200, 200, 100, t1.getPreferredSize().height);
+        }
+        //======== b1 ========
+        {
+            d1.add(b1);
+            b1.setFont(b1.getFont().deriveFont(b1.getFont().getSize() + 5f));
+            b1.setBounds(120, 250, 150, b1.getPreferredSize().height);
+            d1.add(l9);
+        }
+
     }
 
     // 发送启动测量命令
@@ -64,33 +142,32 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         }
     }
 
-    private void HRSetMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void NIBPSetMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void SPO2SetMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void RESPSetMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
-    private void TEMPSetMouseClicked(MouseEvent e) {
-        // TODO add your code here
-    }
-
     private void m4MouseClicked(MouseEvent e) {
         // TODO add your code here
     }
 
-    private void PatientInfoActionPerformed(ActionEvent e) {
-        // TODO add your code here
+    private void HRSetMouseClicked(MouseEvent e) {
+        HRWarning setHR = new HRWarning();
+        //setHR.setVisible(true);
     }
+
+    private void NIBPSetMouseClicked(MouseEvent e) {
+         NIBPWarning setNIBP = new  NIBPWarning();
+    }
+
+    private void SPO2SetMouseClicked(MouseEvent e) {
+         SPO2Warning setSPO2 = new  SPO2Warning();
+    }
+
+    private void TEMPSetMouseClicked(MouseEvent e) {
+         TEMPWarning setTEMP = new  TEMPWarning();
+    }
+
+    private void RESPSetMouseClicked(MouseEvent e) {
+         RESPWarning setRESP = new  RESPWarning();
+    }
+
+
 
 
     private void initComponents() {
@@ -174,6 +251,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         m3 = new JMenu();
         StarMI = new JMenuItem();
         StopMI = new JMenuItem();
+        ECGwavePanel2 = new MedicalWaveDisplayPanel();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -752,7 +830,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 f2.setText("00:00:00");
                 f2.setFont(f2.getFont().deriveFont(f2.getFont().getSize() + 2f));
                 panel2.add(f2);
-                f2.setBounds(15, 20, 90, 20);
+                f2.setBounds(10, 20, 90, 20);
 
                 //---- f3 ----
                 f3.setText("\u5e8a\u53f7");
@@ -907,6 +985,13 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             panel1InfoDisplay.add(menuBar1);
             menuBar1.setBounds(0, 0, 1055, 31);
 
+            //---- ECGwavePanel2 ----
+            ECGwavePanel2.setBackground(Color.black);
+            ECGwavePanel2.setBorder(new TitledBorder(new EtchedBorder(), "   I", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.BOLD, 12), Color.green));
+            panel1InfoDisplay.add(ECGwavePanel2);
+            ECGwavePanel2.setBounds(0, 240, 760, 165);
+
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
                 for(int i = 0; i < panel1InfoDisplay.getComponentCount(); i++) {
@@ -1017,52 +1102,31 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         this.RESPwavePanel.DispStart();
         return;
     }
-    public void RealTime()
-    {
-        while (true)
-        {
-            try {
-                Date time = new Date();
-                SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH:mm"); //血压测量时间
-                SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //系统显示时间
-                n1.setText(dateFormat1.format(time));
-              //  Thread.sleep(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     public void setSPO2wavedata(int data1)
     {
     //    this.SetRESPText();
-    //    m_thread.start();
-        this.SetAllText();
+    //    this.SetAllText();
         this.Spo2WavePanel.putSPO2data(data1);
-
+        this.SetAllText();
     }
 
     public void setRESPwavedata(int data1)
     {
-    //    this.SetRESPText();
-        this.SetAllText();
         this.RESPwavePanel.putRESPdata(data1);
-
+        this.SetAllText();
     }
 
     public void setECGwavedata(int data1,int data2)
     {
-    //    this.SetRESPText();
-        this.SetAllText();
         this.ECGwavePanel1.putECGdata(data1);//2导联
         this.ECGwavePanel2.putECGdata(data2);//1导联
-
+        this.SetAllText();
     }
 
 
     public void SetAllText()
     {
-
         /**
          * NIBP
          */
@@ -1140,6 +1204,12 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         else
             t4.setText(String.valueOf(bt2));
     //    System.out.println(" bt1 = "+bt1+"    bt2 = "+bt2);
+        /**
+         * 显示时间
+         */
+         f1.setText(dateFormat2.format(new Date()));
+         f2.setText(dateFormat3.format(new Date()));
+         System.out.println(dateFormat3.format(new Date()));
     }
 
     public void run()

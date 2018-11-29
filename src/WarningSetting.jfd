@@ -1,0 +1,733 @@
+JFDML JFormDesigner: "6.0.3.0.150" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "WarningSetting"
+			"title": "Warning Setting"
+			"maximizedBounds": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"background": &ColorUIResource0 new javax.swing.plaf.ColorUIResource( 60, 63, 65 )
+			"resizable": false
+			"undecorated": true
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "HRWarningPanel2"
+				"background": #ColorUIResource0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label18"
+					"text": "HR"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label19"
+					"text": "上限"
+					"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label26"
+					"text": "下限"
+					"font": &SwingDerivedFont1 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "HRslider1"
+					"orientation": 1
+					"maximum": 300
+					"background": &Color0 new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "HRslider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "HRslider2"
+					"orientation": 1
+					"maximum": 300
+					"background": &Color1 new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "HRslider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "HRtextField1"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "HRtextField2"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"x": 95
+					"y": 165
+					"height": 25
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 0
+				"y": 0
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "SBPWarningPanel"
+				"background": #ColorUIResource0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "SBP"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "上限"
+					"font": #SwingDerivedFont0
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "下限"
+					"font": #SwingDerivedFont1
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "SBPslider1"
+					"orientation": 1
+					"maximum": 300
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "SBPslider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "SBPslider2"
+					"orientation": 1
+					"maximum": 300
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "SBPslider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "SBPtextField1"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "SBPtextField2"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"x": 95
+					"y": 165
+					"height": 25
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 170
+				"width": 170
+				"height": 200
+				"y": 0
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "DBPWarningPanel"
+				"background": #ColorUIResource0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "DBP"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "上限"
+					"font": #SwingDerivedFont0
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "下限"
+					"font": #SwingDerivedFont1
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "DBPslider1"
+					"orientation": 1
+					"maximum": 300
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "DBPslider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "DBPslider2"
+					"orientation": 1
+					"maximum": 300
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "DBPslider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "DBPtextField1"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "DBPtextField2"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 340
+				"y": 0
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "SPO2WarningPanel2"
+				"background": new java.awt.Color( 60, 63, 65, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label23"
+					"text": "SPO2 "
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 65
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label24"
+					"text": "上限"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label25"
+					"text": "下限"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "SPO2slider1"
+					"orientation": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					"maximum": 250
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "SPO2slider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "SPO2slider2"
+					"orientation": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					"maximum": 250
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "SPO2slider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "SPO2textField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"height": 25
+					"width": 60
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "SPO2textField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 0
+				"y": 200
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "RESPWarningPanel"
+				"background": &ColorUIResource1 new javax.swing.plaf.ColorUIResource( 60, 63, 65 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label20"
+					"text": "RESP"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label21"
+					"text": "上限"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label22"
+					"text": "下限"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "RESPslider1"
+					"orientation": 1
+					"background": #ColorUIResource1
+					"foreground": new java.awt.Color( 153, 153, 153, 255 )
+					"maximum": 250
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "RESPslider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "RESPslider2"
+					"orientation": 1
+					"background": #ColorUIResource1
+					"maximum": 250
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "RESPslider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "RESPtextField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "RESPtextField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 340
+				"y": 200
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "PRWarningPanel"
+				"background": #ColorUIResource0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "PR"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label8"
+					"text": "上限"
+					"font": #SwingDerivedFont0
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "下限"
+					"font": #SwingDerivedFont1
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "PRslider1"
+					"orientation": 1
+					"maximum": 250
+					"background": #Color0
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "PRslider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "PRslider2"
+					"orientation": 1
+					"maximum": 250
+					"background": #Color1
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "PRslider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "PRtextField1"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "PRtextField2"
+					"foreground": sfield java.awt.Color lightGray
+					"background": sfield java.awt.Color darkGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 170
+				"y": 200
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "T1WarningPanel"
+				"background": new java.awt.Color( 60, 63, 65, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label10"
+					"text": "T1"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 70
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label11"
+					"text": "上限"
+					"font": &SwingDerivedFont2 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label12"
+					"text": "下限"
+					"font": &SwingDerivedFont3 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "T1slider1"
+					"orientation": 1
+					"majorTickSpacing": 10
+					"minorTickSpacing": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "T1slider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "T1slider2"
+					"orientation": 1
+					"majorTickSpacing": 10
+					"minorTickSpacing": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "T1slider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "T1textField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "T1textField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 0
+				"y": 400
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "T2WarningPanel"
+				"background": new java.awt.Color( 60, 63, 65, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label13"
+					"text": "T2"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"y": 10
+					"x": 70
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label14"
+					"text": "上限"
+					"font": #SwingDerivedFont2
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label15"
+					"text": "下限"
+					"font": #SwingDerivedFont3
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 100
+					"y": 35
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "T2slider1"
+					"orientation": 1
+					"majorTickSpacing": 10
+					"minorTickSpacing": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "T2slider1StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "T2slider2"
+					"orientation": 1
+					"majorTickSpacing": 10
+					"minorTickSpacing": 1
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "T2slider2StateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 105
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "T2textField1"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 15
+					"y": 165
+					"width": 60
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "T2textField2"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 95
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 170
+				"y": 400
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "TDWarningPanel"
+				"background": new java.awt.Color( 60, 63, 65, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label16"
+					"text": "TD"
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 10
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label17"
+					"text": "上限"
+					"font": #SwingDerivedFont3
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 30
+					"y": 35
+					"width": 50
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "TDslider"
+					"orientation": 1
+					"maximum": 50
+					"majorTickSpacing": 1
+					"value": 2
+					"background": new java.awt.Color( 60, 63, 65, 255 )
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "TDsliderStateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 35
+					"y": 60
+					"height": 100
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "TDtextField"
+					"background": sfield java.awt.Color darkGray
+					"foreground": sfield java.awt.Color lightGray
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 60
+					"height": 25
+					"x": 15
+					"y": 165
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 170
+				"height": 200
+				"x": 340
+				"y": 400
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panel1"
+				"background": new java.awt.Color( 60, 63, 65, 255 )
+				"maximumSize": new java.awt.Dimension( 359, 39 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "SureBtn"
+					"text": "保存"
+					"background": sfield java.awt.Color gray
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+					"actionCommand": "save"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 120
+					"y": 15
+					"width": 80
+					"height": 25
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "CloseBtn"
+					"text": "关闭"
+					"background": sfield java.awt.Color gray
+					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+					"actionCommand": "close"
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "CloseBtnMouseClicked", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"x": 285
+					"y": 15
+					"width": 80
+					"height": 25
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 600
+				"height": 55
+				"width": 510
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 525, 685 )
+		} )
+	}
+}
