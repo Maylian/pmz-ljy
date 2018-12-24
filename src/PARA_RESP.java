@@ -29,7 +29,7 @@ public class PARA_RESP {
     }
 
     //写入文件
-    public void inputfile(int data)
+    /*public void inputfile(int data)
     {
         FileWriter fw = null;
         try
@@ -53,7 +53,7 @@ public class PARA_RESP {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     public PARA_RESP(ArrayList list)
     {

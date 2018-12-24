@@ -69,6 +69,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
         }
 
         ECGwave[i++] = ecg;
+
     }
 
     public synchronized void putRESPdata(int resp) {
@@ -76,7 +77,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
             i = 0;
             this.SetRESPWaveData(RESPwave);
         }
-        if (resp == 255 | resp <10) resp = 128;
+      //  if (resp == 255 | resp <10) resp = 128;
         RESPwave[i++] = resp;
     }
 
@@ -89,13 +90,18 @@ public class MedicalWaveDisplayPanel extends JPanel {
         float _f = 0.0f;
         //    System.out.println("wait ecg_data push");
         //m_lock.lock();
+
+        //滤波
+         MovingAverageFilter filter_II = new MovingAverageFilter();
+        int[] ECGdata =filter_II.movingAverageFilter(data);
+
         while (m_pls.hasValue == true) {
             //      System.out.println("ECG_Panel await();");
             m_pls.await();
         }
-        this.surf.datalength= data.length;
-        for (int _i0 = 0; _i0 < data.length; _i0++) {
-            _f = (data[_i0] - _fMin) / _fNormalize;
+        this.surf.datalength= ECGdata.length;
+        for (int _i0 = 0; _i0 < ECGdata.length; _i0++) {
+            _f = (ECGdata[_i0] - _fMin) / _fNormalize;
             this.surf.data[_i0] = _f;//32行
 
         }

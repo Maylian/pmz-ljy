@@ -30,6 +30,8 @@ public class PARA_NIBP {
     private int MSU_mode; //测量模式
     private byte G2;//三个的高两位
 
+    private byte YCH;//异常信息
+
 
     public float NIBP_Wave;
 
@@ -77,6 +79,17 @@ public class PARA_NIBP {
                 ConstantValue.nibp_flag = 1;
                 break;
             case 0x32:
+                this.YCH = (byte)list.get(4);
+                System.out.println("********"+YCH);
+                /*if (YCH == 0) System.out.println("-----正常");
+                else if (YCH == 2) System.out.println("-----自检失败");
+                else if (YCH == 3) System.out.println("-----软件过压");
+                else if (YCH == 4) System.out.println("-----袖带类型错误");
+                else if (YCH == 6) System.out.println("-----袖带松或没接");
+                else if (YCH == 7) System.out.println("-----漏气");
+                else if (YCH == 8) System.out.println("-----气压错");
+                else if (YCH == 9) System.out.println("-----信号弱");
+                else if (YCH == 10) System.out.println("-----超出测量范围弱");*/
                 this.SBP_D7 = (byte)list.get(5);
                 this.G2 = (byte)list.get(8);
                 this.SBP = ((G2&0x03) << 7) | SBP_D7;
@@ -88,13 +101,14 @@ public class PARA_NIBP {
                 //  this.MAP = (((byte)list.get(8)&0x0C) << 5)|((byte)list.get(6)&0x7F);
                 //   this.DBP = (((byte)list.get(8)&0x30) << 3)|((byte)list.get(7)&0x7F);
                 System.out.println(" -------------------------收缩压 = "+SBP+"   平均压 = "+MAP+"   舒张压 = "+DBP);
+                System.out.println(Integer.toHexString((byte)list.get(0))+" "+Integer.toHexString((byte)list.get(1))+" "+Integer.toHexString((byte)list.get(2))+" "+Integer.toHexString((byte)list.get(3))+" "+Integer.toHexString((byte)list.get(4))+" "+Integer.toHexString((byte)list.get(5))+" "+Integer.toHexString((byte)list.get(6))+" "+Integer.toHexString((byte)list.get(7))+" "+Integer.toHexString((byte)list.get(8))+" "+Integer.toHexString((byte)list.get(9))+" "+Integer.toHexString((byte)list.get(10))+" "+Integer.toHexString((byte)list.get(11))+" "+Integer.toHexString((byte)list.get(12))+" "+Integer.toHexString((byte)list.get(13)));
                 ConstantValue.nibp_flag = 2;
                 break;
             case 0x33:
                 this.PRE_G8 = (byte)list.get(4);
                 this.PRE_D8 = (byte)list.get(5);
                 this.PRE = (((PRE_G8&0xFF) << 8) | PRE_D8&0xFF);
-             //   System.out.println("PRE = "+PRE);
+              //  System.out.println("PRE = "+PRE);
                 ConstantValue.nibp_flag = 3;
                 break;
             case 0x37:

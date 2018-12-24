@@ -84,7 +84,7 @@ public class PARA_SPO2 {
 
 
     //写入文件
-    public void inputfile(int data)
+   /* public void inputfile(int data)
     {
         FileWriter fw = null;
         try
@@ -108,7 +108,7 @@ public class PARA_SPO2 {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
 
     public PARA_SPO2(ArrayList list)

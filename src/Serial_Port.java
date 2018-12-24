@@ -134,6 +134,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                         int RESP_data;
                         // int[] RESP_data = new int[128];
                         int fiv_I,fiv_II,fiv_III,thr_I,thr_II,thr_III;
+                        int fliterhz,fliterh,fliterl;
 
 
 
@@ -153,16 +154,28 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                                 if (list.size() == 0 | list.size() == 1) break;  //debug后增加完善
                                 switch ((byte) (list.get(2)))
                                 {
-
                                     case 0x02:
                                         PARA_ECG ecg = new PARA_ECG(list);
                                         Delete(1);
-                                        if (ConstantValue.ecg_flag == 2) m_mwdp.hr = ecg.getHR();
-                                        fiv_I = ecg.getFiv_I();
-                                        fiv_II = ecg.getFiv_II();
-                                     //   thr_I = ecg.getThr_I();
-                                        thr_II = ecg.getThr_II();
-                                        m_mwdp.setECGwavedata(fiv_II,fiv_I);
+                                        switch (ConstantValue.ecg_flag ){
+                                            case 1:
+                                                fliterhz =ecg.getFliterHZ();
+                                                m_mwdp.la = ecg.getLA_FallMsg();
+                                                break;
+                                            case 2:
+                                                m_mwdp.hr = ecg.getHR();
+                                                break;
+                                            case 3:
+                                                thr_I = ecg.getThr_I();
+                                                thr_II = ecg.getThr_II();
+                                                break;
+                                            case 4:
+                                                fiv_I = ecg.getFiv_I();
+                                                fiv_II = ecg.getFiv_II();
+                                                m_mwdp.setECGwavedata(fiv_II,fiv_I);
+                                                break;
+                                        }
+
                                         break;
 
                                     case 0x03:
@@ -250,7 +263,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 13).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------ECG case1 错误");
+                        //    System.out.println("--------ECG case1 错误");
                         }
                         break;
                     case 2:
@@ -258,7 +271,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 7).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------ECG case2 错误");
+                        //    System.out.println("--------ECG case2 错误");
                         }
                         break;
                     case 3:
@@ -266,7 +279,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 9).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------ECG case3 错误");
+                       //     System.out.println("--------ECG case3 错误");
                         }
                         break;
                     case 4:
@@ -274,7 +287,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 21).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------ECG case4 错误");
+                         //   System.out.println("--------ECG case4 错误");
                             //e.printStackTrace();
                         }
                         break;
@@ -341,7 +354,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 11).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------SPO2 case1 错误");
+                           // System.out.println("--------SPO2 case1 错误");
                         }
                         break;
                     case 2:
@@ -350,7 +363,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0, 7).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------SPO2 case2 错误");
+                           // System.out.println("--------SPO2 case2 错误");
                         }
                         break;
                     case 3:
@@ -358,7 +371,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0,((byte)list.get(1)+2)).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------SPO2 case3 错误");
+                         //   System.out.println("--------SPO2 case3 错误");
                         }
                         break;
                 }
@@ -387,7 +400,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                             list.subList(0,((byte)list.get(1)+2)).clear();
                         } catch (Exception e) {
                             list.clear();
-                            System.out.println("--------NIBP错误");
+                         //   System.out.println("--------NIBP错误");
                             // e.printStackTrace();
                         }
                         break;
@@ -418,7 +431,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
                     list.subList(0,((byte)list.get(1)+2)).clear();
                 } catch (Exception e) {
                     list.clear();
-                    System.out.println("不完善数据错误");
+                 //   System.out.println("不完善数据错误");
                     //   e.printStackTrace();
                 }
                 break;
@@ -555,7 +568,7 @@ public class Serial_Port extends Thread implements SerialPortEventListener{ //�
         //        this.start(); // 启动线程来处理收到的数据
             try //向发送命令
             {
-                String str = "FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18";  //五：FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18
+                String str = "FF 04 02 01 01 07 FF 04 02 04 02 0B ";  //五：FF 04 02 01 01 07 FF 04 02 04 02 0B FF 04 02 12 01 18
                 byte[] bytes = this.hexStrToBinaryStr(str);
                 outputStream.write(bytes);
             } catch (IOException e) {

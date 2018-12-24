@@ -19,8 +19,8 @@ public class MedicalWave {
         int _mfHalfHeight = (int) _mfHeight / 2;
         int _scHalfWidth =  (int)( _scWidth / 2) ;
         int _scHalfHeight = (int)(_scHeight /2);
-        _mmwf.setBounds(-7,0,_mfWidth,_mfHeight);
-        //_mmwf.setBounds(Math.abs(_scHalfWidth - _mfHalfWidth),Math.abs(_scHalfHeight - _mfHalfHeight), _mfWidth, _mfHeight );
+        //_mmwf.setBounds(-7,0,_mfWidth,_mfHeight);
+        _mmwf.setBounds(Math.abs(_scHalfWidth - _mfHalfWidth),Math.abs(_scHalfHeight - _mfHalfHeight), _mfWidth, _mfHeight );
        // _mmwf.setLocationRelativeTo(null);
         _mmwf.setVisible(true);//显示MainMedicalFrame
         _mmwf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

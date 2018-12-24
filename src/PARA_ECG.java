@@ -31,6 +31,10 @@ public class PARA_ECG {
     private byte LL_FallMsg;
     private byte RL_FallMsg;
 
+    private byte fliterHZ;
+    private byte Hfliter;
+    private byte Lfliter;
+
     private int ECG_Oder; //ECG波形数据顺序
 
     private short  thr_I;
@@ -96,9 +100,23 @@ public class PARA_ECG {
         return fiv_III;
     }
 
+    public short getFliterHZ(){
+        return fliterHZ;
+    }
+    public short getHfliter(){
+        return Hfliter;
+    }
+    public short getLfliter(){
+        return Lfliter;
+    }
+
+    public byte getLA_FallMsg(){return LA_FallMsg;}
+    public byte getRA_FallMsg(){return RA_FallMsg;}
+    public byte getLL_FallMsg(){return LL_FallMsg;}
+    public byte getRL_FallMsg(){return RL_FallMsg;}
 
     //写入文件
-    public void inputfile(int data)
+    /*public void inputfile(int data)
     {
         FileWriter fw = null;
         try
@@ -123,7 +141,7 @@ public class PARA_ECG {
         }
 
     }
-
+*/
 
     public PARA_ECG(ArrayList list)
     { 
@@ -134,7 +152,20 @@ public class PARA_ECG {
             case 0x31:
                 this.Patient_Type = (byte)((byte)list.get(4)&0x07);
                 this.job_mode = (byte) ((byte)list.get(4)&0x70);
-
+                this.fliterHZ = (byte) ((byte)list.get(7)&0x03);
+                this.Hfliter = (byte) (((byte)list.get(7)&0x10)>> 2);
+                this.Lfliter = (byte) (((byte)list.get(7)&0xE0)>> 5);
+              // System.out.println("-------陷波器类型-------"+fliterHZ);
+               // System.out.println("-------高通滤波器-------"+Hfliter);
+               // System.out.println("-------低通滤波器-------"+Lfliter);
+                this.LA_FallMsg = (byte) ((byte)list.get(9)&0x01);
+                this.RA_FallMsg = (byte) (((byte)list.get(9)&0x02)>> 1);
+                this.LL_FallMsg = (byte) (((byte)list.get(9)&0x04)>> 2);
+                this.RL_FallMsg = (byte) (((byte)list.get(9)&0x08)>> 3);
+             /*  System.out.println("--------LA_FallMsg------"+LA_FallMsg);
+               System.out.println("--------RA_FallMsg------"+RA_FallMsg);
+               System.out.println("--------LLdaolian------"+LL_FallMsg);
+                System.out.println("--------RLdaolian------"+RL_FallMsg);*/
                 ConstantValue.ecg_flag = 1;
                 break;
             case 0x33:
@@ -146,8 +177,8 @@ public class PARA_ECG {
                 this.thr_II_D8 = (byte)list.get(6);
                 this.thr_II_G8 = (byte)list.get(7);
                 thr_II = (short) (((thr_II_G8&0xFF) << 8) | thr_II_D8&0xFF);
-            //    System.out.println("------------thr_II "+thr_II);
-                ConstantValue.flag = 3;
+        //    System.out.println("------------thr_II "+thr_II);
+                ConstantValue.ecg_flag = 3;
                 break;
             case 0x3F:
                 this.fiv_I_D8 = (byte)list.get(6);
@@ -157,10 +188,10 @@ public class PARA_ECG {
                 this.fiv_II_G8 = (byte)list.get(9);
                 this.fiv_II = (short) (((fiv_II_G8&0xFF) << 8) | fiv_II_D8&0xFF);
                 this.fiv_III = (short) ((((byte)list.get(11)&0XFF) << 8) | ((byte)list.get(10)&0XFF));
-                this.inputfile(fiv_II);
-            //    System.out.println(" --------------fiv_I "+fiv_I);
-            //    System.out.println(" --------------fiv_II "+fiv_II);
-            //    System.out.println(" --------------fiv_III "+fiv_III);
+              //  this.inputfile(fiv_II);
+         //System.out.println(" --------------fiv_I "+fiv_I);
+              //System.out.println(" --------------fiv_II "+fiv_II);
+              // System.out.println(" --------------fiv_III "+fiv_III);
                 ConstantValue.ecg_flag = 4;
                 break;
             default:
