@@ -1,6 +1,7 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -155,6 +156,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         }
     }
 
+    private void BPchangePropertyChange(PropertyChangeEvent e) {
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1InfoDisplay = new JPanel();
@@ -184,7 +189,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         n7 = new JLabel();
         n8 = new JLabel();
         n10 = new JLabel();
-        panel1 = new JPanel();
+        BPchange = new JPanel();
         l1 = new JLabel();
         l2 = new JLabel();
         SPO2dataPanel = new JPanel();
@@ -236,6 +241,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         m3 = new JMenu();
         StarMI = new JMenuItem();
         StopMI = new JMenuItem();
+        menu1 = new JMenu();
+        menuItem1 = new JMenuItem();
+        menuItem2 = new JMenuItem();
+        menuItem3 = new JMenuItem();
         ECGwavePanel2 = new MedicalWaveDisplayPanel();
 
         //======== this ========
@@ -281,7 +290,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 ECGdataPanel.setLayout(null);
 
                 //---- e1 ----
-                e1.setText("165");
+                e1.setText("68");
                 e1.setFont(e1.getFont().deriveFont(e1.getFont().getSize() + 32f));
                 e1.setForeground(Color.green);
                 e1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -381,7 +390,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(ECGdataPanel);
-            ECGdataPanel.setBounds(760, 70, 255, 145);
+            ECGdataPanel.setBounds(770, 70, 255, 145);
 
             //======== NIBPdataPanel ========
             {
@@ -398,7 +407,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n1.setBounds(70, 15, 60, 23);
 
                 //---- n2 ----
-                n2.setText("165");
+                n2.setText("120");
                 n2.setFont(n2.getFont().deriveFont(n2.getFont().getSize() + 38f));
                 n2.setForeground(Color.white);
                 n2.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -414,7 +423,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n3.setBounds(105, 30, 21, 70);
 
                 //---- n4 ----
-                n4.setText("165");
+                n4.setText("80");
                 n4.setForeground(Color.white);
                 n4.setFont(n4.getFont().deriveFont(n4.getFont().getSize() + 38f));
                 n4.setHorizontalAlignment(SwingConstants.LEFT);
@@ -451,47 +460,48 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 n8.setBounds(220, 50, 30, 20);
 
                 //---- n10 ----
-                n10.setText("\u6d4b\u91cf\u6a21\u5f0f");
+                n10.setText("\u6d4b\u91cf\u7ed3\u679c");
                 n10.setForeground(Color.white);
                 n10.setFont(n10.getFont().deriveFont(n10.getFont().getSize() + 4f));
                 NIBPdataPanel.add(n10);
                 n10.setBounds(5, 120, 100, 34);
 
-                //======== panel1 ========
+                //======== BPchange ========
                 {
-                    panel1.setBackground(Color.gray);
-                    panel1.setLayout(null);
+                    BPchange.setBackground(Color.gray);
+                    BPchange.addPropertyChangeListener(e -> BPchangePropertyChange(e));
+                    BPchange.setLayout(null);
 
                     //---- l1 ----
                     l1.setText("\u8896\u5e26\u538b");
                     l1.setFont(l1.getFont().deriveFont(l1.getFont().getSize() + 4f));
                     l1.setForeground(Color.lightGray);
-                    panel1.add(l1);
+                    BPchange.add(l1);
                     l1.setBounds(10, 60, 80, 20);
 
                     //---- l2 ----
                     l2.setText("000");
                     l2.setFont(l2.getFont().deriveFont(l2.getFont().getSize() + 13f));
                     l2.setForeground(Color.lightGray);
-                    panel1.add(l2);
+                    BPchange.add(l2);
                     l2.setBounds(90, 45, 65, 54);
 
                     { // compute preferred size
                         Dimension preferredSize = new Dimension();
-                        for(int i = 0; i < panel1.getComponentCount(); i++) {
-                            Rectangle bounds = panel1.getComponent(i).getBounds();
+                        for(int i = 0; i < BPchange.getComponentCount(); i++) {
+                            Rectangle bounds = BPchange.getComponent(i).getBounds();
                             preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                             preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
                         }
-                        Insets insets = panel1.getInsets();
+                        Insets insets = BPchange.getInsets();
                         preferredSize.width += insets.right;
                         preferredSize.height += insets.bottom;
-                        panel1.setMinimumSize(preferredSize);
-                        panel1.setPreferredSize(preferredSize);
+                        BPchange.setMinimumSize(preferredSize);
+                        BPchange.setPreferredSize(preferredSize);
                     }
                 }
-                NIBPdataPanel.add(panel1);
-                panel1.setBounds(15, 35, 220, 115);
+                NIBPdataPanel.add(BPchange);
+                BPchange.setBounds(20, 45, 220, 115);
 
                 { // compute preferred size
                     Dimension preferredSize = new Dimension();
@@ -508,7 +518,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(NIBPdataPanel);
-            NIBPdataPanel.setBounds(760, 215, 255, 170);
+            NIBPdataPanel.setBounds(770, 215, 255, 170);
 
             //======== SPO2dataPanel ========
             {
@@ -525,7 +535,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s1.setBounds(105, 70, 30, 40);
 
                 //---- s2 ----
-                s2.setText("165");
+                s2.setText("0");
                 s2.setFont(s2.getFont().deriveFont(s2.getFont().getSize() + 35f));
                 s2.setForeground(Color.cyan);
                 s2.setHorizontalAlignment(SwingConstants.LEFT);
@@ -533,7 +543,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s2.setBounds(5, 25, 90, 85);
 
                 //---- s3 ----
-                s3.setText("165");
+                s3.setText("0");
                 s3.setFont(s3.getFont().deriveFont(s3.getFont().getSize() + 35f));
                 s3.setForeground(Color.cyan);
                 s3.setHorizontalAlignment(SwingConstants.LEFT);
@@ -600,7 +610,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(SPO2dataPanel);
-            SPO2dataPanel.setBounds(760, 385, 255, 120);
+            SPO2dataPanel.setBounds(770, 385, 255, 120);
 
             //======== RESPdataPanel ========
             {
@@ -624,7 +634,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 r3.setBounds(170, 40, 45, 22);
 
                 //---- r4 ----
-                r4.setText("text");
+                r4.setText("20");
                 r4.setForeground(Color.yellow);
                 r4.setFont(r4.getFont().deriveFont(r4.getFont().getSize() + 30f));
                 RESPdataPanel.add(r4);
@@ -645,7 +655,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(RESPdataPanel);
-            RESPdataPanel.setBounds(760, 505, 255, 95);
+            RESPdataPanel.setBounds(770, 505, 255, 95);
 
             //======== panel3 ========
             {
@@ -662,7 +672,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 t1.setBounds(10, 35, 30, 35);
 
                 //---- t2 ----
-                t2.setText("2");
+                t2.setText("37.2");
                 t2.setFont(t2.getFont().deriveFont(t2.getFont().getSize() + 23f));
                 t2.setForeground(Color.white);
                 panel3.add(t2);
@@ -676,7 +686,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 t3.setBounds(10, 90, 30, 35);
 
                 //---- t4 ----
-                t4.setText("2");
+                t4.setText("37.2");
                 t4.setFont(t4.getFont().deriveFont(t4.getFont().getSize() + 23f));
                 t4.setForeground(Color.white);
                 panel3.add(t4);
@@ -753,7 +763,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel3);
-            panel3.setBounds(760, 600, 255, 145);
+            panel3.setBounds(770, 600, 255, 145);
 
             //======== panel2 ========
             {
@@ -819,7 +829,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 }
             }
             panel1InfoDisplay.add(panel2);
-            panel2.setBounds(0, 30, 1040, 40);
+            panel2.setBounds(0, 30, 1050, 40);
 
             //======== menuBar1 ========
             {
@@ -934,9 +944,31 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                     m3.add(StopMI);
                 }
                 menuBar1.add(m3);
+
+                //======== menu1 ========
+                {
+                    menu1.setText("ECG\u9009\u9879");
+                    menu1.setFont(menu1.getFont().deriveFont(menu1.getFont().getSize() + 7f));
+
+                    //---- menuItem1 ----
+                    menuItem1.setText("\u6ee4\u6ce2");
+                    menuItem1.setFont(menuItem1.getFont().deriveFont(menuItem1.getFont().getSize() + 4f));
+                    menu1.add(menuItem1);
+
+                    //---- menuItem2 ----
+                    menuItem2.setText("\u589e\u76ca");
+                    menuItem2.setFont(menuItem2.getFont().deriveFont(menuItem2.getFont().getSize() + 4f));
+                    menu1.add(menuItem2);
+
+                    //---- menuItem3 ----
+                    menuItem3.setText("\u6ce2\u5f62\u9009\u62e9");
+                    menuItem3.setFont(menuItem3.getFont().deriveFont(menuItem3.getFont().getSize() + 4f));
+                    menu1.add(menuItem3);
+                }
+                menuBar1.add(menu1);
             }
             panel1InfoDisplay.add(menuBar1);
-            menuBar1.setBounds(0, 0, 1040, 31);
+            menuBar1.setBounds(0, 0, 1050, 31);
 
             //---- ECGwavePanel2 ----
             ECGwavePanel2.setBackground(Color.black);
@@ -993,7 +1025,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JLabel n7;
     private JLabel n8;
     private JLabel n10;
-    private JPanel panel1;
+    private JPanel BPchange;
     private JLabel l1;
     private JLabel l2;
     private JPanel SPO2dataPanel;
@@ -1045,6 +1077,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JMenu m3;
     private JMenuItem StarMI;
     private JMenuItem StopMI;
+    private JMenu menu1;
+    private JMenuItem menuItem1;
+    private JMenuItem menuItem2;
+    private JMenuItem menuItem3;
     private MedicalWaveDisplayPanel ECGwavePanel2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
@@ -1083,7 +1119,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     {
         /**
          * NIBP
-         */
+
         if (sbp == 0) n2.setText(String.valueOf("---")); //Invalid value
         else n2.setText(String.valueOf(sbp)); //收缩压
         if (map == 0) n5.setText(String.valueOf("---")); //Invalid value
@@ -1109,7 +1145,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         /**
          * ECG模块
-         */
+
       //  System.out.println("hr = "+hr);
         if(hr == -100) //心率
             e1.setText(String.valueOf("- - -")); //Invalid value
@@ -1123,7 +1159,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         /**
          * SPO2模块
-         */
+
      //   System.out.println("spo2 = "+spo2);
         if (spo2 == 120) //血氧
             s2.setText(String.valueOf("- - -")); //Invalid value
@@ -1139,20 +1175,18 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         else*/
 
- //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);
-
-
+ //       System.out.println("spo2 = "+spo2 +"    pr = "+pr);   */
 
         /**
          * RESP模块
-         */
+
         if (rr == 240) //呼吸率
             r4.setText(String.valueOf("- - -"));
         else r4.setText(String.valueOf(rr));
 
         /**
          * TEMP模块
-         */
+
         if (bt1 == 600.0)
             t2.setText(String.valueOf("--.-")); //Invalid value
         else
