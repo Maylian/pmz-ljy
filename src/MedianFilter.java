@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class MedianFilter {
-    public int[] medianfilter (int[] data) {
+    public int[] medianFilter (int[] data) {
         List<Integer> dataY = new ArrayList<>();//数组转list
         for (int i = 0; i < data.length; i++) {
             dataY.add(data[i]);

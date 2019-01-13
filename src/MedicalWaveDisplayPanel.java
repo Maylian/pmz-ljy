@@ -92,16 +92,18 @@ public class MedicalWaveDisplayPanel extends JPanel {
         //m_lock.lock();
 
         //滤波
-         MovingAverageFilter filter_II = new MovingAverageFilter();
-        int[] ECGdata =filter_II.movingAverageFilter(data);
+        MedianFilter midfilter_II = new  MedianFilter();
+        int[] ECGdata1 =midfilter_II.medianFilter(data);
+        MovingAverageFilter filter_II = new MovingAverageFilter();
+        int[] ECGdata2 =filter_II.movingAverageFilter(ECGdata1);
 
         while (m_pls.hasValue == true) {
             //      System.out.println("ECG_Panel await();");
             m_pls.await();
         }
-        this.surf.datalength= ECGdata.length;
-        for (int _i0 = 0; _i0 < ECGdata.length; _i0++) {
-            _f = (ECGdata[_i0] - _fMin) / _fNormalize;
+        this.surf.datalength= ECGdata2.length;
+        for (int _i0 = 0; _i0 < ECGdata2.length; _i0++) {
+            _f = (ECGdata2[_i0] - _fMin) / _fNormalize;
             this.surf.data[_i0] = _f;//32行
 
         }
