@@ -49,7 +49,7 @@ new FormModel {
 					"border": new javax.swing.border.TitledBorder( null, "ECG", 4, 0, new java.awt.Font( "微软雅黑", 1, 16 ), sfield java.awt.Color green )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "e1"
-						"text": "165"
+						"text": "68"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 32, false )
 						"foreground": sfield java.awt.Color green
 						"horizontalAlignment": 2
@@ -175,7 +175,7 @@ new FormModel {
 						"y": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 770
 					"y": 70
 					"width": 255
 					"height": 145
@@ -197,7 +197,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n2"
-						"text": "165"
+						"text": "120"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 38, false )
 						"foreground": sfield java.awt.Color white
 						"horizontalTextPosition": 0
@@ -221,7 +221,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n4"
-						"text": "165"
+						"text": "80"
 						"foreground": sfield java.awt.Color white
 						"font": #SwingDerivedFont3
 						"horizontalAlignment": 2
@@ -278,7 +278,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "n10"
-						"text": "测量模式"
+						"text": "测量结果"
 						"foreground": sfield java.awt.Color white
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -288,8 +288,9 @@ new FormModel {
 						"y": 120
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-						name: "panel1"
+						name: "BPchange"
 						"background": sfield java.awt.Color gray
+						addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "BPchangePropertyChange", true ) )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "l1"
 							"text": "袖带压"
@@ -315,11 +316,11 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 220
 						"height": 115
-						"x": 15
-						"y": 35
+						"x": 20
+						"y": 45
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 770
 					"y": 215
 					"width": 255
 					"height": 170
@@ -341,7 +342,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "s2"
-						"text": "165"
+						"text": "0"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 35, false )
 						"foreground": sfield java.awt.Color cyan
 						"horizontalAlignment": 2
@@ -353,7 +354,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "s3"
-						"text": "165"
+						"text": "0"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 35, false )
 						"foreground": sfield java.awt.Color cyan
 						"horizontalAlignment": 2
@@ -433,7 +434,7 @@ new FormModel {
 						"width": 25
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 770
 					"y": 385
 					"width": 255
 					"height": 120
@@ -466,7 +467,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "r4"
-						"text": "text"
+						"text": "20"
 						"foreground": sfield java.awt.Color yellow
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 30, false )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -476,7 +477,7 @@ new FormModel {
 						"height": 65
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 770
 					"y": 505
 					"width": 255
 					"height": 95
@@ -498,7 +499,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t2"
-						"text": "2"
+						"text": "37.2"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 23, false )
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -520,7 +521,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "t4"
-						"text": "2"
+						"text": "37.2"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 23, false )
 						"foreground": sfield java.awt.Color white
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -618,7 +619,7 @@ new FormModel {
 						"y": 95
 					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 760
+					"x": 770
 					"y": 600
 					"width": 255
 					"height": 145
@@ -701,7 +702,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 0
 					"y": 30
-					"width": 1040
+					"width": 1050
 					"height": 40
 				} )
 				add( new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
@@ -806,8 +807,28 @@ new FormModel {
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "StopNIBPActionPerformed", true ) )
 						} )
 					} )
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "menu1"
+						"text": "ECG选项"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 7, false )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem1"
+							"text": "滤波"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem2"
+							"text": "增益"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem3"
+							"text": "波形选择"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+						} )
+					} )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"width": 1040
+					"width": 1050
 					"height": 31
 					"x": 0
 					"y": 0
@@ -826,7 +847,7 @@ new FormModel {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 15, 0 )
 			"size": new java.awt.Dimension( 1050, 790 )
 		} )
 	}
