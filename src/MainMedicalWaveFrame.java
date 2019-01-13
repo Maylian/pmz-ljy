@@ -195,7 +195,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         SPO2dataPanel = new JPanel();
         s1 = new JLabel();
         s2 = new JLabel();
-        s3 = new JLabel();
         s4 = new JLabel();
         s5 = new JLabel();
         s6 = new JLabel();
@@ -246,6 +245,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         menuItem2 = new JMenuItem();
         menuItem3 = new JMenuItem();
         ECGwavePanel2 = new MedicalWaveDisplayPanel();
+        s3 = new JLabel();
 
         //======== this ========
         setUndecorated(true);
@@ -541,14 +541,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 s2.setHorizontalAlignment(SwingConstants.LEFT);
                 SPO2dataPanel.add(s2);
                 s2.setBounds(5, 25, 90, 85);
-
-                //---- s3 ----
-                s3.setText("0");
-                s3.setFont(s3.getFont().deriveFont(s3.getFont().getSize() + 35f));
-                s3.setForeground(Color.cyan);
-                s3.setHorizontalAlignment(SwingConstants.LEFT);
-                SPO2dataPanel.add(s3);
-                s3.setBounds(160, 40, 90, 75);
 
                 //---- s4 ----
                 s4.setText("90");
@@ -977,6 +969,14 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
             panel1InfoDisplay.add(ECGwavePanel2);
             ECGwavePanel2.setBounds(0, 240, 760, 170);
 
+            //---- s3 ----
+            s3.setText("0");
+            s3.setFont(s3.getFont().deriveFont(s3.getFont().getSize() + 35f));
+            s3.setForeground(Color.cyan);
+            s3.setHorizontalAlignment(SwingConstants.LEFT);
+            panel1InfoDisplay.add(s3);
+            s3.setBounds(965, 475, 90, 75);
+
             { // compute preferred size
                 Dimension preferredSize = new Dimension();
                 for(int i = 0; i < panel1InfoDisplay.getComponentCount(); i++) {
@@ -991,7 +991,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 panel1InfoDisplay.setPreferredSize(preferredSize);
             }
         }
-        contentPane.add(panel1InfoDisplay, BorderLayout.CENTER);
+        contentPane.add(panel1InfoDisplay, BorderLayout.NORTH);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -1031,7 +1031,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JPanel SPO2dataPanel;
     private JLabel s1;
     private JLabel s2;
-    private JLabel s3;
     private JLabel s4;
     private JLabel s5;
     private JLabel s6;
@@ -1082,6 +1081,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     private JMenuItem menuItem2;
     private JMenuItem menuItem3;
     private MedicalWaveDisplayPanel ECGwavePanel2;
+    private JLabel s3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public void DrawStart()//绘制方格
