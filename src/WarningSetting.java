@@ -11,7 +11,8 @@ import javax.swing.plaf.*;
 /**
  * @author Brainrain
  */
-public class WarningSetting {
+public class
+WarningSetting {
      public WarningSetting() {
          initComponents();
          WarningSetting.setVisible(true);

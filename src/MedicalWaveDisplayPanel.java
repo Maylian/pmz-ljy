@@ -94,16 +94,20 @@ public class MedicalWaveDisplayPanel extends JPanel {
         //滤波
         MedianFilter midfilter_II = new  MedianFilter();
         int[] ECGdata1 =midfilter_II.medianFilter(data);
-        MovingAverageFilter filter_II = new MovingAverageFilter();
-        int[] ECGdata2 =filter_II.movingAverageFilter(ECGdata1);
+       /* MovingAverageFilter filter_II = new MovingAverageFilter();
+        int[] ECGdata2 =filter_II.movingAverageFilter(ECGdata1);*/
+       int[] ECGdata3 =new int[data.length];
+       for (int _i=0; _i < ECGdata1.length; _i++) {
+           ECGdata3[_i]=data[_i]-ECGdata1[_i];
+       }
 
         while (m_pls.hasValue == true) {
             //      System.out.println("ECG_Panel await();");
             m_pls.await();
         }
-        this.surf.datalength= ECGdata2.length;
-        for (int _i0 = 0; _i0 < ECGdata2.length; _i0++) {
-            _f = (ECGdata2[_i0] - _fMin) / _fNormalize;
+        this.surf.datalength= ECGdata3.length;
+        for (int _i0 = 0; _i0 < ECGdata3.length; _i0++) {
+            _f = (ECGdata3[_i0] - _fMin) / _fNormalize;
             this.surf.data[_i0] = _f;//32行
 
         }
@@ -187,7 +191,7 @@ public class MedicalWaveDisplayPanel extends JPanel {
         return 0;
     }
 
-    public void inputfile(float data) {
+   /* public void inputfile(float data) {
         FileWriter fw = null;
         try {
             File f = new File("C:\\Users\\814-2\\Desktop\\SPO2_前6.txt");
@@ -224,7 +228,5 @@ public class MedicalWaveDisplayPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-    }
+    }*/
 }

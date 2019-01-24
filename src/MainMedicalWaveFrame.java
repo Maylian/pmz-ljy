@@ -156,10 +156,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         }
     }
 
-    private void BPchangePropertyChange(PropertyChangeEvent e) {
-        // TODO add your code here
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel1InfoDisplay = new JPanel();
@@ -469,7 +465,6 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
                 //======== BPchange ========
                 {
                     BPchange.setBackground(Color.gray);
-                    BPchange.addPropertyChangeListener(e -> BPchangePropertyChange(e));
                     BPchange.setLayout(null);
 
                     //---- l1 ----
@@ -1119,7 +1114,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
     {
         /**
          * NIBP
-
+         */
         if (sbp == 0) n2.setText(String.valueOf("---")); //Invalid value
         else n2.setText(String.valueOf(sbp)); //收缩压
         if (map == 0) n5.setText(String.valueOf("---")); //Invalid value
@@ -1129,10 +1124,10 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
         //袖带压
         if(pre > 3)
         {
-            panel1.setVisible(true);
+            BPchange.setVisible(true);
             l2.setText(String.valueOf(pre));
         }
-        else if (pre < 3) panel1.setVisible(false);
+        else if (pre < 3) BPchange.setVisible(false);
         //测量模式
         if (msu_mode == 0)
             n10.setText(String.valueOf("手动测量...")); //默认
@@ -1145,7 +1140,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         /**
          * ECG模块
-
+         */
       //  System.out.println("hr = "+hr);
         if(hr == -100) //心率
             e1.setText(String.valueOf("- - -")); //Invalid value
@@ -1159,7 +1154,7 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         /**
          * SPO2模块
-
+         */
      //   System.out.println("spo2 = "+spo2);
         if (spo2 == 120) //血氧
             s2.setText(String.valueOf("- - -")); //Invalid value
@@ -1179,14 +1174,14 @@ public class MainMedicalWaveFrame extends JFrame implements Runnable{
 
         /**
          * RESP模块
-
+         */
         if (rr == 240) //呼吸率
             r4.setText(String.valueOf("- - -"));
         else r4.setText(String.valueOf(rr));
 
         /**
          * TEMP模块
-
+         */
         if (bt1 == 600.0)
             t2.setText(String.valueOf("--.-")); //Invalid value
         else

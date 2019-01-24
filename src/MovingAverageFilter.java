@@ -21,11 +21,11 @@ public class MovingAverageFilter {
 
         if (mTemp == null) {
             mBufout = new int[buf.length - mWindowSize + 1];
-            for (int i = 0; i < buf.length; i++) {
-                if ((i + mWindowSize) > buf.length) {
+            for (int Mi1 = 0; Mi1 < buf.length; Mi1++) {
+                if ((Mi1+ mWindowSize) > buf.length) {
                     break;
                 } else {
-                    for (int j = i; j < (mWindowSize + i); j++) {
+                    for (int j = Mi1; j < (mWindowSize +Mi1); j++) {
                         winArray[winArraySub] = buf[j];
                         winArraySub = winArraySub + 1;
                     }
@@ -44,11 +44,11 @@ public class MovingAverageFilter {
             mBufout = new int[bufadd.length - mWindowSize + 1];
             System.arraycopy(mTemp, 0, bufadd, 0, mTemp.length);
             System.arraycopy(buf, 0, bufadd, mTemp.length, buf.length); // 将temp和buf拼接到一块
-            for (int i = 0; i < bufadd.length; i++) {
-                if ((i + mWindowSize) > bufadd.length)
+            for (int Mi2 = 0; Mi2 < bufadd.length; Mi2++) {
+                if ((Mi2 + mWindowSize) > bufadd.length)
                     break;
                 else {
-                    for (int j = i; j < (mWindowSize + i); j++) {
+                    for (int j = Mi2; j < (mWindowSize + Mi2); j++) {
                         winArray[winArraySub] = bufadd[j];
                         winArraySub = winArraySub + 1;
                     }
@@ -65,8 +65,8 @@ public class MovingAverageFilter {
 
     public int mean(int[] array) {
         long sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+        for (int Mi3 = 0; Mi3 < array.length; Mi3++) {
+            sum += array[Mi3];
         }
         return (int) (sum / array.length);
     }

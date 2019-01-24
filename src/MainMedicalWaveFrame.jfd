@@ -290,7 +290,6 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 						name: "BPchange"
 						"background": sfield java.awt.Color gray
-						addEvent( new FormEvent( "java.beans.PropertyChangeListener", "propertyChange", "BPchangePropertyChange", true ) )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "l1"
 							"text": "袖带压"
